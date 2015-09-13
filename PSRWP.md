@@ -335,20 +335,23 @@ As noted above, it is advised that this way of thinking about Mack's model shoul
 
 As with the basic Chain Ladder, Mack's model takes as input a triangle of cumulative claims. This could be a paid claims triangle or an incurred claims triangle. We denote origin periods by $i$ and development periods by $j$. For ease of exposition we will assume that the triangle of claims is "regular" in that the number of origin periods is equal to the number of development periods, although the model can work with "irregular" triangles of claims data. We assume that there are $n$ origin periods, and $n$ development periods. We denote the cumulative claims amount for origin period $i$ and development period $j$ by $C_{ij}$. The triangle of claims data that we have is therefore:
 
-\[
+$$
 \left\{C_{ij} ∶ i = 1,\dots,n, \;j = 1, \dots ,n-i+1 \right\}
-\]
+$$
 
 Mack's model makes the following assumptions:
 
-1. For each  there are development factors  such that 
-2. Origin periods are independent i.e. for each  ,  are independent.
+1. For each $j = 1, \dots ,n-1$ there are development factors $f_j$ such that 
+$E[C_{i, j+1} | C_{i1}, \dots , C_{ij}] = C_{ij} f_j;$
+2. Origin periods are independent i.e. for each $s \neq t$ ,  
+$\left\{C_{s1}, \dots, C_{sn}\right\}, \left\{C_{t1}, \dots, C_{tn}\right\},$ are independent.
 
 Mack shows that, with the above assumptions, the basic Chain Ladder estimators for ultimate claims and the reserve are both unbiased estimators ([Ma93a], section 2). Note that the model assumes that the origin periods are independent. A triangle with accident origin periods is most likely to fulfil this assumption.
 
 To allow a calculation of the mean squared error of prediction (MSEP), Mack made the following additional assumption:
 
-1. For each  there are parameters  such that 
+1. For each $j = 1, \dots, n-1$ there are parameters $\sigma^2_j$  such that 
+$Var[C_{i,j+1}|C_{i,1}, \dots , C_{ij}] = C_{ij} \sigma^2_j$.
 
 Using these three assumptions Mack derives formulae for the mean squared error of the reserve for each individual origin period and for the total reserve across all origin periods. Refer to [MA93a] for the details.
 
@@ -356,29 +359,56 @@ Using these three assumptions Mack derives formulae for the mean squared error o
 
 Mack derives analytic formulae for the MSEP for the reserve estimates of individual origin periods, and for the total reserve across all origin periods. The MSEP consists of the parameter error and the process error (section 3.6). Recall from section 3.5 that parameter error is the error due to the fact that the parameters are estimated from a limited set of data, and therefore unlikely to be equal to the "true" underlying parameters, while process error is the error somehow inherent in the underlying process producing the claims data. The parameter error arises from fitting the model to the given claims triangle, the process error arises from projecting from the given claims data to estimate the ultimate claims amounts. In assumption (2) Mack assumes that the origin periods are independent. It follows from this that the process errors for different origin periods are independent. However the parameter errors for two different origin periods are both based on the same estimated parameters, and so are correlated. Therefore the reserve estimates for different origin periods are correlated, and this needs to be taken account of when calculating the MSEP of the total reserve estimate across all the origin periods.
 
-We now describe the formula for the process error component of the MSEP for an individual origin period. The process error is governed by the parameters  introduced in assumption (3). The first step is therefore to estimate these parameters. Mack does this using the following formula:
+We now describe the formula for the process error component of the MSEP for an individual origin period. The process error is governed by the parameters $\sigma_j^2$ introduced in assumption (3). The first step is therefore to estimate these parameters. Mack does this using the following formula:
+
+$$
+\sigmâ_j^2=\frac{1}{(n-j-1)} \sum_{i=1}^{n-j} C_{ij} \left(f_{ij} - \hat{f}_j\right )^2
+$$
 
 
-Where the  are the individual development factors:
+Where the $f_{ij}$ are the individual development factors:
+$$
+f_{ij}=\frac{C_{i,j+1}}{C_{ij}} 
+$$
+
+Recall the loose interpretation of Mack's method as fitting a weighted regression model to the development factors. With this interpretation, the formula for $\hat{\sigma}_j^2$ is analogous to the usual unbiased estimator of variance of the errors in the normal weighted linear model, where the weights are the  $C_{ij}$.
+
+There is a problem with the formula for $\hat{\sigma}_j^2$ above. It is only valid for 
+$1 \leq j \leq n-2$  and so cannot be used to estimate the variance parameter 
+$\sigma^2_{n-1}$ for the final development period. Fundamentally this happens because for the final development period there is only one individual development factor, and so it is impossible to estimate a variance parameter. Mack gets around this in an ad hoc and rather unsatisfactory way, by using the following value as an estimator:
+
+$$
+\hat{\sigma}_{n-1}^2= \mbox{min}\left(\frac{\hat{\sigma}_{n-2}^4}{\hat{\sigma}_{n-3}^2}, \mbox{min}\left(\hat{\sigma}_{n-3}^2, \hat{\sigma}_{n-2}^2 \right)\right)
+$$
 
 
-Recall the loose interpretation of Mack's method as fitting a weighted regression model to the development factors. With this interpretation, the formula for  is analogous to the usual unbiased estimator of variance of the errors in the normal weighted linear model, where the weights are the  .
-
-There is a problem with the formula for  above. It is only valid for  and so cannot be used to estimate the variance parameter  for the final development period. Fundamentally this happens because for the final development period there is only one individual development factor, and so it is impossible to estimate a variance parameter. Mack gets around this in an ad hoc and rather unsatisfactory way, by using the following value as an estimator:
-
-
-Mack justifies this as an exponentially decreasing extrapolation of the series  .
+Mack justifies this as an exponentially decreasing extrapolation of the series 
+$\sigma_1^2, \dots, \sigma_{n-2}^2$.
 
 Mack's estimator for the process error component of the MSEP for the reserve estimator for a single origin period is then:
-
+$$
+\hat{C}_{in}^2 \sum_{j=n+1-i}^{n-1} \frac{\hat{\sigma}_j^2}{\hat{C}_{ij}\,\hat{f}_j^2}
+$$
 
 Mack's estimator for the parameter error component of the MSEP for the reserve estimator for a single origin period has a similar form:
 
+$$
+\hat{C}_{in}^2 \sum_{j=n+1-i}^{n-1} \frac{\hat{\sigma}_j^2}{\sum_{m=1}^{n-m}\hat{C}_{mj}\,\hat{f}_j^2}
+$$
 
 Summing these two terms gives the total MSEP for the reserve estimator for an individual origin period ([Ma93a] theorem 3):
 
+$$
+\mbox{MSEP}(\hat{R}_i) = \hat{C}^2_{in} \sum_{j=n+1-i}^{n-1} \frac{\hat{\sigma}^2_j}{\hat{f}_j^2}
+\left(\frac{1}{\hat{C}_{ij}} + \frac{1}{\sum_{m=1}^{n-j} C_{mj}}\right)
+$$
 
-Now consider the MSEP for the total reserve estimator. As discussed above, to calculate this we need to allow for the fact that the reserve estimators for the individual origin periods are correlated due to the fact that they rely on the same estimated parameters  and  . The basic structure of the total reserve MSEP is the sum of the MSEPs for the individual origin periods plus an allowance for the correlation between the estimators. The formula given by Mack is ([Ma93a] corollary to theorem 3):
+Now consider the MSEP for the total reserve estimator. As discussed above, to calculate this we need to allow for the fact that the reserve estimators for the individual origin periods are correlated due to the fact that they rely on the same estimated parameters $\hat{f}_j$ and $\hat{\sigma}_j^2$  . The basic structure of the total reserve MSEP is the sum of the MSEPs for the individual origin periods plus an allowance for the correlation between the estimators. The formula given by Mack is ([Ma93a] corollary to theorem 3):
+
+$$
+\mbox{MSEP}(\hat{R}) = \sum_{i=2}^n \left(\mbox{MSEP}(\hat{R}_i) + 2\hat{C}_{in}
+\left( \sum_{m=i+1}^n \hat{C}_{mn} \right) \sum_{j=n+1-i}^{n-1} \frac{\hat{\sigma}_j^2}{\sum_{m=1}^{n-j} C_{mj} \, \hat{f}_j^2} \right)
+$$
 
 ## Over-dispersed Poisson model
 
@@ -398,27 +428,38 @@ The Mack and the ODP model both give exactly the same estimates of the reserves 
 
 ### Assumptions
 
-Let  denote the incremental paid claims amount for origin period  and development period  . The ODP model assumes that there are origin period parameters  and development period parameters  such that
+Let $P_{ij}$ denote the incremental paid claims amount for origin period  and development period  . The ODP model assumes that there are origin period parameters $x_1, \dots, x_n$ and development period parameters $y_1, \dots, y_n$ such that
 
+$$
+E[P_{ij}] = x_i y_j
+$$
 
 
 With the further assumption that
+$$
+\sum_{j=1}^n y_j = 1,
+$$
 
 
-
-the origin period parameters  may then be interpreted as the unconditional expected ultimate claims amount for the relevant origin period, and the development period parameters  may be interpreted as the expected incremental development proportion for the relevant development period.
+the origin period parameters $x_i$ may then be interpreted as the unconditional expected ultimate claims amount for the relevant origin period, and the development period parameters $y_j$ may be interpreted as the expected incremental development proportion for the relevant development period.
 
 By the ODP distributional assumptions,
 
+$$
+\mbox{Var}(P_{ij}) \Phi_{ij} E[P_{ij}]
+$$
 
+It is common to make simplifying assumptions for the scale parameters, $\Phi_{ij}$. A common simplification is that the scale parameter varies by development period only. In this case we would assume that there are scale parameters $\Phi_1, \dots, \Phi_n$ such that
 
-It is common to make simplifying assumptions for the scale parameters,  . A common simplification is that the scale parameter varies by development period only. In this case we would assume that there are scale parameters  such that
-
-
+$$
+\mbox{Var}(P_{ij}) \Phi_{j} E[P_{ij}]
+$$
 
 A further simplification would assume that the scale parameter is constant, i.e.
 
-
+$$
+\mbox{Var}(P_{ij}) \Phi E[P_{ij}]
+$$
 
 In practice, the scale parameter may often vary by development period. However, for the purpose of this paper, we assume, for ease of exposition, that the scale parameter is constant (also as noted in Taylor and McGuire [TM15], a constant scale parameter will ensure that an ODP model set up as a GLM will yield the conventional Chain Ladder estimates as maximum likelihood estimates).
 
@@ -428,26 +469,31 @@ As described above, the ODP model assumes that the mean of the incremental claim
 
  - A log link function
  - Over-dispersed Poisson as the error distribution
- -  , or equivalently, 
- -  (assuming a constant scale parameter as discussed above).
+ - $\log(E[P_{ij}])= \alpha_i + \beta_j$, or equivalently, $\mu_{ij} = E[P_{ij}] = \exp\left(\alpha_i + \beta_j\right)$, 
+ - $\mbox{Var}(P_{ij}) \Phi \mu_{ij}$ (assuming a constant scale parameter as discussed above).
 
-Note that by using a log link function, it is necessary to assume that  . This requirement means that the ODP model is not suitable for data-sets where negative expected increments are material.
+Note that by using a log link function, it is necessary to assume that $E[P_{ij}] >0$. This requirement means that the ODP model is not suitable for data-sets where negative expected increments are material.
 
-The Poisson model of Hachemeister and Stanard estimated the parameters using maximum likelihood. The parameters of a GLM are estimated using the more general procedure of maximising the quasi-likelihood. This permits the generalisation of the Poisson model by using a quasi-likelihood of similar form to the Poisson distribution but with a scale parameter  (note that the Poisson model may be interpreted as a special case of this generalised form where the scale parameter of 1, i.e. the mean is equal to the variance). This results in the over-dispersed Poisson distribution, which allows some negative values, and non-integer values.
+The Poisson model of Hachemeister and Stanard estimated the parameters using maximum likelihood. The parameters of a GLM are estimated using the more general procedure of maximising the quasi-likelihood. This permits the generalisation of the Poisson model by using a quasi-likelihood of similar form to the Poisson distribution but with a scale parameter $\Phi \geq 1$ (note that the Poisson model may be interpreted as a special case of this generalised form where the scale parameter of 1, i.e. the mean is equal to the variance). This results in the over-dispersed Poisson distribution, which allows some negative values, and non-integer values.
 
-Although estimating the parameters of a GLM can, in general, be quite complicated, for the ODP model described above, the parameters  and  can be estimated using the Chain Ladder method. This, together with the assumption that the expected incremental claims amounts are positive, implies that the column sums of the incremental claims triangle must be positive, so for every development period  we must have
+Although estimating the parameters of a GLM can, in general, be quite complicated, for the ODP model described above, the parameters $x_i$ and $y_j$  can be estimated using the Chain Ladder method. This, together with the assumption that the expected incremental claims amounts are positive, implies that the column sums of the incremental claims triangle must be positive, so for every development period $j$ we must have
 
+$$
+\sum_{i=1}^{n-j+1} P_{ij} \geq 0
+$$
 
 The scale parameter can be estimated using the formula
 
 
-Where d denotes the degrees of freedom and is calculated as the number of observations minus the number of parameters fitted. The number of observations is the number of  in the triangle of incremental claims. In a regular complete triangle with  origin periods this is  . The number of parameters fitted is the number of  parameters plus the number of  parameters minus one (because we have imposed the condition that  ). If we would like the scale parameter to vary by development period then the sum above would only vary over the origin period dimension for a fixed development period, and the number of degrees of freedom would also be amended accordingly.
+$$
+\Phi =  \frac{1}{d} \sum_{i=1}^n \sum_{j=1}^{n-i+1} \frac{\left( P_{ij} - E[P_{ij}] \right)^2}{E[P_{ij} ]}
+$$
+
+Where d denotes the degrees of freedom and is calculated as the number of observations minus the number of parameters fitted. The number of observations is the number of $P_{ij}$ in the triangle of incremental claims. In a regular complete triangle with $n$ origin periods this is $\frac{n \left(n+1\right)}{2}$. The number of parameters fitted is the number of $x_i$ parameters plus the number of $y_j$  parameters minus one (because we have imposed the condition that $\sum y_j =1$  ). If we would like the scale parameter to vary by development period then the sum above would only vary over the origin period dimension for a fixed development period, and the number of degrees of freedom would also be amended accordingly.
 
 Alternatively, the ODP model may be fitted using GLM software (see, e.g., Taylor and McGuire [TM15]). Furthermore, the GLM framework allows other distributions to be considered which may be more appropriate for the claims data (Renshaw and Verrall [RV98]).
 
-It is worth noting that the ODP distribution is a special case of a Tweedie distribution, which was introduced by Tweedie [Tw84]. A characteristic of a Tweedie distribution is that the variance is proportional to  where µ is the mean and  or  . Members of the Tweedie family include the poisson
-
-distribution (_p_=1), the normal distribution (_p_=0) and the gamma distribution (_p_=2). Models using all these distributions may be fitted using GLM software (quasi-likelihood is used for the ODP and for non-integer p). Tweedie models are of particular interest when validating the distribution assumptions in reserving problems: for example, Jorgensen and Paes de Souza [JP94] showed that Tweedie models with  can be identified as compound Poisson distributions with gamma severity distributions. In practical terms, higher values of _p_ correspond to heavier tailed distributions. Therefore, if ODP model validation (discussed later in section 5) suggests that the data is heavier-tailed than the ODP distribution, then a Tweedie distribution with  could be considered as an alternative. For further discussion on this, including estimation of a suitable value for _p_, refer to [PSW09] and [CGMWZ15].
+It is worth noting that the ODP distribution is a special case of a Tweedie distribution, which was introduced by Tweedie [Tw84]. A characteristic of a Tweedie distribution is that the variance is proportional to $\mu^p$ where $\mu$ is the mean and  $p \leq 0$ or $p\geq1$ . Members of the Tweedie family include the Poisson distribution ($p=1$), the Normal distribution ($p=0$) and the Gamma distribution ($p=2$). Models using all these distributions may be fitted using GLM software (quasi-likelihood is used for the ODP and for non-integer $p$). Tweedie models are of particular interest when validating the distribution assumptions in reserving problems: for example, Jorgensen and Paes de Souza [JP94] showed that Tweedie models with $1 \leq p \leq2$ can be identified as compound Poisson distributions with Gamma severity distributions. In practical terms, higher values of $p$ correspond to heavier tailed distributions. Therefore, if ODP model validation (discussed later in section 5) suggests that the data is heavier-tailed than the ODP distribution, then a Tweedie distribution with $p \geq 1$ could be considered as an alternative. For further discussion on this, including estimation of a suitable value for $p$, refer to [PSW09] and [CGMWZ15].
 
 ### Analytic Calculation of MSEP
 
@@ -471,37 +517,52 @@ The stochastic BF model that we describe is based on the ODP model. In this sect
 
 The basic idea of the BF method is to calculate the reserve for each origin period as a proportion of a prior estimate of the ultimate claims. The prior estimate is an input to the model and could incorporate information from underwriters, premium calculations or strategic business plans. The key thing is that it is independent of the claims data for the origin period. The proportion applied to the prior estimate of the ultimate claims is, in practice, usually derived from the basic Chain Ladder factors. It is perfectly possible to use other factors, but Alai, Merz, and Wuthrich's model assumes that the Chain Ladder factors are used.
 
-We can express the deterministic BF method symbolically as follows. Let _i_ denote the origin period, and let  denote the prior estimate of the expected value of the ultimate claims for origin period _i_. Let _j_ denote development period, and suppose that  denotes the basic Chain Ladder development factor for development period _j_. Then the cumulative development proportion for development period _j_, denoted  is given by:
+We can express the deterministic BF method symbolically as follows. Let $i$ denote the origin period, and let $\nu_i$ denote the prior estimate of the expected value of the ultimate claims for origin period $i$. Let $j$ denote development period, and suppose that $f_j$ denotes the basic Chain Ladder development factor for development period $j$. Then the cumulative development proportion for development period $j$, denoted $\beta_J$ is given by:
 
+$$
+\beta_j = \prod_{k=j}^{n-1} \frac{1}{f_k}
+$$
 
-Let  be the latest observed cumulative payment for the origin period _i_. The BF estimate of the ultimate claims is then given by:
+Let $C_{i, n-i}$ be the latest observed cumulative payment for the origin period $i$. The BF estimate of the ultimate claims is then given by:
+
+$$
+U_i^{BF} = C_{i, n-i} + \left(1 - \beta_{n-i} \right) \nu_i
+$$
 
 This formula leads to an alternative view of the BF estimate of the ultimate claims as a weighted average of the basic Chain Ladder estimate and the prior estimate of the ultimate claims:
 
+$$
+U_i^{BF} = C^{CL}_{i, n-i} \cdot \beta_{n-i} + \left(1 - \beta_{n-i} \right) \nu_i
+$$
 
 This is the case because the basic Chain Ladder estimate of the ultimate claims is given by
 
 
+$$
+C^{CL}_{i, n-i} = C_{i, n-i} \prod_{k=n-i}^{n-1} f_k
+$$
+
 and so
 
-
-
-Generally  is larger for older origin periods, and smaller for more recent origin periods. Therefore, for the older origin periods more weight is given to the basic Chain Ladder estimate, and for more recent periods more weight is given to the prior estimate of ultimate claims. Below, when we look at the prediction error in the BF estimate of the reserves, we see a similar pattern. For the older periods the contribution to the prediction error of the prior estimate of the ultimate claims is relatively small, whereas for the more recent periods the contribution to the prediction error of the prior estimate of the ultimate claims is relatively larger.
+$$
+C_{i, n-i} = \frac{C^{CL}_{i, n}}{\prod_{k=n-i}^{n-1} f_k } = C^{CL}_{i, n} \cdot \beta_{n-i} 
+$$
+Generally $\beta_{n-i}$ is larger for older origin periods, and smaller for more recent origin periods. Therefore, for the older origin periods more weight is given to the basic Chain Ladder estimate, and for more recent periods more weight is given to the prior estimate of ultimate claims. Below, when we look at the prediction error in the BF estimate of the reserves, we see a similar pattern. For the older periods the contribution to the prediction error of the prior estimate of the ultimate claims is relatively small, whereas for the more recent periods the contribution to the prediction error of the prior estimate of the ultimate claims is relatively larger.
 
 The BF method is particularly useful when modelling long-tailed lines of business. For these lines the Chain Ladder method can often give unreasonable results for the more recent origin periods. The BF method mitigates this problem by giving more weight to the prior estimate of the ultimate claims, and less weight to the Chain Ladder estimate of the ultimate claims. When we look at the prediction error in the estimate of the reserves we see a similar pattern. In long-tail lines of business, in cases where the Chain Ladder estimate of the ultimate claims is unreasonable, the stochastic Chain Ladder models can often give very large estimates of the prediction error. It is important to note that in such cases, that whilst the best estimate is unreasonable, it is actually quite reasonable to have a large prediction error. When we apply the BF method to such cases we find that we get a much more reasonable estimate of the ultimate claims admittedly based on our prior view, and a smaller value for the prediction error. We see this in the application of the different models to data set 2 in section 7.2.
 
 ### Assumptions
 
-We now describe the assumptions made for the stochastic BF model being considered here. The model is based on the ODP model (section 4.2), so makes the same assumptions for the incremental claims amounts  with some additional assumptions for the prior estimates of the ultimate claims. The additional assumptions are:
+We now describe the assumptions made for the stochastic BF model being considered here. The model is based on the ODP model (section 4.2), so makes the same assumptions for the incremental claims amounts $P_{ij}$  with some additional assumptions for the prior estimates of the ultimate claims. The additional assumptions are:
 
-- The prior estimates  of the ultimate claims, are independent random variables that are unbiased _a priori_ estimators of the expected value of the ultimate claims  for all  ; and
--  and  are independent for all  .
+- The prior estimates $\nu_i$  of the ultimate claims, are independent random variables that are unbiased *a priori* estimators of the expected value of the ultimate claims $C_{in}$ for all $i=1,\dots,n$; and
+-  $P_{ij}$ and $\nu_i$ are independent for all $i,j$ .
 
 So, in addition to the assumptions of the ODP model, we assume that the prior estimates are independent of the claims data and are unbiased estimators of the ultimate claim amounts.
 
-In the above we only assume that the prior estimates  of the ultimate claims are independent random variables. For the calculation of the BF estimates of the ultimate claims we require estimates of the mean, and for the MSEP we need to have estimates of the variance of these random variables. We assume that these are given exogenously. Note that, as  is an estimate of the expected value of the ultimate claims, its variance is a measure of the uncertainty in the estimate of the mean, it is not the uncertainty of the ultimate claims themselves.
+In the above we only assume that the prior estimates $\nu_i$ of the ultimate claims are independent random variables. For the calculation of the BF estimates of the ultimate claims we require estimates of the mean, and for the MSEP we need to have estimates of the variance of these random variables. We assume that these are given exogenously. Note that, as $\nu_i$ is an estimate of the expected value of the ultimate claims, its variance is a measure of the uncertainty in the estimate of the mean, it is not the uncertainty of the ultimate claims themselves.
 
-The assumption that the prior estimates  are independent might not be realistic. For example there might be a systematic bias caused by the assumptions made for some relevant factor (e.g. future inflation assumption) turning out to be materially incorrect in hindsight.
+The assumption that the prior estimates $\nu_i$ are independent might not be realistic. For example there might be a systematic bias caused by the assumptions made for some relevant factor (e.g. future inflation assumption) turning out to be materially incorrect in hindsight.
 
 ### Analytic Calculation of MSEP
 
@@ -583,11 +644,13 @@ Within the statistics literature, it is generally recommended that residuals be 
 
 In these plots by accident, development or calendar period, it is also helpful to include the mean and standard deviation of the residuals for each period – standardised residuals from a well-fitting model should have a mean of zero and a standard deviation of 1 (or at least a constant standard deviation, depending on how the standardisation of the residuals has been implemented). If the mean varies significantly from 0 then this suggests that part of the model fits poorly, i.e. the model is biased for that subset of the data. If the mean is approximately zero, but the standard deviation of the residuals varies (e.g. is smaller for small fitted values and larger for large fitted values) then this suggests a problem with the distributional assumptions.
 
+
 Figure 5 -8 gives examples of these scatter plots for the first simulated data set, which has been simulated from an ODP model.
+![Residual scatter plot simulation 1](figures/ResidualScatterSim1.png)
 
 
 The same plots are now shown in Figure 5 -9 for the second simulated data set. This data set has a calendar or payment year trend but has been modelled using an ODP so the payment year trend is not captured in this model.
-
+![Residual scatter plot simulation 2](figures/ResidualScatterSim2.png)
 
 The payment year scatterplot clearly displays a trend in the residuals.
 
@@ -607,6 +670,13 @@ The comparison of actual and fitted values fluctuates around 100% for data set 1
 
 The pattern of the actual/fitted series in Figure 5 -10 mirrors that of the mean series in Figure 5 -9 for the payment year scatterplot (bottom left hand graph) so some modellers may choose to rely on residual plots alone. Using actual vs fitted plots in addition to residual plots is a matter of personal preference. However, an advantage of the actual vs fitted plots is that they include the magnitude of the payments involved so the modeller can pay particular attention to the fit of the model where payment levels are high.
 
+##### Correct model fitted (data set 1)
+
+![Correct model fitted](figures/CorrectModelFitted.png)
+
+#### Unmodelled payment year trend (data set 2)
+
+![Unmodelled payment year trend](figures/UnmodelledPaymentTrend.png)
 
 Note: The accident and development year graphs are not shown since all ratios are 100%. This is a direct consequence of fitting a model with parameters for all accident and development periods with an ODP distribution since the estimation process ensures that the marginal totals are equal. This is true for simulated data set 2, even though the model is inadequate.
 
@@ -616,10 +686,27 @@ For the claims reserving problem it is particularly useful to consider a triangu
 
 Figure 5 -11 shows heat maps for actual/fitted values by accident and development year and by accident and payment year for data set 1 which has been correctly modelled. The actual/fitted percentages have been colour coded so that low values are blue, values around 100% are white and large values (i.e. where actual exceeds fitted) are red. In a well-fitting model we would expect a random scattering of colour with no discernible pattern and this is indeed the case.
 
+#### Heat maps for data set 1 (correctly modelled)
+##### Accident Development
+
+![Accident/development year triangle](figures/AccidentDevelopment1.png)
+
+##### Accident/payment year triangle
+
+![Accident/payment year triangle](figures/AccidentPayment1.png)
 
 Figure 5 -12 presents the same heat maps for data set 2 where there is an unmodelled payment year trend. There are systematic patterns visible in both triangles – early and late payment years tend to have higher actual values greater than fitted values, while mid-term payment years tend to have higher fitted values.
 
 For data set 2, we already know from the residual and one-way summary plots of actual vs fitted that there are unmodelled payment year trends so in this case the heat map may not add new information. However, heat maps are particularly useful at identifying interactions. For example, a payment pattern change impacting some accident years but not others would generate a systematic pattern in a heat map. Taylor and McGuire [TM15] contains an example of using a heat map to identify and suitably model an interaction in an ODP model.
+
+#### Heat maps for data set 2 (payment year trend not modelled)
+##### Accident Development
+
+![Accident/development year triangle](figures/AccidentDevelopment2.png)
+
+##### Accident/payment year triangle
+
+![Accident/payment year triangle](figures/AccidentPayment2.png)
 
 ## Model specific tests
 
