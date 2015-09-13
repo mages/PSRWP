@@ -1,8 +1,8 @@
 ---
 output:
-  word_document: default
   html_document:
     toc: yes
+  word_document: default
 ---
 ## A Practitioner's Introduction to Stochastic Reserving
 
@@ -333,8 +333,11 @@ As noted above, it is advised that this way of thinking about Mack's model shoul
 
 ### Assumptions
 
-As with the basic Chain Ladder, Mack's model takes as input a triangle of cumulative claims. This could be a paid claims triangle or an incurred claims triangle. We denote origin periods by _i_ and development periods by _j_. For ease of exposition we will assume that the triangle of claims is "regular" in that the number of origin periods is equal to the number of development periods, although the model can work with "irregular" triangles of claims data. We assume that there are _n_ origin periods, and _n_ development periods. We denote the cumulative claims amount for origin period _i_ and development period _j_ by  . The triangle of claims data that we have is therefore:
+As with the basic Chain Ladder, Mack's model takes as input a triangle of cumulative claims. This could be a paid claims triangle or an incurred claims triangle. We denote origin periods by $i$ and development periods by $j$. For ease of exposition we will assume that the triangle of claims is "regular" in that the number of origin periods is equal to the number of development periods, although the model can work with "irregular" triangles of claims data. We assume that there are $n$ origin periods, and $n$ development periods. We denote the cumulative claims amount for origin period $i$ and development period $j$ by $C_{ij}$. The triangle of claims data that we have is therefore:
 
+\[
+\left\{C_{ij} ∶ i = 1,\dots,n, \;j = 1, \dots ,n-i+1 \right\}
+\]
 
 Mack's model makes the following assumptions:
 
