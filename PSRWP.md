@@ -350,7 +350,7 @@ Mack shows that, with the above assumptions, the basic Chain Ladder estimators f
 
 To allow a calculation of the mean squared error of prediction (MSEP), Mack made the following additional assumption:
 
-1. For each $j = 1, \dots, n-1$ there are parameters $\sigma^2_j$  such that 
+3. For each $j = 1, \dots, n-1$ there are parameters $\sigma^2_j$  such that 
 $Var[C_{i,j+1}|C_{i,1}, \dots , C_{ij}] = C_{ij} \sigma^2_j$.
 
 Using these three assumptions Mack derives formulae for the mean squared error of the reserve for each individual origin period and for the total reserve across all origin periods. Refer to [MA93a] for the details.
@@ -362,7 +362,7 @@ Mack derives analytic formulae for the MSEP for the reserve estimates of individ
 We now describe the formula for the process error component of the MSEP for an individual origin period. The process error is governed by the parameters $\sigma_j^2$ introduced in assumption (3). The first step is therefore to estimate these parameters. Mack does this using the following formula:
 
 $$
-\sigmâ_j^2=\frac{1}{(n-j-1)} \sum_{i=1}^{n-j} C_{ij} \left(f_{ij} - \hat{f}_j\right )^2
+\sigma_j^2=\frac{1}{(n-j-1)} \sum_{i=1}^{n-j} C_{ij} \left(f_{ij} - \hat{f}_j\right )^2
 $$
 
 
@@ -446,19 +446,19 @@ the origin period parameters $x_i$ may then be interpreted as the unconditional 
 By the ODP distributional assumptions,
 
 $$
-\mbox{Var}(P_{ij}) \Phi_{ij} E[P_{ij}]
+\mbox{Var}(P_{ij}) \phi_{ij} E[P_{ij}]
 $$
 
-It is common to make simplifying assumptions for the scale parameters, $\Phi_{ij}$. A common simplification is that the scale parameter varies by development period only. In this case we would assume that there are scale parameters $\Phi_1, \dots, \Phi_n$ such that
+It is common to make simplifying assumptions for the scale parameters, $\phi_{ij}$. A common simplification is that the scale parameter varies by development period only. In this case we would assume that there are scale parameters $\phi_1, \dots, \phi_n$ such that
 
 $$
-\mbox{Var}(P_{ij}) \Phi_{j} E[P_{ij}]
+\mbox{Var}(P_{ij}) \phi_{j} E[P_{ij}]
 $$
 
 A further simplification would assume that the scale parameter is constant, i.e.
 
 $$
-\mbox{Var}(P_{ij}) \Phi E[P_{ij}]
+\mbox{Var}(P_{ij}) \phi E[P_{ij}]
 $$
 
 In practice, the scale parameter may often vary by development period. However, for the purpose of this paper, we assume, for ease of exposition, that the scale parameter is constant (also as noted in Taylor and McGuire [TM15], a constant scale parameter will ensure that an ODP model set up as a GLM will yield the conventional Chain Ladder estimates as maximum likelihood estimates).
@@ -470,11 +470,11 @@ As described above, the ODP model assumes that the mean of the incremental claim
  - A log link function
  - Over-dispersed Poisson as the error distribution
  - $\log(E[P_{ij}])= \alpha_i + \beta_j$, or equivalently, $\mu_{ij} = E[P_{ij}] = \exp\left(\alpha_i + \beta_j\right)$, 
- - $\mbox{Var}(P_{ij}) \Phi \mu_{ij}$ (assuming a constant scale parameter as discussed above).
+ - $\mbox{Var}(P_{ij}) \phi \mu_{ij}$ (assuming a constant scale parameter as discussed above).
 
 Note that by using a log link function, it is necessary to assume that $E[P_{ij}] >0$. This requirement means that the ODP model is not suitable for data-sets where negative expected increments are material.
 
-The Poisson model of Hachemeister and Stanard estimated the parameters using maximum likelihood. The parameters of a GLM are estimated using the more general procedure of maximising the quasi-likelihood. This permits the generalisation of the Poisson model by using a quasi-likelihood of similar form to the Poisson distribution but with a scale parameter $\Phi \geq 1$ (note that the Poisson model may be interpreted as a special case of this generalised form where the scale parameter of 1, i.e. the mean is equal to the variance). This results in the over-dispersed Poisson distribution, which allows some negative values, and non-integer values.
+The Poisson model of Hachemeister and Stanard estimated the parameters using maximum likelihood. The parameters of a GLM are estimated using the more general procedure of maximising the quasi-likelihood. This permits the generalisation of the Poisson model by using a quasi-likelihood of similar form to the Poisson distribution but with a scale parameter $\phi \geq 1$ (note that the Poisson model may be interpreted as a special case of this generalised form where the scale parameter of 1, i.e. the mean is equal to the variance). This results in the over-dispersed Poisson distribution, which allows some negative values, and non-integer values.
 
 Although estimating the parameters of a GLM can, in general, be quite complicated, for the ODP model described above, the parameters $x_i$ and $y_j$  can be estimated using the Chain Ladder method. This, together with the assumption that the expected incremental claims amounts are positive, implies that the column sums of the incremental claims triangle must be positive, so for every development period $j$ we must have
 
@@ -486,7 +486,7 @@ The scale parameter can be estimated using the formula
 
 
 $$
-\Phi =  \frac{1}{d} \sum_{i=1}^n \sum_{j=1}^{n-i+1} \frac{\left( P_{ij} - E[P_{ij}] \right)^2}{E[P_{ij} ]}
+\phi =  \frac{1}{d} \sum_{i=1}^n \sum_{j=1}^{n-i+1} \frac{\left( P_{ij} - E[P_{ij}] \right)^2}{E[P_{ij} ]}
 $$
 
 Where d denotes the degrees of freedom and is calculated as the number of observations minus the number of parameters fitted. The number of observations is the number of $P_{ij}$ in the triangle of incremental claims. In a regular complete triangle with $n$ origin periods this is $\frac{n \left(n+1\right)}{2}$. The number of parameters fitted is the number of $x_i$ parameters plus the number of $y_j$  parameters minus one (because we have imposed the condition that $\sum y_j =1$  ). If we would like the scale parameter to vary by development period then the sum above would only vary over the origin period dimension for a fixed development period, and the number of degrees of freedom would also be amended accordingly.
@@ -714,32 +714,37 @@ For data set 2, we already know from the residual and one-way summary plots of a
 
 Recall the three assumptions of the Mack model from section 4.1.2:
 
-1. For each  there are development factors  such that 
-2. Origin periods are independent i.e. for each  ,  are independent.
-3. For each  there are parameters  such that 
+1. For each $j = 1, \dots , n-1$ there are development factors $f_j$ such that 
+$E[C_{i, j+1} | C_{i1}, \dots , C_{ij}] = C_{ij} f_j;$
+
+2. Origin periods are independent i.e. for each $s \neq t$ ,  
+$\left\{C_{s1}, \dots, C_{sn}\right\}, \left\{C_{t1}, \dots, C_{tn}\right\},$ are independent.
+
+3. For each $j = 1, \dots, n-1$ there are parameters $\sigma^2_j$  such that 
+$Var[C_{i,j+1}|C_{i,1}, \dots , C_{ij}] = C_{ij} \sigma^2_j$.
 
 When using the Mack model, each of these assumptions should be tested to ensure that they are appropriate for the data set in question.
 
 #### Development factors test
 
-[Ma97] shows that (1) implies that the sequential development factors  and  are not correlated. He uses this fact to develop a test for whether the model should be applied, taking the following points into consideration:
+[Ma97] shows that (1) implies that the sequential development factors $C_{ij}/C_{i.j-1}$ and  $C_{i,j+1}/C_{ij}$ are not correlated. He uses this fact to develop a test for whether the model should be applied, taking the following points into consideration:
 
 - Development factors in adjacent development periods will generally not be identically distributed – they will usually have different means and different levels of variability. Therefore a non-parametric statistic such as the Spearman rank correlation should be used.
 - On pragmatic grounds, isolated cases of correlations between successive development factors may not negate the use of the Mack model. However, widespread correlations in the data set are problematic. Thus, he develops a test over the entire data set. Note this is also desirable from statistical grounds – it is undesirable to compare every set of adjacent development factors since, even with no correlations present, some are likely to return significant values due to chance.
 
 A brief overview of this test is given below; full details may be sourced from Appendix G in [MA97].
 
-- First take the development factors in development period _j_ and _j-1_ and remove any in _j_ that do not have a matching factor for that accident period in development period _j-1_ (and vice versa – remove any in _j-1_ that do not have a match in _j_).
-- Rank the factors separately for _j_ and _j-1_.
-- Calculate the Spearman correlation coefficient as  where
+- First take the development factors in development period $j$ and $j-1$ and remove any in $j$ that do not have a matching factor for that accident period in development period $j-1$ (and vice versa – remove any in $j-1$ that do not have a match in $j$).
+- Rank the factors separately for $j$ and $j-1$.
+- Calculate the Spearman correlation coefficient as $T_j=1-\frac{6}{(I-j)^3-I+j}\sum_{i=1}^{I-j}\left(r_{ij}-s_{ij}\right)^2$ where
 
-- I = the number of accident periods (=_n_ in the specification of the Mack model in section 4.1 for a regular reserving triangle).
-- J = the number of development periods (=_n_ in the specification of the Mack model in section 4.1 for a regular reserving triangle).
--  is the rank for the development factor in accident period _i_, development period _j_
--  is the rank for the development factor in accident period _i_, development period _j-1_
+- $I$ the number of accident periods ($=n$ in the specification of the Mack model in section 4.1 for a regular reserving triangle).
+- $J$ the number of development periods ($=n$ in the specification of the Mack model in section 4.1 for a regular reserving triangle).
+- $r_{ij}$ is the rank for the development factor in accident period $i$, development period $j$
+- $s_{ij}$ is the rank for the development factor in accident period $i$, development period $j-1$
 
-- Combine all the calculated coefficients into one statistic as 
-- It may be shown that  and 
+- Combine all the calculated coefficients into one statistic as $T=\sum_{j=2}^{I-2}\frac{I-j-1}{(I-2)(I-3)/2} T_j$
+- It may be shown that $E[T]=0$ and $\mbox{Var}(T)= \frac{1}{(I-2)(I-3)/2}$ 
 - Mack then proposes using a normal distribution at the 50% confidence level as a suitable test for the appropriateness of using the Mack model.
 
 #### Independence of accident years
@@ -750,9 +755,9 @@ The graphical model diagnostics described above in Section 5.1 are likely to ind
 
 The idea underpinning this test is that, in the presence of a non-constant calendar year trend, diagonals of development factors will tend to have either larger or smaller than usual development factors. Thus, Mack proposes carrying out the following procedure:
 
-- For each development period _j_ (i.e. column of the data set), order the development factors and separate them into a set of small factors ("SF") and large factors ("LF") using the median of the development factors in that development period.
+- For each development period $j$ (i.e. column of the data set), order the development factors and separate them into a set of small factors ("SF") and large factors ("LF") using the median of the development factors in that development period.
 - For each diagonal, count the number of large and small factors.
-- Under the null hypothesis of independent accident periods, development factors should be equally spread between small and large factors (subject to sampling variability). Therefore a binomial distribution with probability _p_ and _n_=number of entries in the diagonal may be used to assess the significance of the number of large and small factors.
+- Under the null hypothesis of independent accident periods, development factors should be equally spread between small and large factors (subject to sampling variability). Therefore a binomial distribution with probability $p$ and $n=$ number of entries in the diagonal may be used to assess the significance of the number of large and small factors.
 
 Refer to Appendix H of [MA97] for full details.
 
@@ -771,13 +776,21 @@ The variance parameters operate multiplicatively – an interesting result of th
 
 Strictly speaking, if using an ODP model, the ODP assumptions should be checked - i.e. is the ODP model a good representation of the data. One powerful way of validating the ODP distribution is to use a Probability-Probability ("P-P") plot. The description below of a P-P plot for stochastic reserving problems is taken from Taylor and McGuire [TM15].
 
-In general, a P-P plot is a graphical method for comparing two probability distributions, and plots two cumulative distribution functions ("cdf"s) against each other. Given an input, _u_, the plotted points are (F(_u_), G(_u_)) , where F and G represent the cdfs being compared. Thus, the range of the plot is the unit square [0,1] x [0,1]. Each plotted point represented the probability of being ≤_u_ under the distributions F and G respectively.
+In general, a P-P plot is a graphical method for comparing two probability distributions, and plots two cumulative distribution functions ("cdf"s) against each other. Given an input, $u$, the plotted points are ($F(u), G(u)$) , where $F$ and $G$ represent the cdfs being compared. Thus, the range of the plot is the unit square $[0,1] \times [0,1]$. Each plotted point represented the probability of being $\leq u$ under the distributions $F$ and $G$ respectively.
 
-In a GLM application, one distribution will correspond to the selected error distribution (e.g. ODP for the ODP model) and will be referred to as the "theoretical" distribution. The values of the theoretical distribution are calculated assuming the ODP assumptions are correct. The other distribution will correspond to the modelled data (the "empirical" distribution) and is simply an ordered series (by the theoretical probability) of the actual data. In effect, the empirical distribution points are simply _m_ equally spaced points in [0,1] where _m_ is the total number of observations in the data set.
+In a GLM application, one distribution will correspond to the selected error distribution (e.g. ODP for the ODP model) and will be referred to as the "theoretical" distribution. The values of the theoretical distribution are calculated assuming the ODP assumptions are correct. The other distribution will correspond to the modelled data (the "empirical" distribution) and is simply an ordered series (by the theoretical probability) of the actual data. In effect, the empirical distribution points are simply $m$ equally spaced points in $[0,1]$ where $m$ is the total number of observations in the data set.
 
-If the model fits well, the P-P plot should be an approximately straight line of the form y=x. Significant deviations from the straight line indicate problems with the distributional assumptions.
+If the model fits well, the P-P plot should be an approximately straight line of the form $y=x$. Significant deviations from the straight line indicate problems with the distributional assumptions.
 
 Figure 5 -13 and Figure 5 -14 show Poisson P-P plots for a correctly specified distribution (Figure 5 -13) and an incorrectly specified one (Figure 5 -14). The distribution in Figure 5 -14 is heavier tailed than a Poisson distribution (in this situation, a Tweedie distribution might be useful, section 4.2.2). More details on P-P plots may be found in the statistical literature.
+
+#### Plot with correctly specified distribution
+
+![Plot with correctly specified distribution](figures/Plot_with_correctly_specified_distribution.png)
+
+#### Plot with incorrectly specified distribution
+
+![Plot with incorrectly specified distribution](figures/Plot_with_incorrectly_specified_distribution.png)
 
 #### ODP dispersion parameter
 
@@ -902,27 +915,36 @@ We now discuss the specifics of the estimation of the ultimate view of reserve r
 ### Mack
 
 As discussed in England and Verrall [EV02], the assumptions (and results) of the Mack model are very similar to the normal approximation of the negative binomial model. The assumptions are as follows:
-- The over-dispersed negative binomial model assumes that the incremental payments  have the following distribution:  , where  is equivalent to the standard volume all Chain Ladder factor  from development year _j-1_ to _j_. Additionally, there is an unknown dispersion parameter  forming part of the variance, which makes the distribution "over-dispersed";
-- Noting that  , and assuming that in this (recursive) approach  is known, we can rewrite the above as: 
+- The over-dispersed negative binomial model assumes that the incremental payments $P_{ij}$ have the following distribution: $P_{ij} \sim \mbox{ODNB}\left(\mu=\left(\lambda_{j-1}\right) C_{i,j-1},\sigma^2=\phi \lambda_j \left(\lambda_j - 1 \right) C_{i,j-1}\right)$, where $\lambda_j$ is equivalent to the standard volume all Chain Ladder factor $f_j$ from development year $j-1$ to $j$. Additionally, there is an unknown dispersion parameter $\phi$ forming part of the variance, which makes the distribution "over-dispersed";
+- Noting that $C_{ij}=C_{i,j-1} + P_{i,j}$, and assuming that in this (recursive) approach $C_{i,j-1}$ is known, we can rewrite the above as: $C_{ij} \sim \mbox{ODNB}\left(\mu= f_j \, C_{i, j-1}, \sigma^2=\phi \, \lambda_j \, f_j \left(f_{j-1} - 1 \right) C_{i,j-1}\right)$.
 
-However, the ODNB assumption is not generally used in practice. As proven by Mack and Verrall [MV00b], since the negative binomial model is derived from the Poisson model, the predictive distributions are essentially the same and give identical predicted values. Furthermore, if  the variance of the model above is negative and the ODNB model breaks down. To overcome this, we require a distribution whose support is not restricted to the positive real domain. The Normal distribution is a suitable candidate. Therefore, we can replace the ODNB assumption with a Normal approximation, retaining the same mean and variance, as much as is possible for the variance, i.e. we would expect the variance to be proportional to  with a constant of proportionality depending on _j_.
+However, the ODNB assumption is not generally used in practice. As proven by Mack and Verrall [MV00b], since the negative binomial model is derived from the Poisson model, the predictive distributions are essentially the same and give identical predicted values. Furthermore, if $f_j < 1$ the variance of the model above is negative and the ODNB model breaks down. To overcome this, we require a distribution whose support is not restricted to the positive real domain. The Normal distribution is a suitable candidate. Therefore, we can replace the ODNB assumption with a Normal approximation, retaining the same mean and variance, as much as is possible for the variance, i.e. we would expect the variance to be proportional to $C_{i, j-1}$ with a constant of proportionality depending on $j$.
 
 Thus the Normal approximation is given below:
-
+$$
+C_{i,j} \sim \mathcal{N} \left(\mu=f_j \, C_{i,j-1},\sigma^2=\phi_j \, C_{i,j-1} \right)
+$$
 
 
 Comparing this formula to Mack's assumptions:
 
-we observe that they are very similar (apart the Normal distribution assumption): the unknown scale parameters  of the Mack model. In fact, their parameter estimates are essentially the same (see Section 7.6 of [EV02]), fitting a properly parameterised GLM model on the development factors (see Section 7.4 of [EV02]) and considering similar bias corrections.
+$$
+E[C_{i,j} |C_{i,j-1} ]=f_j \, C_{i,j-1},
+$$
+$$
+\mbox{Var}[C_{i,j} |C_{i,j-1} ] = \sigma_j^2 \, C_{i,j-1},
+$$
+
+we observe that they are very similar (apart the Normal distribution assumption): the unknown scale parameters $\phi_j$ are simply replace by the $\sigma_j^2$ of the Mack model. In fact, their parameter estimates are essentially the same (see Section 7.6 of [EV02]), fitting a properly parameterised GLM model on the development factors (see Section 7.4 of [EV02]) and considering similar bias corrections.
 
 Summarising all the results above, a simulation cycle for the Mack method is comprised of the following steps:
 
-1. Store the observed cumulative triangle  as weights  ;
-2. Fit Mack analytical model to derive the model parameters  ;
-3. Using either a parametric or a semi-parametric bootstrap on the known triangle, generate a set of pseudo development factors  from the parameters estimated at the previous step;
-4. Derive the bootstrapped model parameters  using  as weights;
-5. Using the above bootstrapped parameters, derive the cumulative payments for the future triangle, adding the process error via generating a random number from the Normal distribution:  . Alternatively process error may be incorporated by a further resampling of residuals;
-6. Once the future cumulative claims have been derived, derive both the reserve  for the simulation cycle _s_.
+1. Store the observed cumulative triangle $C_{ij}$ as weights $\omega_{ij}$;
+2. Fit Mack analytical model to derive the model parameters $(f_j, \sigma_j^2)^{Mack}$ for $0 < j \leq n$;
+3. Using either a parametric or a semi-parametric bootstrap on the known triangle, generate a set of pseudo development factors $F_{ij}^B$ from the parameters estimated at the previous step;
+4. Derive the bootstrapped model parameters $(f_j^B, \sigma_j^2 = \phi_J^B)$ from the pseudo development factors $F_{ij}^B$ using $\omega_{ij}$ as weights;
+5. Using the above bootstrapped parameters, derive the cumulative payments for the future triangle, adding the process error via generating a random number from the Normal distribution: $C_{i,j} \sim \mathcal{N} \left(\mu=f_j^B \, C_{i,j-1},\sigma^2=\phi_j^B \, C_{i,j-1} \right)$ . Alternatively process error may be incorporated by a further resampling of residuals;
+6. Once the future cumulative claims have been derived, derive both the reserve $R^s_j$ for the origin year $i$ and the total reserve $R^s_{TOT}$ simulation cycle $s$.
 
 Given a sufficient number of simulations, we may use the mean and variance of the simulated reserves to estimate the overall uncertainty. Note that the latter will include both parameter and process error due to respectively step 3 and 5.
 
@@ -930,18 +952,21 @@ Given a sufficient number of simulations, we may use the mean and variance of th
 ### ODP
 
 The ODP is a somewhat simpler model than Mack, since - as we have seen in section 4.2 - a GLM can be directly parameterised on the incremental claims, which are assumed to be:
-
-where - as we have previously seen -  , i.e. the expected incremental payment is a function of both the origin period and the development period factors.
+$$
+P_{ij} \sim \mbox{ODP}\left(\mu=m_{ij}, \sigma^2= \phi \,m_{ij} \right), 
+$$
+where - as we have previously seen $\log(m_{ij}) =\eta_{ij} = \alpha_i + \beta_j$ , i.e. the expected incremental payment is a function of both the origin period and the development period factors.
 
 For the ODP model, a simulation cycle is as follows:
 
-1. Fit a GLM
- as specified in the section 4.2 on the  and Fit another GLM on the pseudo payments  , to derive a bootstrapped estimate  of the GLM parameters;
-  2. If using a parametric bootstrap, sample the GLM parameters directly to obtain the bootstrapped estimate of the parameters.
+1. Fit a GLM  as specified in the section 4.2 on the $P_{ij}$ 	to derive the estimate $(\alpha_1, \dots,\alpha_n, \beta_1, \dots, \beta_n, \phi)$ of the GLM parameters;
+2. Parameter error:
+    + If using a semi-parametric bootstrap then generate a set of pseudo incremental payments $P_{ij}^{k,B}$ and Fit another GLM on the pseudo payments $P_{ij}^{k,B}$, to derive a bootstrapped estimate $(\alpha_1^B,\dots,\alpha_n^B,\beta_1^B,\dots,\beta_n^B,\phi^B)$ of the GLM parameters;
+    + If using a parametric bootstrap, sample the GLM parameters directly to obtain the bootstrapped estimate of the parameters.
 3. Using the bootstrapped parameters above, derive the future triangle payments introducing the process error by either:
-  1. generating a random number from the ODP distribution; or
-  2. Resample the residuals and apply to the forecast payments
-4. Once the future unknown payments have been simulated, derive both the reserve  for the simulation cycle _s_.
+    + generating a random number from the ODP distribution : $P_{ij}^{u,B} \sim \mbox{ODP}\left(\mu=m_{ij}^B, \sigma^2= \phi^B \, m_{i,j}^B \right)$; or
+    + Resample the residuals and apply to the forecast payments
+4. Once the future unknown payments have been simulated, derive both the reserve $R_i^s$ for each origin year $i$  and the total reserve $R_{TOT}^s$ for the simulation cycle $s$.
 
 As for the Mack case, the mean and variance of the resulting distribution of simulated reserves estimate the best estimate and reserve uncertainty.
 
