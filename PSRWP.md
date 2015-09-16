@@ -978,20 +978,79 @@ As described in Section 4.3, Alai, Merz and Wuthrich's stochastic BF model is ba
 
 In addition, we need the following two items (as seen in section 4.3):
 
-1. The _a priori_ estimates of the ultimate claims  ;.
-3. Simulate the future incremental paid amounts in exactly the same way as for the ODP model, except that the mean and variance will be calculated using the pseudo incremental development pattern and the simulated prior estimate of the ultimate claims, and so will be given by the formulae 
+1. The *a priori* estimates of the ultimate claims  $U_i$ for each accident year $i$; and
+2. The *a priori* estimates of the standard deviations of the prior estimates of the ultimate claims for each accident year $i$.
+
+
+The estimates of the ultimate claims are usually readily available (as they would have been used in the deterministic BF calculations and so would be available from the pricing or reserving departments). However estimating their standard deviation is considerably more difficult. One possible simplifying assumption is to fix a single CoV  for all origin years and to calculate the standard deviations accordingly (by multiplying the CoV by the a priori estimate of ultimate claims). It would be natural to estimate this CoV using expert knowledge or looking at the uncertainty of the historical ULR per accident year. 
+
+A simulation cycle for Alai, Merz and Wuthrich's stochastic BF model might proceed as follows:
+
+
+1. Simulate parameter error exactly as for the ODP, described above in steps 1 and 2 of section 6.4.2. From the simulated parameters calculate the pseudo incremental development pattern.
+2. For every origin year $i$, simulate  a random a priori ultimate, with mean $U_i$ and standard deviation given by $CoV \cdot U_i$;.
+3. Simulate the future incremental paid amounts in exactly the same way as for the ODP model, except that the mean and variance will be calculated using the pseudo incremental development pattern and the simulated prior estimate of the ultimate claims, and so will be  given by the formulae $E[P_{ij}]= y_i \, \nu_i$ and $\mbox{Var}[P_{ij}] = \phi \, y_i \, \nu_i$ where $y_i$ is the pseudo incremental  development proportion  simulated in step 1 above, and $\nu_i$ is the a priori ultimate simulated in step 2 above.
+4. The simulated reserve for each origin period is then just the sum of the future incremental claims payments, and the BF ultimate claims and the simulated reserve plus the latest simulated cumulative claims amount. The total reserve is then the sum of the reserves for each origin year $i$.
+
+As for the previous models, the mean and variance of the resulting distribution of simulated reserves give the best estimate reserve and the uncertainty of the best estimate.
+
+### Reserves at high probabilities of adequacy
+
+It is important to add a cautionary note for any users who intend to use any method for estimating reserves at high levels of adequacy (typically over 90%). Bootstrapping results (or indeed, a log normal distribution or similar for cases where model validation fails) become less reliable for the more extreme percentiles. In bootstrapping, this may be partially mitigated by running a large number of bootstraps – confidence in results from 1,000 or 10,000 bootstraps is far greater than that from 100. However, even with a large number of bootstrap simulations, caution must be exercised in determining high probabilities of adequacy as the chances of external events impacting the reserves is far greater when considering a 99% probability of adequacy versus a 75% probability. Therefore, we would recommend that due consideration be given to model error (section 3.5).
+
+## Numerical Examples
+
+We now apply the methods discussed in this paper to some real-life data sets to help illustrate their use in practice. It is worth noting, however, that the working party currently has a work stream to implement these and other examples in R, which will, once complete, considerably extend the detail on these numerical examples.
+
+###	Example 1
+The first dataset is taken from [AMW09] and [AMW10]. This is a reasonably well-behaved claims triangle, with a relatively short tail, and no unusual features immediately apparent. The data is presented below in Table 7 1 as a triangle of incremental claim amounts.
+
+#### Example data set 1
+
+![Example data set 1](figures/ExampleDataSet1.png)
+
+Notes:
+(1)	accident (or origin) years were labelled as 0,1,2,… in the original paper. 
+(2)	All values in this and subsequent tables are in ‘000s
+
+
+
+###	Analysis
+Given the nature of the data, the Mack or ODP models are a reasonable starting point. The central estimates for both models may be calculated by applying the chain ladder algorithm. The resulting forecast incremental payments, ultimate amounts per year and reserves are shown in Table 7 2 and Table 7 3.
+
+#### Chain-ladder payment projections for example data set 1
+
+![Chain-ladder payment projections for example data set 1](figures/Chain-ladder payment projections for example data set 1.png)
+
+#### Chain-ladder reserve estimates for example data set 1
+
+![Chain-ladder reserve estimates for example data set 1](figures/Chain-ladder reserve estimates for example data set 1.png)
 
 Before doing any further analysis, it is important to first validate the model.
+
+#### Log(Mack $\sigma^2$) Parameters
+
+![Log Mack sigma2 Parameters](figures/Log Mack sigma2 Parameters.png)
 
 For the Mack model the three specific Mack tests are carried out: the development factors correlation test, the independence of accident years and a plot of the σ2 parameters (sections 5.2.1 and 5.2.1.3). The first two tests are implemented in the spreadsheet attached to this paper (Stochastic Reserving Tool v1.3\_DATASET1.xlsb; refer to the "Executive Summary" tab for the results of these tests). According to these tests, the independence of accident years is satisfied (i.e. there are no apparent calendar year trends) but the development factors fail the correlation test. The σ2 parameters may be calculated according to the formula in section 4.1.3 and the logs of these values are plotted in Figure 7 -15 above. Exponential decay translates to linear decay of the log values. There is a slight kink in the σ2 values at development year 4 which may indicate problems with the assumptions.
 
 On the basis of these tests, there may be some question marks over the applicability of the Mack model and it is worthwhile exploring alternatives.
 
+#### ODP diagnostic plots
+
+![ODP diagnostic plots](figures/ODP diagnostic plots.png)
 
 While the ODP model has the same central estimates as the Mack, its distributional estimates are different. The residual scatter plots, actual/expected plots (calendar year only) and heat maps are shown in Figure 7 -16 and Figure 7 -17. The residuals (standardised Pearson residuals) are calculated by fitting the ODP model as a GLM – this may be done in statistical packages such as R or SAS.
 
 Although not perfect, the residual scatter plots do not reveal any serious problems with the model. There may be a suggestion of a trend in early calendar years, but data is limited here so the apparent trend is not of huge concern. The actual/fitted heat maps also appear acceptable.
 
+#### Actual/fitted heat maps for data set 1
+
+![Actual/fitted heat maps for data set 1](figures/Actual fitted heat maps for data set 1.png)
+
+#### P-P plot for the ODP model
+
+![P-P plot for the ODP model](figures/P-P plot for the ODP model.png)
 
 Finally, the P-P (probability-probability) plot for the ODP distribution is shown in Figure 7 -18. This graph is more coarse those that shown in Figure 5 -13 and Figure 5 -14 due to smaller amounts of data. It does suggest that the actual data distribution is not quite as heavy-tailed as an ODP distribution. However, given the small amounts of data, and the market practice view to generally stay on the side of conservatism, the ODP distribution may be accepted on pragmatic grounds.
 
@@ -999,45 +1058,140 @@ On the basis of the above model diagnostics, the ODP model seems preferable to M
 
 The next stage is to bootstrap the ODP model to estimate parameter and process error. This may be implemented using custom-built actuarial software or in statistical packages. As discussed in section 6, there are a number of ways of doing this – parametric, semi-parametric or non-parametric bootstrapping may all be used. Here we have used a semi-parametric bootstrap, overlaid with Monte Carlo simulation of process error, run using the chain ladder package in R. The results are shown in Table 7 -4 below while Figure 7 -19 presents some of the information graphically.
 
+#### Bootstrapping results for the ODP model (in thousands)
+
+![Bootstrapping results for the ODP model (in thousands)](figures/Bootstrapping results for the ODP model.png)
 
 Notes:
 
 1. Ultimate CoV is defined as MSEP½ /Ultimate. Reserve CoV is defined as MSEP½/Reserve
 2. The table shows the breakdown of MSEP into parameter and process error
 
+
+#### Sources of error for the ODP bootsrapping results
+
+![Sources of error for the ODP bootsrapping results](figures/Sources of error for the ODP bootsrapping results.png)
+
+In the above table and graphs the following can be seen:
+
+-	The MSEP decreases as accident (origin) periods get older. Consequently, the related quantities (the two CoVs, parameter error and process error) also decrease.
+- The process error contributes a larger proportion to the total error in the middle-aged origin periods (peaking for origin period 2012), and a smaller proportion to the older and most recent origin periods.
+- The parameter and process errors make significant contributions for all accident periods, though the weighting between them varies.
+- The progression of the CoVs (both ultimate and reserve) is relatively smooth, with reasonable looking values for the most recent accident year. This supports the belief that a method like the BF is not required for this data set. Contrast this to the behaviour of the CoVs for example data set 2 below.
+- Overall, the ODP bootstrap suggests a reserve CoV of 7.1%.
+
+Of course, the bootstrap returns more than just the MSEP and CoV – it returns a full distribution including parameter and process error – see Figure 7 6 for an example of such output.
+
+#### Distribution of the outstandind claims reserves
+
+![Distribution of the outstandind claims reserves](figures/Distribution of the outstandind claims reserves.png)
+
 ### Comparison with Mack results
 
 The model validation section raised some question marks over the use of the Mack model for this data set. However, for illustrative purposes, it may be interesting to compare the ODP and Mack model analytic results. While both models give the same central estimate, they are different models, built on a different set of assumptions. Therefore we would expect the Mack results to reflect this, returning different variability estimates.
+
+#### Analytic results for Mack's model
+
+![Analytic results for Mack's model](figures/Analytic results for Macks model.png)
+
+#### Comparison of reserve CoV
+
+![Comparison of reserve CoV](figures/Comparison of reserve CoV.png)
 
 Table 7 -5 presents the analytic results for Mack's model while Figure 7 -21 compares the reserve CoVs by accident (origin) year. For older accident years, the MSEP is much larger for the ODP model than it is for Mack, however this fact is immaterial, as the underlying reserve is very small; this is clearly illustrated in Figure 7 -21. In more recent years, the MSEPs are similar or even higher (the most recent year). The relative contributions of parameter and process error are quite different similar between the two models, with process error being the dominant source of error. Overall Mack model suggests slightly higher uncertainty results, ending up with a 7.7% total CoV vs ODP's 7.1% and the models look fairly aligned as soon as reserves start to be material.
 
 ### An alternative view – the BF model
 
 [AMW09] also includes prior estimates of the ultimate claims cost per year as well as assumed CoVs (5% for all years). It may be helpful to consider the estimates that result from the BF model as an alternative view of the outstanding claims liability.
+
+
+#### BF reserve estimates for data set 1
+
+![BF reserve estimates for data set 1](figures/BF reserve estimates for data set 1.png)
+
+The reserve estimates are shown in Figure 7 6. The results for all accident years are higher than the chain ladder estimates and overall, the reserve estimate is 22% higher. 
+Table 7 7 shows the results of applying the analytic formulae from [AWM10] for the stochastic BF while Figure 7 8 compares the RMSEP from both methods.
+
+#### Analytic results for the BF model
+
+![Analytic results for the BF model](figures/Analytic results for the BF model.png)
+
+#### Comparison of BF and ODP RMSEP
+
+![Comparison of BF and ODP RMSEP](figures/Comparison of BF and ODP RMSEP.png)
+
+The root MSEP is similar between both methods, though the BF does return somewhat higher estimates for more recent accident years. However, these are coupled with somewhat higher reserve estimates, so that the reserve CoVs are generally lower for the BF model. In total the reserve CoV for BF is 6.4% compared with 7.1% for the ODP model. This reflects the influence of the prior assumptions with their relatively low (5%) CoV.
+
+The choice of which model (BF or ODP) to use for stochastic reserving purposes depends on the actuary’s judgement as to which is the most appropriate. If one model is closer to that used to determine the central estimate, then this model would likely be the preferred choice for uncertainty estimation.
+Once the process and parameter error have been determined, the actuary then needs to consider whether explicit allowance should be made for model error (section 3.5). If such allowance is made then the model error variability would normally be combined with that from the parameter and process error and a judgementally selected distribution (e.g. a log normal) to produce a distribution of outstanding claims. If no allowance is required for model error, then the distribution that results from the process and parameter error may be used directly.
+
+## Example 2
+
+The second illustrative data set is taken from Table 6 of [LV08] and is an aggregate data set from Lloyd’s syndicates. In [LV08] Table 6 presents the paid data, and Table 7 the corresponding incurred data. This claims triangle is much more volatile than the first, and clearly has a long-tail. Consequently, it makes an interesting contrast to the first data set and is the type of business for which one might consider the Bornhuetter-Ferguson method.  The data are shown in Table 7 8 as incremental claim amounts.
+
+#### Example data set 2
+
+![Example data set 2](figures/Example data set 2.png)
+
 Note: accident (or origin) years have been re-labelled as 2005, 2006,….
 
 ### Analysis
 
 We first consider the use of the Mack and ODP models for this data, though we might expect that the long-tailed nature of this class might mean that these models are unsuitable for use. The forecast incremental payments for both these models, ultimate amounts per year and reserves are shown in Table 7 -9 and Table 7 -10.
 
-The Mack model passes both the development factors correlation test and the independence of accident years (refer to the tab "Executive Summary" in the spreadsheet attached to this paper, Stochastic Reserving Tool v1.3\_DATASET2.xlsb). However the plot of the log of the σ2 values does raise some concerns given that the progression is very much non-linear.
+#### Chain-ladder payment projections for example data set 2
+
+![Chain-ladder payment projections for example data set 2](figures/Chain-ladder payment projections for example data set 2.png)
+
+#### Chain-ladder reserve estimates for example data set 2
+
+![Chain-ladder reserve estimates for example data set 2](figures/Chain-ladder reserve estimates for example data set 2.png)
+
+#### Log(Mack $\sigma^2$) parameters
+
+![Log(Mack sigma2) parameters](figures/Log Mack sigma2 parameters2.png)
+
+The Mack model passes both the development factors correlation test and the independence of accident years (refer to the tab "Executive Summary" in the spreadsheet attached to this paper, Stochastic Reserving Tool v1.3\_DATASET2.xlsb). However the plot of the log of the $\sigma^2$ values does raise some concerns given that the progression is very much non-linear.
 
 Residual scatter plots and actual vs expected by calendar year for the ODP model are shown in Figure 7 -24.
 
+#### ODP diagnostic plots
+
+![ODP diagnostic plots](figures/ODP diagnostic plots2.png)
+
+
 The calendar year plot causes some concern as it appears that there may be a missing calendar year trend. A heat map of actual/fitted by accident and development year (Figure 7 -25) suggests there may be a missing interaction – development year 0 has been consistently low for 2010 to 2013.
 
-Consequently, doubts are cast over the applicability of both the Mack and ODP models (using their standard regression structure ending up with the same estimates as the Chain Ladder model – note that the regression structure can be changed within the same models
+### Actual fitted heat maps for data set 2
 
-. This is supported by the estimates of CoV. As may be seen from Table 7 -11, these are high for all accident years and particularly so for the most recent accident year. Given the nature of the data there are high levels of uncertainty associated with the reserve estimates from these models so the results are merely reflecting this. From a practical point of view, however, such levels of uncertainty render results unusable so we must look to other possible models.
+![Actual fitted heat maps for data set 2](figures/Actual fitted heat maps for data set 2.png)
 
+Consequently, doubts are cast over the applicability of both the Mack and ODP models (using their standard regression structure ending up with the same estimates as the Chain Ladder model – note that the regression structure can be changed within the same models. This is supported by the estimates of CoV. As may be seen from Table 7 -11, these are high for all accident years and particularly so for the most recent accident year. Given the nature of the data there are high levels of uncertainty associated with the reserve estimates from these models so the results are merely reflecting this. From a practical point of view, however, such levels of uncertainty render results unusable so we must look to other possible models.
+
+#### Mack and ODP coefficients of variation for data set 2
+![Mack and ODP coefficients of variation for data set 2](figures/Mack and ODP coefficients of variation for data set 2.png)
+
+A natural model to turn to in situations like this is the Bornhuetter-Ferguson model (section 4.3) which takes into account prior information (e.g. pricing loss ratios) on the expected ultimate cost of an accident year. As [LV08] do not provide any information on prior estimates of accident year costs, or the variability of such estimates, we have made some broad-brush assumptions for these, assuming a prior cost of 20,000 for each year, with the CoV of 15%.
+The BF reserve estimates that result are shown in Table 7 12, with the chain ladder reserve estimate (i.e. that which results from both the Mack and ODP models) shown for comparison. We see that the BF results by accident year appear more reasonable and progress in a smoother fashion.
+
+
+#### BF reserve estimates for data set 2
+
+![BF reserve estimates for data set 2](figures/BF reserve estimates for data set 2.png)
 
 We use the analytic formulae from [AWM10] to calculate the parameter error, process error, prior estimate error, and the total MSEP. The results are shown in Table 7 -13 while the sources of error are shown graphically in Figure 7 -26. Figure 7 -26 also includes the Mack ultimate CoVs for comparison purposes.
 
+#### Analytic results for the BF model
+
+![Analytic results for the BF model](figures/Analytic results for the BF model2.png)
 
 The CoVs by accident year appear much more reasonable than those resulting from the Mack and ODP models. Overall the reserve variability is estimated as 11.9%, compared with 40% (ODP) and 64% (Mack).
 
 The breakdown of RMSEP by parameter, process and prior error behaves as might be expected. Process error makes a significant contribution over all accident years. However parameter and prior errors make different contributions depending on the age of the accident year; for older accident years, the parameter error makes a larger contribution since a greater weight is attached to the chain ladder estimates. For more recent years, the prior error dominates.
 
+#### Source of error for the BF analytic results
+
+![Source of error for the BF analytic results](figures/Source of error for the BF analytic results.png)
 
 Armed with these results, the actuary should then consider whether an additional loading for model error is required. This is particularly important for long-tailed classes where there is often a greater change of environmental changes impacting future claims cost. The same comments as made at the end of 7.1.1 apply – if the actuary considers that no further allowance is required for model error, then the model outputs may be used. If a further allowance is made, then standard practice would be to adjust the reserve CoV accordingly and combine this with a parametric distribution such as the log normal to produce the distribution of outstanding claims.
 
