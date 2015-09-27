@@ -54,7 +54,7 @@ From the diverse and expanding range of available stochastic reserving methods, 
 
 (These models are described in section [Models](#Models) so we direct those unfamiliar with them to that part of the paper).
 
-These particular models have been chosen after due consideration of a number of factors, including use amongst practitioners, profile in the academic literature and ease of definition and initial application. However, it must be noted that the stochastic Bornhuetter-Ferguson method is not as well developed in the literature as the other two models. We have elected to include it here due to the usefulness of the BF method for long tailed lines of business where experience emerges slowly. Furthermore, we opted for a version of the Bornhuetter-Ferguson model with an underlying Over-dispersed Poisson model which does not require many parameters to be estimated via expert judgment; thus it is more suitable for use in bootstrapping which requires automation of model fit.
+These particular models have been chosen after due consideration of a number of factors, including use amongst practitioners, profile in the academic literature and ease of definition and initial application. However, it must be noted that the stochastic Bornhuetter-Ferguson method is not as well developed in the literature as the other two models. We have elected to include it here due to the usefulness of the BF method for long tailed lines of business where experience emerges slowly. Furthermore, we opted for a version of the Bornhuetter-Ferguson model with an underlying Over-dispersed Poisson model which does not require many parameters to be estimated via expert judgement; thus it is more suitable for use in bootstrapping which requires automation of model fit.
 
 Furthermore, we have therefore limited ourselves to looking at the application of the methods to gross data, without allowance for reinsurance recoveries. We have also focussed on "Accident Year" data, instead of "Underwriting Year", accepting that the latter is in common use. Our main reason for this is to preserve the relative independence of the resulting claims cohorts, which is a common assumption within the methods.
 
@@ -112,10 +112,10 @@ Where:
  -  $P(t)$ are the payments during calendar year $t$, solely for claims already happened at the moment of evaluation $t=0$ (i.e., it is assumed that there is no new business);
  -  $R_t$ is the closing reserve after having observed  $P(1)$.
 
-$\mbox{CDR}_t$ is the Claim Development Result after $t$ years from the instant of evaluation, i.e. the difference between actual and expected over the specified $t^{th}$ period. Ideally, if actuaries truly reserve at best estimate taking into account all the possible knowledge, the expected value of the CDR for any future $t$ at the instant of evaluation should be zero ("prospective CDR"). This is opposed to the "retrospective CDR", which is the observed CDR after $t$ years and thus not centered on zero. We recommend Wüthrich and Merz [[MW08](#MW08)] for further reading on this topic, as this paper is only concerned with the prospective view.
+$\mbox{CDR}_t$ is the Claim Development Result after $t$ years from the instant of evaluation, i.e. the difference between actual and expected over the specified $t^{th}$ period. Ideally, if actuaries truly reserve at best estimate taking into account all the possible knowledge, the expected value of the CDR for any future $t$ at the instant of evaluation should be zero ("prospective CDR"). This is opposed to the "retrospective CDR", which is the observed CDR after $t$ years and thus not centred on zero. We recommend Wüthrich and Merz [[MW08](#MW08)] for further reading on this topic, as this paper is only concerned with the prospective view.
 
 In summary, the "ultimate view" assesses all the possible reserve paths[^1]
-until reserve runoff, whilst the "one-year view" assesses only the different paths over the first year and the resulting reserve an actuary would estimate after observing each of these one year paths (the process is frequently referred to as "actuary-in-the-box", i.e. a re-reserving algorithm). More discussion about "re-reserving algorithms" can be found in Ohlsson, Esbjörn and Lauzeningks [[OEL08](#OEL08)].
+until reserve run-off, whilst the "one-year view" assesses only the different paths over the first year and the resulting reserve an actuary would estimate after observing each of these one year paths (the process is frequently referred to as "actuary-in-the-box", i.e. a re-reserving algorithm). More discussion about "re-reserving algorithms" can be found in Ohlsson, Esbjörn and Lauzeningks [[OEL08](#OEL08)].
 
 We have elected to focus on the ultimate view of risk in this paper as a clear understanding of this is a pre-requisite for tackling the problem of estimating the one-year risk. The one-year view reserving problem is a subject of ongoing work by the working party.
 
@@ -144,7 +144,7 @@ Four areas of consideration relating to data are discussed briefly below:
 
 ### Statistical Credibility, Stationarity and Segmentation<a name="Statistical Credibility, Stationarity and Segmentation"></a>
 
-Actuaries will seek a balance between collecting and using enough data to achieve statistical credibility; against using longer duration data that may incorporate effects, whether from the external environmental or changes in internal processes, which are markedly different from present and anticipated future experience. **Fundamental to all reserving and stochastic reserving methods is the assumption that future experience will be broadly in line with past experience, as reflected in the data but subject to adjustment for known and measured changes** - say in underlying exposures or in inflation if this is adjusted for separately within the modelling process. The assumption of future experience being the same as experience is sometimes referred to as the "stationarity assumption". Although it is possible to arrive at a more stable, and potentially more credible, data set by combining triangles from a number of similar lines of business, **care should be taken to not combine heterogeneous sub-segments** where changes in the relative balance of these sub-segments might change over time, leading to features in the combined data that do not reflect the underlying experience.
+Actuaries will seek a balance between collecting and using enough data to achieve statistical credibility; against using longer duration data that may incorporate effects, whether from the external environmental or changes in internal processes, which are markedly different from present and anticipated future experience. **Fundamental to all reserving and stochastic reserving methods is the assumption that future experience will be broadly in line with past experience, as reflected in the data but subject to adjustment for known and measured changes** - say in underlying exposures or in inflation if this is adjusted for separately within the modelling process. The assumption of future experience being the same as experience is sometimes referred to as the "stationary assumption". Although it is possible to arrive at a more stable, and potentially more credible, data set by combining triangles from a number of similar lines of business, **care should be taken to not combine heterogeneous sub-segments** where changes in the relative balance of these sub-segments might change over time, leading to features in the combined data that do not reflect the underlying experience.
 
 For most purposes, **data should include claims costs** , but also **Allocated Loss Adjustment Expenses**. Also, if **Salvage & Subrogation** (S&S) are common features of the business line then careful consideration should be given to this. It should also be noted that the potential for negative development increments may undermine the applicability of some of the methods.
 
@@ -158,7 +158,7 @@ It is the working party's view that **segmentation can usefully be applied, as a
 
 Generally speaking, all available data should be used where possible. However, outliers have the potential to greatly influence model results so due consideration needs to be given to whether this influence is appropriate or not. We would encourage the application of models with and without such outliers, to understand what impact they have on the results and to consider whether the underlying business might generate such extremes again in the future. In particular, outliers should only be removed outright if there is reasonable assurance that these are exceptional outcomes that cannot happen in the future.
 
-**Large and catastrophic losses** can be a strong driver of overall results, including reserve variability, and will have an effect on reserving uncertainty. As such, natural catastrophes and significant manmade events should be included. However, if these are significant and have happened recently, these could lead to biased results, requiring judgements as to how much they should be reflected in the results. It may be necessary to remove data relating to these events from the model data if they have a large influence on the rest of the model. However, separate allowance must then be made for similar future events, both in terms of the central estimate and the levels of variability.
+**Large and catastrophic losses** can be a strong driver of overall results, including reserve variability, and will have an effect on reserving uncertainty. As such, natural catastrophes and significant man-made events should be included. However, if these are significant and have happened recently, these could lead to biased results, requiring judgements as to how much they should be reflected in the results. It may be necessary to remove data relating to these events from the model data if they have a large influence on the rest of the model. However, separate allowance must then be made for similar future events, both in terms of the central estimate and the levels of variability.
 
 All adjustments to data should relate to specific and well-documented reasons to exclude small portions of the claims reserving triangle, e.g. a single accident period, or a single cell. Such reasons might include: poor data quality; claims management changes; underwriting policy changes; portfolio cleansing, etc., all of which have a clear impact on the data triangle.
 
@@ -190,7 +190,7 @@ The view within the working party was that reserving variability analysis should
 
 Deterministic reserving has been used for many years to value general insurers' claims liabilities. Widely used methods include the Chain Ladder (CL) method and Bornhuetter-Ferguson (BF) method. The CL and BF methods form the basis of the starting points for some stochastic methods, which will be explained in this paper.
 
-One of the advantages of deterministic methods is that they produce one answer (i.e. the Actuarial Best Estimate itself, or ABE) which is easy to understand and communicate to management. In addition, they usually allow the inclusion of external judgment/knowledge in the reserving evaluation in a fairly transparent way, as stochastic assumptions are not required.
+One of the advantages of deterministic methods is that they produce one answer (i.e. the Actuarial Best Estimate itself, or ABE) which is easy to understand and communicate to management. In addition, they usually allow the inclusion of external judgement/knowledge in the reserving evaluation in a fairly transparent way, as stochastic assumptions are not required.
 
 The key weakness of deterministic methods is that they provide little understanding of the level of the uncertainty associated with the ABE. Scenario and sensitivity testing may provide some insight into reserve variability, but a complete picture of the volatility is not possible. For this, a stochastic model is required.
 
@@ -204,7 +204,7 @@ Stochastic methods provide information about the reserve distribution: at least 
 
 The key strength of stochastic methods is that they yield a wealth of statistical information which would not have been available from deterministic methods. This information can be used to give more insights to the senior management and to improve their decision making process. For example, an understanding of where the mean lies amongst the range of possible outcomes provides some insight into the degree of conservatism built into the reserves. Other useful output includes confidence intervals around a particular chosen mean, reserves at the extreme tails (e.g. 95% or 99%) and sensitivity analysis.
 
-However, stochastic methods are subject to some drawbacks. They are data intensive, requiring historical data to parameterise the models. Sufficient data may not be available, or the environment may have changed meaning that past experience is no longer representative of future experience. It is also important to recognise that all results from a stochastic method are subject to model error (section [Sources of Uncertainty](#Sources of Uncertainty)) so must be interpreted with due care – for example, even with a large number of simulations, model error may mean that some key adverse scenarios may be missed. Furthermore, the proper use of stochastic methods usually requires a reasonable degree of technical skill.
+However, stochastic methods are subject to some drawbacks. They are data intensive, requiring historical data to parametrise the models. Sufficient data may not be available, or the environment may have changed meaning that past experience is no longer representative of future experience. It is also important to recognise that all results from a stochastic method are subject to model error (section [Sources of Uncertainty](#Sources of Uncertainty)) so must be interpreted with due care – for example, even with a large number of simulations, model error may mean that some key adverse scenarios may be missed. Furthermore, the proper use of stochastic methods usually requires a reasonable degree of technical skill.
 
 As discussed in the previous section, actuarial judgement is often used to deal with cases where there is limited data, or to incorporate extraneous data and we noted that incorporating such judgemental adjustments may not be straightforward in stochastic models, though not necessarily impossible. For example, Bayesian methods may be used to combine objective data with more subjective option when estimating a reserve, though fitting an appropriate model may be difficult in practice. In cases where the actuary takes the view that future experience will unfold differently to the past, stochastic model parameters could be adjusted to reflect this, though the actuary would then need to consider the impact of any such adjustments on the uncertainty estimates.
 
@@ -212,7 +212,7 @@ As noted in the previous section, the common market practice is that stochastic 
 
 ## Reconciling the Stochastic Best Estimate to the ABE<a name="Reconciling the Stochastic Best Estimate to the ABE"></a>
 
-As the ABE and the stochastic reserving model frequently follow two different processes, it is likely that the former will differ from the Stochastic Reserving Best Estimate (SBE) (where the best estimate is defined as the central estimate, or the mean, of the stochastic distribution). This is usually due to the fact that it is easier to embed external business knowledge in the ABE than in the stochastic models, as the latter have stronger assumptions and are often less flexible. However, it is reasonable to expect the ABE and SBE to be in a reasonable range (to within approximately 10%), as the SBE should represent the uncertainty around the ABE process and thus be reasonably aligned to the ABE. In practice, this may be difficult to achieve, as the standard parameterisations of the most commonly-used stochastic methods (Over-dispersed Poisson model and Mack, refer to section [Models](#Models) for more details) have SBEs equal to the deterministic Chain Ladder (or Volume All DFM) estimate. In other words, the further the ABE is from a Chain Ladder estimate, the more it will usually differ from the SBE given current market practice. If the difference is material (e.g. >10%), it is recommended to consider either other stochastic methods that replicate better the methodology used for setting the ABE (e.g. the Stochastic Bornhuetter-Ferguson is often a useful alternative) or to change the GLM regression structure and assumptions underlying the stochastic models.
+As the ABE and the stochastic reserving model frequently follow two different processes, it is likely that the former will differ from the Stochastic Reserving Best Estimate (SBE) (where the best estimate is defined as the central estimate, or the mean, of the stochastic distribution). This is usually due to the fact that it is easier to embed external business knowledge in the ABE than in the stochastic models, as the latter have stronger assumptions and are often less flexible. However, it is reasonable to expect the ABE and SBE to be in a reasonable range (to within approximately 10%), as the SBE should represent the uncertainty around the ABE process and thus be reasonably aligned to the ABE. In practice, this may be difficult to achieve, as the standard parametrisations of the most commonly-used stochastic methods (Over-dispersed Poisson model and Mack, refer to section [Models](#Models) for more details) have SBEs equal to the deterministic Chain Ladder (or Volume All DFM) estimate. In other words, the further the ABE is from a Chain Ladder estimate, the more it will usually differ from the SBE given current market practice. If the difference is material (e.g. >10%), it is recommended to consider either other stochastic methods that replicate better the methodology used for setting the ABE (e.g. the Stochastic Bornhuetter-Ferguson is often a useful alternative) or to change the GLM regression structure and assumptions underlying the stochastic models.
 
 On the contrary, if the difference falls in a reasonable range, it is widely accepted practice to align the SBE to the ABE. This is usually achieved by shifting the reserve distribution using either an additive or multiplicative scaling. In a nutshell, additive scaling keeps the same standard deviation after scaling as before, whilst the multiplicative keeps the same CoV, as shown in the figures below.
 
@@ -270,14 +270,17 @@ This represents the uncertainty in the parameter estimates assuming the model is
 A simplified graphical representation of each of the three sources of error is 
 given in Figures below.
 
+#### Parameter Error<a name="Parameter Error"></a>
 ![Parameter Error](figures/ParameterError.png)
 
 From the above figure we see that parameter error (or risk) represents the difference in mean values between the estimated distribution and the assumed distribution with true underlying parameters.
 
+#### Process Error<a name="Process Error"></a>
 ![Process Error](figures/ProcessError.png)
 
 Process error is depicted above. This represents the error caused by the actual future value differing from the mean of the assumed underlying distribution with the true parameters.
 
+#### Model Error<a name="Model Error"></a>
 ![Model Error](figures/ModelError.png)
 
 Model error is shown above, i.e. the error that the model is mis-specified. In this simple example, the true model is a log normal distribution but the assumed distributional form is normal.
@@ -591,7 +594,7 @@ Exposure-based models are useful for cases where the modelled quantity is expect
 
 Micro models (also referred to as granular models and which include individual claim models) may also be helpful in some circumstances due to the greater wealth of data involved. Some examples of their use for third party motor bodily injury are given in [[TM04](#TM04)] and [[Mc07](#Mc07)] and for medical liability in [[TMS06](#TMS06)].
 
-If it is not possible to find a suitable model for the data, or the approaches above are considered too time-consuming on pragmatic grounds, then it may be possible to benchmark the line of business against industry results or use other judgemental means to estimate a CoV for the reserves. The approach of O'Dowd, Smith and Hardy [[OSH05](#OSH05)], as discussed in section 3.5 may be helpful in selecting this CoV. If nothing else, the paper provides a useful checklist of the sources of variability which should be considered.
+If it is not possible to find a suitable model for the data, or the approaches above are considered too time-consuming on pragmatic grounds, then it may be possible to benchmark the line of business against industry results or use other judgemental means to estimate a CoV for the reserves. The approach of O'Dowd, Smith and Hardy [[OSH05](#OSH05)], as discussed in section 3.5 may be helpful in selecting this CoV. If nothing else, the paper provides a useful check-list of the sources of variability which should be considered.
 
 Once a coefficient of variation has been estimated, it may be combined with the estimate of the mean (from the claims reserving process) and a suitable distribution (typically the log-normal distribution) to produce a distribution of reserves via method of moments estimation.
 
@@ -643,10 +646,14 @@ In these plots by accident, development or calendar period, it is also helpful t
 
 The figure below gives examples of these scatter plots for the first simulated data set, which has been simulated from an ODP model.
 
+
+#### Residual scatterplots for simulated data set 1<a name="Residual scatterplots for simulated data set 1"></a>
 ![Residual scatter plot simulation 1](figures/ResidualScatterSim1.png)
 
 
 The same plots are now shown in the figure below for the second simulated data set. This data set has a calendar or payment year trend but has been modelled using an ODP so the payment year trend is not captured in this model.
+
+#### Residual scatterplots for simulated data set 1<a name="Residual scatterplots for simulated data set 2"></a>
 ![Residual scatter plot simulation 2](figures/ResidualScatterSim2.png)
 
 The payment year scatterplot clearly displays a trend in the residuals.
@@ -665,7 +672,7 @@ Figure [*Actual vs fitted graps by payment year*](#Actual vs fitted graps by pay
 
 The comparison of actual and fitted values fluctuates around 100% for data set 1, which has been correctly modelled. However, data set 2 shows systematic differences between actual and fitted values providing evidence of a missing payment year trend.
 
-The pattern of the actual/fitted series in Figure 5 -10 mirrors that of the mean series in Figure 5 -9 for the payment year scatterplot (bottom left hand graph) so some modellers may choose to rely on residual plots alone. Using actual vs fitted plots in addition to residual plots is a matter of personal preference. However, an advantage of the actual vs fitted plots is that they include the magnitude of the payments involved so the modeller can pay particular attention to the fit of the model where payment levels are high.
+The pattern of the actual/fitted series in Figure [Residual scatterplots for simulated data set 2](#Residual scatterplots for simulated data set 2) mirrors that of the mean series in Figure [Residual scatterplots for simulated data set 1](#Residual scatterplots for simulated data set 1) for the payment year scatterplot (bottom left hand graph) so some modellers may choose to rely on residual plots alone. Using actual vs fitted plots in addition to residual plots is a matter of personal preference. However, an advantage of the actual vs fitted plots is that they include the magnitude of the payments involved so the modeller can pay particular attention to the fit of the model where payment levels are high.
 
 
 #### Actual vs fitted graps by payment year<a name="Actual vs fitted graps by payment year"></a>
@@ -684,7 +691,7 @@ Note: The accident and development year graphs are not shown since all ratios ar
 
 For the claims reserving problem it is particularly useful to consider a triangular heat map of the actual/fitted values (or, equivalently, the standardised residuals) since this may assist in identifying areas of poor fit where there may be calendar period trends or interactions between accident and development periods.
 
-Figure 5 -11 shows heat maps for actual/fitted values by accident and development year and by accident and payment year for data set 1 which has been correctly modelled. The actual/fitted percentages have been colour coded so that low values are blue, values around 100% are white and large values (i.e. where actual exceeds fitted) are red. In a well-fitting model we would expect a random scattering of colour with no discernible pattern and this is indeed the case.
+Figure [Heat maps for data set 1 (correctly modelled)](#Heat maps for data set 1 (correctly modelled)) shows heat maps for actual/fitted values by accident and development year and by accident and payment year for data set 1 which has been correctly modelled. The actual/fitted percentages have been colour coded so that low values are blue, values around 100% are white and large values (i.e. where actual exceeds fitted) are red. In a well-fitting model we would expect a random scattering of colour with no discernible pattern and this is indeed the case.
 
 #### Heat maps for data set 1 (correctly modelled)<a name="Heat maps for data set 1 (correctly modelled)"></a>
 
@@ -696,7 +703,7 @@ Figure 5 -11 shows heat maps for actual/fitted values by accident and developmen
 
 ![Accident/payment year triangle](figures/AccidentPayment1.png)
 
-Figure 5 -12 presents the same heat maps for data set 2 where there is an unmodelled payment year trend. There are systematic patterns visible in both triangles – early and late payment years tend to have higher actual values greater than fitted values, while mid-term payment years tend to have higher fitted values.
+Figure [Heat maps for data set 2 (payment year trend not modelled)](#Heat maps for data set 2 (payment year trend not modelled)) presents the same heat maps for data set 2 where there is an unmodelled payment year trend. There are systematic patterns visible in both triangles – early and late payment years tend to have higher actual values greater than fitted values, while mid-term payment years tend to have higher fitted values.
 
 For data set 2, we already know from the residual and one-way summary plots of actual vs fitted that there are unmodelled payment year trends so in this case the heat map may not add new information. However, heat maps are particularly useful at identifying interactions. For example, a payment pattern change impacting some accident years but not others would generate a systematic pattern in a heat map. Taylor and McGuire [[TM15](#TM15)] contains an example of using a heat map to identify and suitably model an interaction in an ODP model.
 
@@ -784,7 +791,7 @@ In a GLM application, one distribution will correspond to the selected error dis
 
 If the model fits well, the P-P plot should be an approximately straight line of the form $y=x$. Significant deviations from the straight line indicate problems with the distributional assumptions.
 
-Figure 5 -13 and Figure 5 -14 show Poisson P-P plots for a correctly specified distribution (Figure 5 -13) and an incorrectly specified one (Figure 5 -14). The distribution in Figure 5 -14 is heavier tailed than a Poisson distribution (in this situation, a Tweedie distribution might be useful). More details on P-P plots may be found in the statistical literature.
+The next two figures show Poisson P-P plots for a correctly specified distribution (Figure [Plot with correctly specified distribution](#Plot with correctly specified distribution)) and an incorrectly specified one ([Plot with incorrectly specified distribution](#Plot with incorrectly specified distribution)). The distribution in Figure [Plot with incorrectly specified distribution](#Plot with incorrectly specified distribution) is heavier tailed than a Poisson distribution (in this situation, a Tweedie distribution might be useful). More details on P-P plots may be found in the statistical literature.
 
 #### Plot with correctly specified distribution<a name="Plot with correctly specified distribution"></a>
 
@@ -834,21 +841,21 @@ In section [Model Validation](#Model Validation), we referred to analytical form
 
 ## Parameter Error - Bootstrapping<a name="Parameter Error - Bootstrapping"></a>
 
-As we have seen in section [Sources of Uncertainty](#Sources of Uncertainty), the parameter error is the error due to the fact that the parameters of the fitted model are estimated and are thus uncertain. Ideally, in order to estimate this uncertainty, we need other samples from the same population, which are often (always, in the reserving case) not available. In order to overcome this issue, a common approach used in statistics is the bootstrapping technique (Efron [[Ef79](#Ef79)]), which creates pseudo samples (or data sets) from the original data using resampling. The re-fitted model for each of these data sets effectively results in many different parameter estimates, thereby allowing the estimation of parameter uncertainty.
+As we have seen in section [Sources of Uncertainty](#Sources of Uncertainty), the parameter error is the error due to the fact that the parameters of the fitted model are estimated and are thus uncertain. Ideally, in order to estimate this uncertainty, we need other samples from the same population, which are often (always, in the reserving case) not available. In order to overcome this issue, a common approach used in statistics is the bootstrapping technique (Efron [[Ef79](#Ef79)]), which creates pseudo samples (or data sets) from the original data using re-sampling. The re-fitted model for each of these data sets effectively results in many different parameter estimates, thereby allowing the estimation of parameter uncertainty.
 
 We describe two bootstrapping techniques here::
 
-- **Semi-parametric bootstrap:** also known as resampling, where i.i.d. variables are resampled to obtain an approximation of the underlying distribution. This is the most commonly used form of bootstrap in stochastic reserving.
+- **Semi-parametric bootstrap:** also known as re-sampling, where i.i.d. variables are re-sampled to obtain an approximation of the underlying distribution. This is the most commonly used form of bootstrap in stochastic reserving.
 - **Parametric bootstrap:** when the distribution is known, i.e. a parametric model is fitted to the data and samples of the parameters are directly drawn from this model.
 
-A resampling approach suitable for use with aggregate data triangles was described by Efron [[Ef79](#Ef79)] in his discussion of bootstrapping for a regression model. When using resampling, it is important to ensure that the variables that are re-sampled are independent and identically distributed (i.i.d.). Data points in a claim triangle will almost certainly not be i.i.d., so these amounts must first be transformed to meet this requirement. The common practice for stochastic reserving is to calculate residuals for the model which, after standardisation, should be i.i.d. These residuals are then sampled (usually with replacement), with one standardised residual attaching to each past cell. The residuals are then unstandardised (ie multiplied by the estimated variance of the residuals in that cell, which would normally be estimated by development period) and added back to the fitted values in each cell to produce pseudo triangle data from which parameters may be estimated by refitting the model.
+A re-sampling approach suitable for use with aggregate data triangles was described by Efron [[Ef79](#Ef79)] in his discussion of bootstrapping for a regression model. When using re-sampling, it is important to ensure that the variables that are re-sampled are independent and identically distributed (i.i.d.). Data points in a claim triangle will almost certainly not be i.i.d., so these amounts must first be transformed to meet this requirement. The common practice for stochastic reserving is to calculate residuals for the model which, after standardisation, should be i.i.d. These residuals are then sampled (usually with replacement), with one standardised residual attaching to each past cell. The residuals are then unstandardised (ie multiplied by the estimated variance of the residuals in that cell, which would normally be estimated by development period) and added back to the fitted values in each cell to produce pseudo triangle data from which parameters may be estimated by refitting the model.
 
 Parametric bootstrapping is useful in cases where a full statistical model has been fitted such as a GLM. One possible method for parametric bootstrapping is to recognise that under certain conditions usually satisfied by a GLM, the resulting parameter estimates are asymptotically multivariate normal. Therefore, pseudo parameter values may be directly sampled from this distribution, producing a new set of parameters for each bootstrap iteration, from which fitted and projected values may be calculated. This procedure is computationally much less demanding than the semi-parametric bootstrap and worth considering if a formal GLM structure has been used for the stochastic reserving exercise. This approach is discussed by Taylor and McGuire [[TM15](#TM15)] and readers are referred there for further details.
 
 A typical **bootstrap cycle** operates in the following manner:
 
 - Generate a pseudo dataset using a parametric/semi-parametric bootstrap
-  - For the semi-parametric bootstrap, the residuals are resampled and then combined with the fitted values to form a pseudo data set. The model is then fitted to produce a set of pseudo parameters.
+  - For the semi-parametric bootstrap, the residuals are re-sampled and then combined with the fitted values to form a pseudo data set. The model is then fitted to produce a set of pseudo parameters.
   - For the parametric bootstrap, a sample of model parameters is drawn from a multivariate normal distribution, producing a set of pseudo parameters.
 - Forecast the reserve using the pseudo parameters.
 - Start a new cycle.
@@ -857,17 +864,17 @@ The variance of the resulting reserves from each sampled data set provides an es
 
 ## Process Error<a name="Process Error"></a>
 
-There are two common approaches to estimating process error (ie the error related to the uncertainty of the process itself) following a bootstrap procedure – residual resampling and Monte Carlo simulation.
+There are two common approaches to estimating process error (ie the error related to the uncertainty of the process itself) following a bootstrap procedure – residual re-sampling and Monte Carlo simulation.
 
 ### Residual Resampling<a name="Residual Resampling"></a>
 
-Process error may be incorporated by a further resampling of the standardised residuals, in a manner identical to that of the semi-parametric bootstrap, except that the residuals (after being multiplied via the assumed standard deviation) are added to the future forecast values of the data triangle rather than to past values.
+Process error may be incorporated by a further re-sampling of the standardised residuals, in a manner identical to that of the semi-parametric bootstrap, except that the residuals (after being multiplied via the assumed standard deviation) are added to the future forecast values of the data triangle rather than to past values.
 
-This version of the bootstrap is described in many places in the literature, e.g. Taylor [[Ta00](#Ta00)]. One of its strengths is that it does not require the exact form of the distribution to be specified. For this reason, the semi-parametric bootstrap combined with residual resampling for process error estimation is usually called **non-parametric bootstrapping**. It is useful in situations where a parametric distribution such as an ODP may not be a particularly good fit to the data and is frequently used in practice.
+This version of the bootstrap is described in many places in the literature, e.g. Taylor [[Ta00](#Ta00)]. One of its strengths is that it does not require the exact form of the distribution to be specified. For this reason, the semi-parametric bootstrap combined with residual re-sampling for process error estimation is usually called **non-parametric bootstrapping**. It is useful in situations where a parametric distribution such as an ODP may not be a particularly good fit to the data and is frequently used in practice.
 
 ### Monte Carlo Simulation<a name="Monte Carlo Simulation"></a>
 
-An alternative to using residual resampling to estimate process error is to sample directly from the distribution of the forecast value (refer back to Figure 3 -6). This requires the following assumptions:
+An alternative to using residual re-sampling to estimate process error is to sample directly from the distribution of the forecast value (refer back to Figure [Process Error](#Process Error)). This requires the following assumptions:
 
 - The distributional form of the forecast value
 - The parameters of this distribution – usually, specification of the mean and variance is sufficient to determine these.
@@ -895,13 +902,13 @@ The resulting volatility from all the simulated reserves from this simulation cy
 
 The processes described in section [Estimating the Reserve Uncertainty](#Estimating the Reserve Uncertainty) may be combined to produce a simulation cycle for stochastic reserving yielding estimates of reserves that include both parameter and process error. In order to do this, the bootstrap cycle is embedded into the simulation cycle, giving a general stochastic reserving **simulation cycle** , as follows:
 
-1. If using a semi-parametric bootstrap, generate a pseudo dataset by resampling residuals and combining with fitted values to form a pseudo data set.
+1. If using a semi-parametric bootstrap, generate a pseudo dataset by re-sampling residuals and combining with fitted values to form a pseudo data set.
 2. Inclusion of parameter error:
   1. Semi-parametric bootstrap: Fit the model to find the parameter estimates.
   2. Parametric bootstrap: the simulation cycle starts at this step – generate a sample of the parameters from a multivariate normal distribution based on the mean and covariances of these parameters that are produced by a GLM
 3. Generate the unknown future part of the triangle from the parameter estimates derived at the previous step;
-4. Inclusion of process error: use either residual resampling or simulation as appropriate.
-  1. Residual resampling: resample the model residuals and combine with the forecast values.
+4. Inclusion of process error: use either residual re-sampling or simulation as appropriate.
+  1. Residual re-sampling: re-sample the model residuals and combine with the forecast values.
   2. Simulation: Simulate each cell of the future part of the triangle to incorporate process error
 5. Derive the total reserves from the generated data;
 6. Start another cycle.
@@ -937,7 +944,7 @@ $$
 \mbox{Var}[C_{i,j} |C_{i,j-1} ] = \sigma_j^2 \, C_{i,j-1},
 $$
 
-we observe that they are very similar (apart the Normal distribution assumption): the unknown scale parameters $\phi_j$ are simply replace by the $\sigma_j^2$ of the Mack model. In fact, their parameter estimates are essentially the same (see section 7.6 of [[EV02](#EV02)]), fitting a properly parameterised GLM model on the development factors (see section 7.4 of [[EV02](#EV02)]) and considering similar bias corrections.
+we observe that they are very similar (apart the Normal distribution assumption): the unknown scale parameters $\phi_j$ are simply replace by the $\sigma_j^2$ of the Mack model. In fact, their parameter estimates are essentially the same (see section 7.6 of [[EV02](#EV02)]), fitting a properly parametrised GLM model on the development factors (see section 7.4 of [[EV02](#EV02)]) and considering similar bias corrections.
 
 Summarising all the results above, a simulation cycle for the Mack method is comprised of the following steps:
 
@@ -945,7 +952,7 @@ Summarising all the results above, a simulation cycle for the Mack method is com
 2. Fit Mack analytical model to derive the model parameters $(f_j, \sigma_j^2)^{Mack}$ for $0 < j \leq n$;
 3. Using either a parametric or a semi-parametric bootstrap on the known triangle, generate a set of pseudo development factors $F_{ij}^B$ from the parameters estimated at the previous step;
 4. Derive the bootstrapped model parameters $(f_j^B, \sigma_j^2 = \phi_J^B)$ from the pseudo development factors $F_{ij}^B$ using $\omega_{ij}$ as weights;
-5. Using the above bootstrapped parameters, derive the cumulative payments for the future triangle, adding the process error via generating a random number from the Normal distribution: $C_{i,j} \sim \mathcal{N} \left(\mu=f_j^B \, C_{i,j-1},\sigma^2=\phi_j^B \, C_{i,j-1} \right)$ . Alternatively process error may be incorporated by a further resampling of residuals;
+5. Using the above bootstrapped parameters, derive the cumulative payments for the future triangle, adding the process error via generating a random number from the Normal distribution: $C_{i,j} \sim \mathcal{N} \left(\mu=f_j^B \, C_{i,j-1},\sigma^2=\phi_j^B \, C_{i,j-1} \right)$ . Alternatively process error may be incorporated by a further re-sampling of residuals;
 6. Once the future cumulative claims have been derived, derive both the reserve $R^s_j$ for the origin year $i$ and the total reserve $R^s_{TOT}$ simulation cycle $s$.
 
 Given a sufficient number of simulations, we may use the mean and variance of the simulated reserves to estimate the overall uncertainty. Note that the latter will include both parameter and process error due to respectively step 3 and 5.
@@ -953,7 +960,7 @@ Given a sufficient number of simulations, we may use the mean and variance of th
 
 ### Over-dispersed Poisson<a name="Over-dispersed Poisson"></a>
 
-The ODP is a somewhat simpler model than Mack, since - as we have seen in [earlier](#Over-dispersed Poisson Model) - a GLM can be directly parameterised on the incremental claims, which are assumed to be:
+The ODP is a somewhat simpler model than Mack, since - as we have seen in [earlier](#Over-dispersed Poisson Model) - a GLM can be directly parametrised on the incremental claims, which are assumed to be:
 $$
 P_{ij} \sim \mbox{ODP}\left(\mu=m_{ij}, \sigma^2= \phi \,m_{ij} \right), 
 $$
@@ -967,7 +974,7 @@ For the ODP model, a simulation cycle is as follows:
     + If using a parametric bootstrap, sample the GLM parameters directly to obtain the bootstrapped estimate of the parameters.
 3. Using the bootstrapped parameters above, derive the future triangle payments introducing the process error by either:
     + generating a random number from the ODP distribution : $P_{ij}^{u,B} \sim \mbox{ODP}\left(\mu=m_{ij}^B, \sigma^2= \phi^B \, m_{i,j}^B \right)$; or
-    + Resample the residuals and apply to the forecast payments
+    + Re-sample the residuals and apply to the forecast payments
 4. Once the future unknown payments have been simulated, derive both the reserve $R_i^s$ for each origin year $i$  and the total reserve $R_{TOT}^s$ for the simulation cycle $s$.
 
 As for the Mack case, the mean and variance of the resulting distribution of simulated reserves estimate the best estimate and reserve uncertainty.
@@ -1036,7 +1043,7 @@ Before doing any further analysis, it is important to first validate the model.
 
 ![Log Mack sigma2 Parameters](figures/Log Mack sigma2 Parameters.png)
 
-For the Mack model the three specific Mack tests are carried out: the development factors correlation test, the independence of accident years and a plot of the $\sigma^2$ parameters (section [Mack Model Assumptions](#Mack Model Assumptions)). The first two tests are implemented in the spreadsheet attached to this paper (Stochastic Reserving Tool v1.3\_DATASET1.xlsb; refer to the "Executive Summary" tab for the results of these tests). According to these tests, the independence of accident years is satisfied (i.e. there are no apparent calendar year trends) but the development factors fail the correlation test. The $\sigma^2$ parameters may be calculated according to the formula in section [Analytic Calculation of MSEP](#Analytic Calculation of MSEP) and the logs of these values are plotted in Figure 7 -15 above. Exponential decay translates to linear decay of the log values. There is a slight kink in the σ2 values at development year 4 which may indicate problems with the assumptions.
+For the Mack model the three specific Mack tests are carried out: the development factors correlation test, the independence of accident years and a plot of the $\sigma^2$ parameters (section [Mack Model Assumptions](#Mack Model Assumptions)). The first two tests are implemented in the spreadsheet attached to this paper (Stochastic Reserving Tool v1.3\_DATASET1.xlsb; refer to the "Executive Summary" tab for the results of these tests). According to these tests, the independence of accident years is satisfied (i.e. there are no apparent calendar year trends) but the development factors fail the correlation test. The $\sigma^2$ parameters may be calculated according to the formula in section [Analytic Calculation of MSEP](#Analytic Calculation of MSEP) and the logs of these values are plotted in the figure [above](#Log Mack sigma2 Param) above. Exponential decay translates to linear decay of the log values. There is a slight kink in the $\sigma^2$ values at development year 4 which may indicate problems with the assumptions.
 
 On the basis of these tests, there may be some question marks over the applicability of the Mack model and it is worthwhile exploring alternatives.
 
@@ -1044,7 +1051,7 @@ On the basis of these tests, there may be some question marks over the applicabi
 
 ![ODP diagnostic plots](figures/ODP diagnostic plots.png)
 
-While the ODP model has the same central estimates as the Mack, its distributional estimates are different. The residual scatter plots, actual/expected plots (calendar year only) and heat maps are shown in Figure 7 -16 and Figure 7 -17. The residuals (standardised Pearson residuals) are calculated by fitting the ODP model as a GLM – this may be done in statistical packages such as R or SAS.
+While the ODP model has the same central estimates as the Mack, its distributional estimates are different. The residual scatter plots, actual/expected plots (calendar year only) and heat maps are shown in Figure [ODP diagnostic plots](#ODP diagnostic plots) and Figure [Actual/fitted heat maps for data set 1](#Actual/fitted heat maps for data set 1). The residuals (standardised Pearson residuals) are calculated by fitting the ODP model as a GLM – this may be done in statistical packages such as R or SAS.
 
 Although not perfect, the residual scatter plots do not reveal any serious problems with the model. There may be a suggestion of a trend in early calendar years, but data is limited here so the apparent trend is not of huge concern. The actual/fitted heat maps also appear acceptable.
 
@@ -1056,11 +1063,11 @@ Although not perfect, the residual scatter plots do not reveal any serious probl
 
 ![P-P plot for the ODP model](figures/P-P plot for the ODP model.png)
 
-Finally, the P-P (probability-probability) plot for the ODP distribution is shown in Figure 7 -18. This graph is more coarse those that shown in Figure 5 -13 and Figure 5 -14 due to smaller amounts of data. It does suggest that the actual data distribution is not quite as heavy-tailed as an ODP distribution. However, given the small amounts of data, and the market practice view to generally stay on the side of conservatism, the ODP distribution may be accepted on pragmatic grounds.
+Finally, the P-P (probability-probability) plot for the ODP distribution is shown in Figure [P-P plot for the ODP model](#P-P plot for the ODP model). This graph is more coarse those that shown in Figure [Correct model fitted (data set 1)](#Correct model fitted (data set 1)) and Figure [Plot with incorrectly specified distribution](#Plot with incorrectly specified distribution) due to smaller amounts of data. It does suggest that the actual data distribution is not quite as heavy-tailed as an ODP distribution. However, given the small amounts of data, and the market practice view to generally stay on the side of conservatism, the ODP distribution may be accepted on pragmatic grounds.
 
 On the basis of the above model diagnostics, the ODP model seems preferable to Mack. As this is a short-tailed data set with reasonably stable behaviour at early development years, use of the BF method does not seem warranted, at least not initially.
 
-The next stage is to bootstrap the ODP model to estimate parameter and process error. This may be implemented using custom-built actuarial software or in statistical packages. As discussed in section [Estimating the Reserve Distribution](#Estimating the Reserve Distribution), there are a number of ways of doing this – parametric, semi-parametric or non-parametric bootstrapping may all be used. Here we have used a semi-parametric bootstrap, overlaid with Monte Carlo simulation of process error, run using the chain ladder package in R. The results are shown in Table 7 -4 below while Figure 7 -19 presents some of the information graphically.
+The next stage is to bootstrap the ODP model to estimate parameter and process error. This may be implemented using custom-built actuarial software or in statistical packages. As discussed in section [Estimating the Reserve Distribution](#Estimating the Reserve Distribution), there are a number of ways of doing this – parametric, semi-parametric or non-parametric bootstrapping may all be used. Here we have used a semi-parametric bootstrap, overlaid with Monte Carlo simulation of process error, run using the chain ladder package in R. The results are shown in the table below while figure underneath presents some of the information graphically.
 
 #### Bootstrapping results for the ODP model (in thousands)<a name="Bootstrapping results for the ODP model (in thousands)"></a>
 
@@ -1102,7 +1109,7 @@ The model validation section raised some question marks over the use of the Mack
 
 ![Comparison of reserve CoV](figures/Comparison of reserve CoV.png)
 
-Table 7 -5 presents the analytic results for Mack's model while Figure 7 -21 compares the reserve CoVs by accident (origin) year. For older accident years, the MSEP is much larger for the ODP model than it is for Mack, however this fact is immaterial, as the underlying reserve is very small; this is clearly illustrated in Figure 7 -21. In more recent years, the MSEPs are similar or even higher (the most recent year). The relative contributions of parameter and process error are quite different similar between the two models, with process error being the dominant source of error. Overall Mack model suggests slightly higher uncertainty results, ending up with a 7.7% total CoV vs ODP's 7.1% and the models look fairly aligned as soon as reserves start to be material.
+Table [Analytic results for Mack's model](#Analytic results for Mack's model) presents the analytic results for Mack's model while Figure [Comparison of reserve CoV](#Comparison of reserve CoV) compares the reserve CoVs by accident (origin) year. For older accident years, the MSEP is much larger for the ODP model than it is for Mack, however this fact is immaterial, as the underlying reserve is very small; this is clearly illustrated in Figure [Comparison of reserve CoV](#Comparison of reserve CoV). In more recent years, the MSEPs are similar or even higher (the most recent year). The relative contributions of parameter and process error are quite different similar between the two models, with process error being the dominant source of error. Overall Mack model suggests slightly higher uncertainty results, ending up with a 7.7% total CoV vs ODP's 7.1% and the models look fairly aligned as soon as reserves start to be material.
 
 ### An Alternative View – the BF Model<a name="An Alternative View – the BF Model"></a>
 
@@ -1113,8 +1120,8 @@ Table 7 -5 presents the analytic results for Mack's model while Figure 7 -21 com
 
 ![BF reserve estimates for data set 1](figures/BF reserve estimates for data set 1.png)
 
-The reserve estimates are shown in Figure 7 6. The results for all accident years are higher than the chain ladder estimates and overall, the reserve estimate is 22% higher. 
-Table 7 7 shows the results of applying the analytic formulae from [[AWM10](#AWM10)] for the stochastic BF while Figure 7 8 compares the RMSEP from both methods.
+The reserve estimates are shown in Figure [Distribution of the Outstandind Claims Reserves](#Distribution of the Outstandind Claims Reserves). The results for all accident years are higher than the chain ladder estimates and overall, the reserve estimate is 22% higher. 
+Table [BF reserve estimates for data set 1](#BF reserve estimates for data set 1) shows the results of applying the analytic formulae from [[AWM10](#AWM10)] for the stochastic BF while Figure [Comparison of BF and ODP RMSEP](#Comparison of BF and ODP RMSEP) compares the RMSEP from both methods.
 
 #### Analytic results for the BF model
 <a name="Analytic results for the BF model"></a>
@@ -1127,12 +1134,12 @@ Table 7 7 shows the results of applying the analytic formulae from [[AWM10](#AWM
 
 The root MSEP is similar between both methods, though the BF does return somewhat higher estimates for more recent accident years. However, these are coupled with somewhat higher reserve estimates, so that the reserve CoVs are generally lower for the BF model. In total the reserve CoV for BF is 6.4% compared with 7.1% for the ODP model. This reflects the influence of the prior assumptions with their relatively low (5%) CoV.
 
-The choice of which model (BF or ODP) to use for stochastic reserving purposes depends on the actuary’s judgement as to which is the most appropriate. If one model is closer to that used to determine the central estimate, then this model would likely be the preferred choice for uncertainty estimation.
+The choice of which model (BF or ODP) to use for stochastic reserving purposes depends on the actuary's judgement as to which is the most appropriate. If one model is closer to that used to determine the central estimate, then this model would likely be the preferred choice for uncertainty estimation.
 Once the process and parameter error have been determined, the actuary then needs to consider whether explicit allowance should be made for model error (section [Sources of Uncertainty](#Sources of Uncertainty)). If such allowance is made then the model error variability would normally be combined with that from the parameter and process error and a judgementally selected distribution (e.g. a log normal) to produce a distribution of outstanding claims. If no allowance is required for model error, then the distribution that results from the process and parameter error may be used directly.
 
 ## Example 2<a name="Example 2"></a>
 
-The second illustrative data set is taken from Table 6 of [[LV08](#LV08)] and is an aggregate data set from Lloyd’s syndicates. In [[LV08](#LV08)] Table 6 presents the paid data, and Table 7 the corresponding incurred data. This claims triangle is much more volatile than the first, and clearly has a long-tail. Consequently, it makes an interesting contrast to the first data set and is the type of business for which one might consider the Bornhuetter-Ferguson method.  The data are shown in Table 7 8 as incremental claim amounts.
+The second illustrative data set is taken from Table 6 of [[LV08](#LV08)] and is an aggregate data set from Lloyd's syndicates. In [[LV08](#LV08)] Table 6 presents the paid data, and Table 7 the corresponding incurred data. This claims triangle is much more volatile than the first, and clearly has a long-tail. Consequently, it makes an interesting contrast to the first data set and is the type of business for which one might consider the Bornhuetter-Ferguson method.  The data are shown in Table 7 8 as incremental claim amounts.
 
 #### Example data set 2<a name="Example data set 2"></a>
 
