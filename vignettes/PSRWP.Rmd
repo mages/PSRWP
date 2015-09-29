@@ -1247,7 +1247,7 @@ Looking forward, the Working Party intends to maintain a dynamic version of this
 
 <a name="JP94">[JP94]</a> Jorgensen, B. and Paes de Souza, M. C. (1994), *Fitting Tweedie's compound Poisson model to insurance claims data*, Scandinavian Actuarial Journal, 69-93.
 
-<a name="LV08">[LV08]</a> Liu, Huijuan and Verrall, Richard (2008) *Bootstrap Estimation of the Predictive Distributions of Reserves Using Paid and Incurred Claims*, Paper presented to the 2008 ASTIN Colloquium, Manchester, United Kingdom. Accessed 8th Dec 2014 from http://www.actuaries.org/ASTIN/Colloquia/Manchester/Papers\_EN.cfm
+<a name="LV08">[LV08]</a> Liu, Huijuan and Verrall, Richard (2008) [*Bootstrap Estimation of the Predictive Distributions of Reserves Using Paid and Incurred Claims*](http://www.actuaries.org/ASTIN/Colloquia/Manchester/Papers\_EN.cfm), Paper presented to the 2008 ASTIN Colloquium, Manchester, United Kingdom. 
 
 <a name="Ma00">[Ma00]</a> Mack, T. (2000), *Credible claims reserves: the Benktander method*, ASTIN Bull., Vol. 30(2), 333-347.
 
@@ -1259,7 +1259,7 @@ Looking forward, the Working Party intends to maintain a dynamic version of this
 
 <a name="Ma97">[Ma97]</a> Mack (1997), *Measuring the variability of Chain Ladder reserve estimates*, Faculty and Institute of Actuaries Claims Reserving Manual, Section D6
 
-<a name="Mc07">[Mc07]</a> McGuire G (2007). *Individual claim modelling of CTP data*. Institute of Actuaries of Australian XIth Accident Compensation Seminar, Melbourne, Australia. Available at http://actuaries.asn.au/Library/6.a\_ACS07\_paper\_McGuire\_Individual claim modelling of CTP data.pdf
+<a name="Mc07">[Mc07]</a> McGuire G (2007). [*Individual claim modelling of CTP data*](http://actuaries.asn.au/Library/6.a\_ACS07\_paper\_McGuire\_Individual claim modelling of CTP data.pdf). Institute of Actuaries of Australian XIth Accident Compensation Seminar, Melbourne, Australia. Available at 
 
 <a name="MN89">[MN89]</a> McCullagh P & Nelder J A (1989). *Generalized linear models*, 2nd ed. Chapman & Hall, Boca Raton, USA.
 
@@ -1269,13 +1269,13 @@ Looking forward, the Working Party intends to maintain a dynamic version of this
 
 <a name="MW08">[MW08]</a> Merz, M., Wüthrich. M.V. (2008) "Modelling the Claim Development Result for Solvency Purposes", CAS E-Forum, Fall 2008, 542--568.
 
-<a name="OSH05">[OSH05]</a> O'Dowd C., Smith A. and Hardy P. (2005). *A framework for estimating uncertainty in insurance claims cost*. XVth General Insurance Seminar, 16-19 October 2005. Institute of Actuaries of Australia. Available at http://www.actuaries.asn.au/Library/gipaper\_odowd-smith-hardy0510.pdf
+<a name="OSH05">[OSH05]</a> O'Dowd C., Smith A. and Hardy P. (2005). [*A framework for estimating uncertainty in insurance claims cost*](http://www.actuaries.asn.au/Library/gipaper\_odowd-smith-hardy0510.pdf). XVth General Insurance Seminar, 16-19 October 2005. Institute of Actuaries of Australia.  
 
 <a name="OEL08">[OEL08]</a> Ohlsson, Esbjörn & Lauzeningks (2008), *The one-year non-life insurance risk*, ASTIN Colloquia Manchester
 
 <a name="PSW09">[PSW09]</a> Peters, Shevchenko, Wüthrich (2009), "Model uncertainty in claims reserving within Tweedie's compound poisson models", Astin Bulletin 39(1), 1-33
 
-<a name="RMT08">[RMT08]</a> Risk Margins Taskforce (2008), *A framework for assessing risk margins*, XVIth General Insurance Seminar, 9-12 November 2008. Institute of Actuaries of Australia. Available at [http://www.actuaries.asn.au/Library/Framework%20for%20assessing%20risk%20margins.pdf](http://www.actuaries.asn.au/Library/Framework%20for%20assessing%20risk%20margins.pdf)
+<a name="RMT08">[RMT08]</a> Risk Margins Taskforce (2008), [*A framework for assessing risk margins*](http://www.actuaries.asn.au/Library/Framework%20for%20assessing%20risk%20margins.pdf), XVIth General Insurance Seminar, 9-12 November 2008. Institute of Actuaries of Australia. 
 
 <a name="RV98">[RV98]</a> Renshaw, A. E. and Verrall, R. J. (1998), *A stochastic model underlying the chain-ladder technique*, B.A.J. 4, IV, 903-923
 
@@ -1287,7 +1287,7 @@ Looking forward, the Working Party intends to maintain a dynamic version of this
 
 <a name="TM15">[TM15]</a> Taylor G and McGuire G (2015). *Stochastic Loss Reserving using Generalized Linear Models*. CAS monograph series, in press.
 
-<a name="TMS06">[TMS06]</a> Taylor G., McGuire G. and Sullivan, J. (2006). *Individual claim loss reserving conditioned by case estimates*. Research paper commissioned by the Institute of Actuaries. Available at http://www.actuaries.org.uk/research-and-resources/documents/individual-claim-loss-reserving-conditioned-case-estimates
+<a name="TMS06">[TMS06]</a> Taylor G., McGuire G. and Sullivan, J. (2006). *Individual claim loss reserving conditioned by case estimates*. [Research paper commissioned by the Institute of Actuaries](Available http://www.actuaries.org.uk/research-and-resources/documents/individual-claim-loss-reserving-conditioned-case-estimates).
 
 <a name="Tw84">[Tw84]</a> Tweedie, M.C.K. (1984), *An index which distinguishes between some important exponential families*, Statistics: Applications and New Directions, Proceedings of the Indian Statistical Golden Jubilee International Conference, J. K. Ghosh and J. Roy (Eds.), Indian Statistical Institute, 1984, 579-604.
 
