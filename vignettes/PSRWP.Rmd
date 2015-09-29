@@ -11,6 +11,11 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+<!--
+%\VignetteEngine{knitr::rmarkdown}
+%\VignetteIndexEntry{eurostat Markdown Vignette}
+%\usepackage[utf8]{inputenc}
+-->
 
 **Disclaimer**
 
@@ -1287,7 +1292,7 @@ Looking forward, the Working Party intends to maintain a dynamic version of this
 
 <a name="TM15">[TM15]</a> Taylor G and McGuire G (2015). *Stochastic Loss Reserving using Generalized Linear Models*. CAS monograph series, in press.
 
-<a name="TMS06">[TMS06]</a> Taylor G., McGuire G. and Sullivan, J. (2006). *Individual claim loss reserving conditioned by case estimates*. [Research paper commissioned by the Institute of Actuaries](Available http://www.actuaries.org.uk/research-and-resources/documents/individual-claim-loss-reserving-conditioned-case-estimates).
+<a name="TMS06">[TMS06]</a> Taylor G., McGuire G. and Sullivan, J. (2006). [*Individual claim loss reserving conditioned by case estimates*](http://www.actuaries.org.uk/research-and-resources/documents/individual-claim-loss-reserving-conditioned-case-estimates). Research paper commissioned by the Institute of Actuaries.
 
 <a name="Tw84">[Tw84]</a> Tweedie, M.C.K. (1984), *An index which distinguishes between some important exponential families*, Statistics: Applications and New Directions, Proceedings of the Indian Statistical Golden Jubilee International Conference, J. K. Ghosh and J. Roy (Eds.), Indian Statistical Institute, 1984, 579-604.
 
