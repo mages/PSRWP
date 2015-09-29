@@ -1,11 +1,12 @@
 Package: PSRWP
 Type: Package
-Title: Pragmatic Stochastic Working Party
+Title: A Practitioner's Introduction to Stochastic Reserving
 Version: 0.1
-Date: 2015-09-27
+Date: 2015-09-29
 Author: Alessandro Carrato, Grainne McGuire, Robert Scarth
 Maintainer: Markus Gesmann <markus.gesmann@gmail.com>
-Description: A Practitioner's Introduction to Stochastic Reserving
+Description: Source files to build the practitioner's introduction to 
+             stochastic reserving paper.
 License: GPL-3
 LazyData: TRUE
 Suggests:
