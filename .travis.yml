@@ -1,0 +1,35 @@
+language: r
+warnings_are_errors: true
+sudo: required
+
+before_install:
+- curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
+- chmod 755 ./travis-tool.sh
+- ./travis-tool.sh bootstrap
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- chmod 755 ./.push_gh_pages.sh
+
+install:
+- ./travis-tool.sh install_deps
+script: ./travis-tool.sh run_tests
+
+after_success:
+  - ./.push_gh_pages.sh
+  
+after_script:
+- ./travis-tool.sh dump_logs
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+    
+env:
+  global:
+  - CRAN: http://cran.rstudio.com
+  - R_BUILD_ARGS="--no-manual --keep-empty-dirs --no-resave-data"
+  - R_CHECK_ARGS="--no-vignettes --timings --no-manual"
+  - BOOTSTRAP_LATEX="1"
+  - secure: "M2c0SfoeaS/xQTim0Cv7vDZLicdizhPShcFfRA7F+9rB6tAwH4F+veCpEaHuIgTRREfDPy2jMaHf21xHbfpzVY3L/axit4SMlV1ba05Esozfa2//rYBNmcTD0vD0RWzV9hX86jI2JwEo9Vb0dw5x8WstW37LlUBqlDdM/sYyZfgwbKEqlBp87ba70qytBJIll+JYYk8BT6vwgANCRXz5XAYajbB3pGNkbJwsQIWLXPdJ9MRppa4aonOrx2yQrTgU2ZQF3Oyn1tmn0rHOWJFZ8RPSpy8LkLSTH7jfkIuANe/+2Oabh6yM2vnIAyagc0wUzhGEGXtrsgwV3ykhK3VaqSgbMqaO61oJCObprznsRXXYK1gObM0daMfBCGaNk5yX1uoUcDWyjXUcv/VzpQi0Md/r85Ay4kRY3rHj4OKNg/JmyC8I+8sU/vV/5naoHj0w7f4aK+Om3Kp0FrcmEgzWaKpzYpS65ZHEwM7VeTkNujMzgRPnvQUjmoquQmg5uyxLm7mUcgmyrL/zzEp0JwT1RTJij9GZ96u1HVV1bS7ah9+TYGkp+nBRMVVUenVgXpWfamQcbS2HR7Pq7FFydgRWKcLyAI/3vjvozy1MGXzH+ctCuB6m8WPnVF3LPyeqFMIGUex66jpTzLZ0BCZ2dWffIfRxY+InbIFDZQnF6Y1jTAY="
+  

@@ -1,0 +1,19 @@
+Package: PSRWP
+Type: Package
+Title: Pragmatic Stochastic Working Party
+Version: 0.1
+Date: 2015-09-27
+Author: Alessandro Carrato, Grainne McGuire, Robert Scarth
+Maintainer: Markus Gesmann <markus.gesmann@gmail.com>
+Description: A Practitioner's Introduction to Stochastic Reserving
+License: GPL-3
+LazyData: TRUE
+Suggests:
+    knitr (>= 1.5)
+License: GPL (>= 2)
+URL: https://github.com/mages/PSRWP
+BugReports: https://github.com/mages/PSRWP/issues
+LazyLoad: yes
+LazyData: yes
+VignetteBuilder: knitr
+Type: Package
