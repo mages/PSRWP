@@ -3,19 +3,15 @@ title: "A Practitioner's Introduction to Stochastic Reserving"
 author: "Alessandro Carrato MSc FIA IOA, Gráinne McGuire PhD FIAA, Robert Scarth PhD"
 date: "`r Sys.Date()`"
 output:
-  rmarkdown::html_vignette:
-    toc: true
+output:
+  knitr:::html_vignette:
+    toc: yes
     number_sections: true
 vignette: >
   %\VignetteIndexEntry{A Practitioner's Introduction to Stochastic Reserving}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-<!--
-%\VignetteEngine{knitr::rmarkdown}
-%\VignetteIndexEntry{eurostat Markdown Vignette}
-%\usepackage[utf8]{inputenc}
--->
 
 **Disclaimer**
 
