@@ -10,7 +10,8 @@ Description: Source files to build the practitioner's introduction to
 License: GPL-3
 LazyData: TRUE
 Suggests:
-    knitr (>= 1.5)
+    knitr, 
+    rmarkdown
 License: GPL (>= 2)
 URL: https://github.com/mages/PSRWP
 BugReports: https://github.com/mages/PSRWP/issues
