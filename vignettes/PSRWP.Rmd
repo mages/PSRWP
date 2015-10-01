@@ -1021,9 +1021,9 @@ The first dataset is taken from [[AMW09](#AMW09)] and [[AMW10](#AMW10)]. This is
 ![Example data set 1](figures/ExampleDataSet1.png)
 
 Notes:
-(1)	accident (or origin) years were labelled as 0,1,2,… in the original paper. 
-(2)	All values in this and subsequent tables are in ‘000s
 
+1. Accident (or origin) years were labelled as 0,1,2,… in the original paper. 
+2. All values in this and subsequent tables are in ‘000s
 
 
 ###	Analysis<a name="Analysis 1"></a>
@@ -1034,7 +1034,7 @@ Given the nature of the data, the Mack or ODP models are a reasonable starting p
 
 ![Chain-ladder payment projections for example data set 1](figures/Chain-ladderpaymentprojectionsforexampledataset1.png)
 
-#### Chain-ladder reserve estimates for example data set 1<a name="Chain-ladder reserve estimates for example data set 1">
+#### Chain-ladder reserve estimates for example data set 1<a name="Chain-ladder reserve estimates for example data set 1"></a>
 
 ![Chain-ladder reserve estimates for example data set 1](figures/Chain-ladderreserveestimatesforexampledataset1.png)
 
@@ -1042,7 +1042,7 @@ Before doing any further analysis, it is important to first validate the model.
 
 #### Log(Mack $\sigma^2$) Parameters<a name="Log Mack sigma2 Parameters"> </a>
 
-![Log Mack sigma2 Parameters](figures/LogMacksigma2Parameters.png)
+![Log Mack $\sigma^2$ Parameters](figures/LogMacksigma2Parameters.png)
 
 For the Mack model the three specific Mack tests are carried out: the development factors correlation test, the independence of accident years and a plot of the $\sigma^2$ parameters (section [Mack Model Assumptions](#Mack Model Assumptions)). The first two tests are implemented in the spreadsheet attached to this paper (Stochastic Reserving Tool v1.3\_DATASET1.xlsb; refer to the "Executive Summary" tab for the results of these tests). According to these tests, the independence of accident years is satisfied (i.e. there are no apparent calendar year trends) but the development factors fail the correlation test. The $\sigma^2$ parameters may be calculated according to the formula in section [Analytic Calculation of MSEP](#Analytic Calculation of MSEP) and the logs of these values are plotted in the figure [above](#Log Mack sigma2 Param) above. Exponential decay translates to linear decay of the log values. There is a slight kink in the $\sigma^2$ values at development year 4 which may indicate problems with the assumptions.
 
@@ -1163,7 +1163,7 @@ We first consider the use of the Mack and ODP models for this data, though we mi
 
 #### Log(Mack $\sigma^2$) parameters
 
-![Log(Mack sigma2) parameters](figures/LogMacksigma2parameters2.png)
+![Log(Mack $sigma^2$) parameters](figures/LogMacksigma2parameters2.png)
 
 The Mack model passes both the development factors correlation test and the independence of accident years (refer to the tab "Executive Summary" in the spreadsheet attached to this paper, Stochastic Reserving Tool v1.3\_DATASET2.xlsb). However the plot of the log of the $\sigma^2$ values does raise some concerns given that the progression is very much non-linear.
 
