@@ -78,24 +78,24 @@ As a number of acronyms are used in this paper, we have included a [glossary](#G
 
 As a starting point, we considered the definitions of the Solvency Capital Requirement and Non-life underwriting risk from the [Solvency II](https://eiopa.europa.eu/regulation-supervision/insurance/solvency-ii/solvency-ii-technical-specifications) technical specifications:
 
-SCR.1.9: The SCR (Solvency Capital Requirement) should correspond to the Value-at-Risk of the basic own funds of an insurance undertaking subject to a confidence level of 99.5% over a one-year period.
+*SCR.1.9: The SCR (Solvency Capital Requirement) should correspond to the Value-at-Risk of the basic own funds of an insurance undertaking subject to a confidence level of 99.5% over a one-year period.*
 
-SCR.9.1: Non-life underwriting risk is the risk arising from non-life insurance obligations, in relation to the perils covered and the processes used in the conduct of the business.
+*SCR.9.1: Non-life underwriting risk is the risk arising from non-life insurance obligations, in relation to the perils covered and the processes used in the conduct of the business.*
 
-SCR.9.3: The non-life underwriting risk module takes account of the uncertainty in the results of undertakings related to existing insurance and reinsurance obligations as well as to the new business expected to be written over the following 12 months.
+*SCR.9.3: The non-life underwriting risk module takes account of the uncertainty in the results of undertakings related to existing insurance and reinsurance obligations as well as to the new business expected to be written over the following 12 months.*
 
 As we can see, there is not an explicit definition of Reserve Risk in the Technical Specifications. In order to get that, we must refer to the [Solvency II Glossary](http://ec.europa.eu/internal_market/insurance/docs/solvency/impactassess/annex-c08d_en.pdf)
 
 
-**Claims Risk** An underwriting risk. A change in value caused by ultimate costs for full contractual obligations (claims without administration costs) varying from those assumed when these obligations were estimated. [...] Reserve risk only relates to incurred claims, i.e. existing claims, (e.g. including IBNR and IBNER), and originates from claim sizes being greater than expected, differences in timing of claims payments from expected, and differences in claims frequency from those expected.
+**Claims Risk** *An underwriting risk. A change in value caused by ultimate costs for full contractual obligations (claims without administration costs) varying from those assumed when these obligations were estimated. [...] Reserve risk only relates to incurred claims, i.e. existing claims, (e.g. including IBNR and IBNER), and originates from claim sizes being greater than expected, differences in timing of claims payments from expected, and differences in claims frequency from those expected.*
 
 Overall, if we consider all the above definitions together, we could summarise that the Reserve Risk is the result from fluctuations of claims settlement over a one-year period. This interpretation leads to some concerns around what should be considered as a "one-year period". Thus, in order to clarify it, in 2008 the [IAIS](http://www.iaisweb.org/view/element_href.cfm?src=1/5778.pdf) stated:
 
-[...] **Shock period:** the period over which a shock is applied to a risk;
+[...] **Shock period:** *the period over which a shock is applied to a risk;*
 
-**Effect horizon:** the period over which the shock that is applied to a risk will impact the insurer.
+**Effect horizon:** *the period over which the shock that is applied to a risk will impact the insurer.*
 
-In essence, at the end of the shock period, capital has to be sufficient so that assets cover the technical provision (...) re-determined at the end of the shock period. The re-determination of the technical provisions would allow for the impact of the shock on the technical provisions over the full time horizon of the policy obligations"
+*In essence, at the end of the shock period, capital has to be sufficient so that assets cover the technical provision (...) re-determined at the end of the shock period. The re-determination of the technical provisions would allow for the impact of the shock on the technical provisions over the full time horizon of the policy obligations"*
 
 This definition led to the following two views for the Reserve Risk:
 
@@ -254,7 +254,7 @@ $$
 
 where the hat symbol represents fitted values.
 
-The prediction error of this model is $Y_{ij} \hat{Y}_{ij}$ which may be decomposed as:
+The prediction error of this model is $Y_{ij} - \hat{Y}_{ij}$ which may be decomposed as:
 
 $$
 Y_{ij} - \hat{Y}_{ij} = \left[ \nu(i,j;\varphi) - \nu(i,j;\hat{\varphi}) \right]  + \left[ \varepsilon_{ij} \right] + \left[u(i,j;\theta) -  \nu(i,j;\varphi) \right]
@@ -447,19 +447,19 @@ the origin period parameters $x_i$ may then be interpreted as the unconditional 
 By the ODP distributional assumptions,
 
 $$
-\mbox{Var}(P_{ij}) \phi_{ij} E[P_{ij}]
+\mbox{Var}(P_{ij}) = \phi_{ij} E[P_{ij}]
 $$
 
 It is common to make simplifying assumptions for the scale parameters, $\phi_{ij}$. A common simplification is that the scale parameter varies by development period only. In this case we would assume that there are scale parameters $\phi_1, \dots, \phi_n$ such that
 
 $$
-\mbox{Var}(P_{ij}) \phi_{j} E[P_{ij}]
+\mbox{Var}(P_{ij}) = \phi_{j} E[P_{ij}]
 $$
 
 A further simplification would assume that the scale parameter is constant, i.e.
 
 $$
-\mbox{Var}(P_{ij}) \phi E[P_{ij}]
+\mbox{Var}(P_{ij}) = \phi E[P_{ij}]
 $$
 
 In practice, the scale parameter may often vary by development period. However, for the purpose of this paper, we assume, for ease of exposition, that the scale parameter is constant (also as noted in Taylor and McGuire [[TM15](#TM15)], a constant scale parameter will ensure that an ODP model set up as a GLM will yield the conventional Chain Ladder estimates as maximum likelihood estimates).
@@ -747,13 +747,11 @@ A brief overview of this test is given below; full details may be sourced from A
 
 - First take the development factors in development period $j$ and $j-1$ and remove any in $j$ that do not have a matching factor for that accident period in development period $j-1$ (and vice versa – remove any in $j-1$ that do not have a match in $j$).
 - Rank the factors separately for $j$ and $j-1$.
-- Calculate the Spearman correlation coefficient as $T_j=1-\frac{6}{(I-j)^3-I+j}\sum_{i=1}^{I-j}\left(r_{ij}-s_{ij}\right)^2$ where
-
-- $I$ the number of accident periods ($=n$ in the specification of the [Mack model](#Macks Model) for a regular reserving triangle).
-- $J$ the number of development periods ($=n$ in the specification of the [Mack model](#Macks Model) for a regular reserving triangle).
-- $r_{ij}$ is the rank for the development factor in accident period $i$, development period $j$
-- $s_{ij}$ is the rank for the development factor in accident period $i$, development period $j-1$
-
+- Calculate the Spearman correlation coefficient as $T_j=1-6\sum_{i=1}^{I-j}\frac{\left(r_{ij}-s_{ij}\right)^2}{(I-j)^3-I+j}$ where
+    + $I$ the number of accident periods ($=n$ in the specification of the [Mack model](#Macks Model) for a regular reserving triangle).
+    + $J$ the number of development periods ($=n$ in the specification of the [Mack model](#Macks Model) for a regular reserving triangle).
+    + $r_{ij}$ is the rank for the development factor in accident period $i$, development period $j$
+    + $s_{ij}$ is the rank for the development factor in accident period $i$, development period $j-1$
 - Combine all the calculated coefficients into one statistic as $T=\sum_{j=2}^{I-2}\frac{I-j-1}{(I-2)(I-3)/2} T_j$
 - It may be shown that $E[T]=0$ and $\mbox{Var}(T)= \frac{1}{(I-2)(I-3)/2}$ 
 - Mack then proposes using a normal distribution at the 50% confidence level as a suitable test for the appropriateness of using the Mack model.
@@ -857,8 +855,8 @@ Parametric bootstrapping is useful in cases where a full statistical model has b
 A typical **bootstrap cycle** operates in the following manner:
 
 - Generate a pseudo dataset using a parametric/semi-parametric bootstrap
-  - For the semi-parametric bootstrap, the residuals are re-sampled and then combined with the fitted values to form a pseudo data set. The model is then fitted to produce a set of pseudo parameters.
-  - For the parametric bootstrap, a sample of model parameters is drawn from a multivariate normal distribution, producing a set of pseudo parameters.
+    + For the semi-parametric bootstrap, the residuals are re-sampled and then combined with the fitted values to form a pseudo data set. The model is then fitted to produce a set of pseudo parameters.
+    + For the parametric bootstrap, a sample of model parameters is drawn from a multivariate normal distribution, producing a set of pseudo parameters.
 - Forecast the reserve using the pseudo parameters.
 - Start a new cycle.
 
@@ -906,12 +904,12 @@ The processes described in section [Estimating the Reserve Uncertainty](#Estimat
 
 1. If using a semi-parametric bootstrap, generate a pseudo dataset by re-sampling residuals and combining with fitted values to form a pseudo data set.
 2. Inclusion of parameter error:
-  1. Semi-parametric bootstrap: Fit the model to find the parameter estimates.
-  2. Parametric bootstrap: the simulation cycle starts at this step – generate a sample of the parameters from a multivariate normal distribution based on the mean and covariances of these parameters that are produced by a GLM
+    + Semi-parametric bootstrap: Fit the model to find the parameter estimates.
+    + Parametric bootstrap: the simulation cycle starts at this step – generate a sample of the parameters from a multivariate normal distribution based on the mean and covariances of these parameters that are produced by a GLM
 3. Generate the unknown future part of the triangle from the parameter estimates derived at the previous step;
 4. Inclusion of process error: use either residual re-sampling or simulation as appropriate.
-  1. Residual re-sampling: re-sample the model residuals and combine with the forecast values.
-  2. Simulation: Simulate each cell of the future part of the triangle to incorporate process error
+    + Residual re-sampling: re-sample the model residuals and combine with the forecast values.
+    + Simulation: Simulate each cell of the future part of the triangle to incorporate process error
 5. Derive the total reserves from the generated data;
 6. Start another cycle.
 
@@ -919,13 +917,14 @@ The reserves from each simulation cycle form a distribution which includes both 
 
 This process underlies the estimation of the ultimate view of reserve risk for each of the models discussed in this paper, as will be seen in the next section.
 
-## Ultimate View Simulation<a name="Ultimate View Simulation">
+## Ultimate View Simulation<a name="Ultimate View Simulation"></a>
 
 We now discuss the specifics of the estimation of the ultimate view of reserve risk for each of the three models considered in this paper. The main reference for this is England and Verrall [[EV02](#EV02)], which considers a variety of different methods.
 
 ### Mack<a name="Mack"></a>
 
 As discussed in England and Verrall [[EV02](#EV02)], the assumptions (and results) of the Mack model are very similar to the normal approximation of the negative binomial model. The assumptions are as follows:
+
 - The over-dispersed negative binomial model assumes that the incremental payments $P_{ij}$ have the following distribution: $P_{ij} \sim \mbox{ODNB}\left(\mu=\left(\lambda_{j-1}\right) C_{i,j-1},\sigma^2=\phi \lambda_j \left(\lambda_j - 1 \right) C_{i,j-1}\right)$, where $\lambda_j$ is equivalent to the standard volume all Chain Ladder factor $f_j$ from development year $j-1$ to $j$. Additionally, there is an unknown dispersion parameter $\phi$ forming part of the variance, which makes the distribution "over-dispersed";
 - Noting that $C_{ij}=C_{i,j-1} + P_{i,j}$, and assuming that in this (recursive) approach $C_{i,j-1}$ is known, we can rewrite the above as: $C_{ij} \sim \mbox{ODNB}\left(\mu= f_j \, C_{i, j-1}, \sigma^2=\phi \, \lambda_j \, f_j \left(f_{j-1} - 1 \right) C_{i,j-1}\right)$.
 
@@ -962,7 +961,7 @@ Given a sufficient number of simulations, we may use the mean and variance of th
 
 ### Over-dispersed Poisson<a name="Over-dispersed Poisson"></a>
 
-The ODP is a somewhat simpler model than Mack, since - as we have seen in [earlier](#Over-dispersed Poisson Model) - a GLM can be directly parametrised on the incremental claims, which are assumed to be:
+The ODP is a somewhat simpler model than Mack, since - as we have seen  [earlier](#Over-dispersed Poisson Model) - a GLM can be directly parametrised on the incremental claims, which are assumed to be:
 $$
 P_{ij} \sim \mbox{ODP}\left(\mu=m_{ij}, \sigma^2= \phi \,m_{ij} \right), 
 $$
@@ -1009,15 +1008,15 @@ As for the previous models, the mean and variance of the resulting distribution 
 
 It is important to add a cautionary note for any users who intend to use any method for estimating reserves at high levels of adequacy (typically over 90%). Bootstrapping results (or indeed, a log normal distribution or similar for cases where model validation fails) become less reliable for the more extreme percentiles. In bootstrapping, this may be partially mitigated by running a large number of bootstraps – confidence in results from 1,000 or 10,000 bootstraps is far greater than that from 100. However, even with a large number of bootstrap simulations, caution must be exercised in determining high probabilities of adequacy as the chances of external events impacting the reserves is far greater when considering a 99% probability of adequacy versus a 75% probability. Therefore, we would recommend that due consideration be given to model error (section [#Sources of Uncertainty](Sources of Uncertainty)).
 
-## Numerical Examples<a name="Numerical Examples"></a>
+# Numerical Examples<a name="Numerical Examples"></a>
 
 We now apply the methods discussed in this paper to some real-life data sets to help illustrate their use in practice. It is worth noting, however, that the working party currently has a work stream to implement these and other examples in R, which will, once complete, considerably extend the detail on these numerical examples.
 
-###	Example 1<a name="Example 1"></a>
+##	Example 1<a name="Example 1"></a>
 
 The first dataset is taken from [[AMW09](#AMW09)] and [[AMW10](#AMW10)]. This is a reasonably well-behaved claims triangle, with a relatively short tail, and no unusual features immediately apparent. The data is presented below in Table 7 1 as a triangle of incremental claim amounts.
 
-#### Example Data Set 1<a name="Example Data Set 1"></a>
+### Example Data Set 1<a name="Example Data Set 1"></a>
 
 ![Example data set 1](figures/ExampleDataSet1.png)
 
@@ -1095,9 +1094,9 @@ In the above table and graphs the following can be seen:
 
 Of course, the bootstrap returns more than just the MSEP and CoV – it returns a full distribution including parameter and process error – see Figure 7 6 for an example of such output.
 
-#### Distribution of the Outstandind Claims Reserves<a name="Distribution of the Outstandind Claims Reserves"></a>
+#### Distribution of the OutstandingClaims Reserves<a name="Distribution of the Outstanding Claims Reserves"></a>
 
-![Distribution of the outstandind claims reserves](figures/Distributionoftheoutstandindclaimsreserves.png)
+![Distribution of the outstanding claims reserves](figures/Distributionoftheoutstandindclaimsreserves.png)
 
 ### Comparison with Mack Results<a name="Comparison with Mack Results"></a>
 
@@ -1137,13 +1136,14 @@ Table [BF reserve estimates for data set 1](#BF reserve estimates for data set 1
 The root MSEP is similar between both methods, though the BF does return somewhat higher estimates for more recent accident years. However, these are coupled with somewhat higher reserve estimates, so that the reserve CoVs are generally lower for the BF model. In total the reserve CoV for BF is 6.4% compared with 7.1% for the ODP model. This reflects the influence of the prior assumptions with their relatively low (5%) CoV.
 
 The choice of which model (BF or ODP) to use for stochastic reserving purposes depends on the actuary's judgement as to which is the most appropriate. If one model is closer to that used to determine the central estimate, then this model would likely be the preferred choice for uncertainty estimation.
+
 Once the process and parameter error have been determined, the actuary then needs to consider whether explicit allowance should be made for model error (section [Sources of Uncertainty](#Sources of Uncertainty)). If such allowance is made then the model error variability would normally be combined with that from the parameter and process error and a judgementally selected distribution (e.g. a log normal) to produce a distribution of outstanding claims. If no allowance is required for model error, then the distribution that results from the process and parameter error may be used directly.
 
 ## Example 2<a name="Example 2"></a>
 
 The second illustrative data set is taken from Table 6 of [[LV08](#LV08)] and is an aggregate data set from Lloyd's syndicates. In [[LV08](#LV08)] Table 6 presents the paid data, and Table 7 the corresponding incurred data. This claims triangle is much more volatile than the first, and clearly has a long-tail. Consequently, it makes an interesting contrast to the first data set and is the type of business for which one might consider the Bornhuetter-Ferguson method.  The data are shown in Table 7 8 as incremental claim amounts.
 
-#### Example data set 2<a name="Example data set 2"></a>
+### Example data set 2<a name="Example data set 2"></a>
 
 ![Example data set 2](figures/Exampledataset2.png)
 
@@ -1187,6 +1187,7 @@ Consequently, doubts are cast over the applicability of both the Mack and ODP mo
 ![Mack and ODP coefficients of variation for data set 2](figures/MackandODPcoefficientsofvariationfordataset2.png)
 
 A natural model to turn to in situations like this is the Bornhuetter-Ferguson model (section [A Stochastic Bornhuetter-Ferguson Model](#A Stochastic Bornhuetter-Ferguson Model)) which takes into account prior information (e.g. pricing loss ratios) on the expected ultimate cost of an accident year. As [LV08] do not provide any information on prior estimates of accident year costs, or the variability of such estimates, we have made some broad-brush assumptions for these, assuming a prior cost of 20,000 for each year, with the CoV of 15%.
+
 The BF reserve estimates that result are shown in Table 7 12, with the chain ladder reserve estimate (i.e. that which results from both the Mack and ODP models) shown for comparison. We see that the BF results by accident year appear more reasonable and progress in a smoother fashion.
 
 
@@ -1314,7 +1315,7 @@ For convenience, a list of common acronyms or abbreviations used in the paper is
 - LoB: line of business
 - Mack: usually refers to the [Mack model](#Macks Model)
 - MSEP: mean square error of prediction
-- ODNP: over-dispersed negative binomial distribution
+- ODNB: over-dispersed negative binomial distribution
 - ODP: usually refers to the [Over-dispersed Poisson model](#Over-dispersed Poisson model), but may occasionally refer to the over-dispersed Poisson probability distribution.
 - P-P plot: probability-probability plot
 - RMSEP: root mean square error of prediction (ie the square root of the MSEP)
