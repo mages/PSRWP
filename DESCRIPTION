@@ -11,7 +11,8 @@ License: GPL-3
 LazyData: TRUE
 Suggests:
     knitr, 
-    rmarkdown
+    rmarkdown,
+    knitcitations
 License: GPL (>= 2)
 URL: https://github.com/mages/PSRWP
 BugReports: https://github.com/mages/PSRWP/issues
