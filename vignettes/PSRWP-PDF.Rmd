@@ -8,7 +8,6 @@ output:
     toc: yes
     number_sections: true
     fig_caption: true
-    latex_engine: xelatex
     pandoc_args: [
       "--chapters"
     ]
@@ -20,7 +19,6 @@ vignette: >
   %\usepackage[utf8x]{inputenc} 
   %\usepackage{titlesec}
   %\newcommand{\sectionbreak}{\clearpage}
-
 ---
 
 ```{r child = 'PSRWP-Core.Rmd'}
