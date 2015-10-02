@@ -3,6 +3,7 @@ title: "A Practitioner's Introduction to Stochastic Reserving"
 author: "Alessandro Carrato MSc FIA IOA, Gráinne McGuire PhD FIAA, Robert Scarth PhD"
 date: "`r Sys.Date()`"
 documentclass: book
+classoption: a4paper
 output: 
   pdf_document:
     toc: yes
