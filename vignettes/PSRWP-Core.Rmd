@@ -1218,7 +1218,7 @@ We first consider the use of the Mack and ODP models for this data, though we mi
 #### Log(Mack $\sigma^2$) parameters
 
 <div id="fig:LogMacksigma2parameters2">
-![Log(Mack $sigma^2$) parameters](figures/LogMacksigma2parameters2.png)
+![Log(Mack $\sigma^2$) parameters](figures/LogMacksigma2parameters2.png)
 
 </div>
 
