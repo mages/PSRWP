@@ -4,4 +4,4 @@
 
 This repository contains files for *A Practitioner's Introduction to Stochastic Reserving* by Alessandro Carrato MSc FIA IOA, Gráinne McGuire PhD FIAA, Robert Scarth PhD.
 
-The draft HTML version of the paper is available [online](http://mages.github.io/PSRWP/).
+The draft version of the paper is available [here](http://mages.github.io/PSRWP/).
