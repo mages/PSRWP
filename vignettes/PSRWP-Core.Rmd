@@ -624,9 +624,7 @@ Model validation is the process of examining whether the model provides a good f
 
 This section opens by firstly considering residual diagnostics since these may be applied to all models. Following that, we outline model specific tests for the models discussed in section [*Models*](#Models).
 
-For the most part, the residuals are assumed to be standardised residuals. These may be calculated via GLM software. Definitions of residuals for GLMs may be found in McCullough and Nelder `r citep(bib['MN89'])`. Additionally, the open source R [ChainLadder](http://cran.r-project.org/web/packages/ChainLadder/index.html)[^6] library
-
- and its vignette `r citep(bib['CGMWZ15'])` implement most of the topics discussed in this section.
+For the most part, the residuals are assumed to be standardised residuals. These may be calculated via GLM software. Definitions of residuals for GLMs may be found in McCullough and Nelder `r citep(bib['MN89'])`. Additionally, the open source R [ChainLadder](http://cran.r-project.org/web/packages/ChainLadder/index.html)[^6] library and its vignette `r citep(bib['CGMWZ15'])` implement most of the topics discussed in this section.
 
 Much of the discussion below is drawn from that in Taylor and McGuire `r citep(bib['TM15'])`, wherein further details and examples may be found.
 
@@ -1321,4 +1319,4 @@ For convenience, a list of common acronyms or abbreviations used in the paper is
 
 [^13]: In other words, it is the ratio between  and its relative accident year ultimate.
 
-[^14]: The library TweedieReserve of the R Chain Ladder opensource package can handle different regression structures. Please refer to `r citep(bib['GS05'])` and `r citep(bib['CGMWZ15'])` for further information.
+[^14]: The function TweedieReserve of the ChainLadder R package can handle different regression structures. Please refer to `r citep(bib['GS05'])` and `r citep(bib['CGMWZ15'])` for further information.
