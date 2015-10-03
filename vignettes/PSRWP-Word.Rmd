@@ -7,7 +7,7 @@ output:
     fig_caption: true
 bibliography: PSRWP.bib
 vignette: |
-  %\VignetteIndexEntry{A Practitioner's Introduction to Stochastic Reserving (PDF)}   %\VignetteEngine{knitr::rmarkdown}  
+  %\VignetteIndexEntry{A Practitioner's Introduction to Stochastic Reserving (Word)}   %\VignetteEngine{knitr::rmarkdown}  
   %\VignetteEncoding{UTF-8} 
 ---
 
