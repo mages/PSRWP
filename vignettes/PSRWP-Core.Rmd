@@ -1,7 +1,7 @@
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 library("knitcitations")
 cleanbib()
-options("citation_format" = "pandoc")
+options("citation_format" = "pandoc") 
 bib <- read.bibtex("PSRWP.bib")
 ```
 
@@ -20,7 +20,7 @@ We would like to thank all the members of the Pragmatic Stochastic Reserving Wor
  - Michael Ramyar, for reviewing the Monte Carlo simulation method section;
  - Nyasha Chipanga, for his contribution on the Mack's model section;
  - Nyasha Chiwereza, for her contribution to the Stochastic Reserving Process; and
- - Markus Gesmann for converting the original Word file into Markdown.
+ - Markus Gesmann for converting the original Word file into RMarkdown.
 
 
 # Introduction and Scope
@@ -48,23 +48,23 @@ From the diverse and expanding range of available stochastic reserving methods, 
  - Over-dispersed Poisson model
  - Stochastic Bornhuetter-Ferguson
 
-(These models are described in section [Models](#Models) so we direct those unfamiliar with them to that part of the paper).
+(These models are described in section [*Models*](#Models) so we direct those unfamiliar with them to that part of the paper).
 
 These particular models have been chosen after due consideration of a number of factors, including use amongst practitioners, profile in the academic literature and ease of definition and initial application. However, it must be noted that the stochastic Bornhuetter-Ferguson method is not as well developed in the literature as the other two models. We have elected to include it here due to the usefulness of the BF method for long tailed lines of business where experience emerges slowly. Furthermore, we opted for a version of the Bornhuetter-Ferguson model with an underlying Over-dispersed Poisson model which does not require many parameters to be estimated via expert judgement; thus it is more suitable for use in bootstrapping which requires automation of model fit.
 
 Furthermore, we have therefore limited ourselves to looking at the application of the methods to gross data, without allowance for reinsurance recoveries. We have also focussed on "Accident Year" data, instead of "Underwriting Year", accepting that the latter is in common use. Our main reason for this is to preserve the relative independence of the resulting claims cohorts, which is a common assumption within the methods.
 
-We have also concentrated on an "ultimate" view of risk rather than a one-year view. Some further discussion of the meaning of each of these views and the rationale for considering the ultimate view only are given in section [Ultimate vs One-Year View of Risk](#Ultimate vs one-year view of risk).
+We have also concentrated on an "ultimate" view of risk rather than a one-year view. Some further discussion of the meaning of each of these views and the rationale for considering the ultimate view only are given in section [*Ultimate vs One-Year View of Risk*](#Ultimate vs one-year view of risk).
 
-Finally we have restricted our attention to the consideration to independent error which is amenable to quantitative measurement. Model error, or systemic risk which requires a more qualitative, judgemental approach, is out of scope of the paper. However, this scope limitation is not intended to imply that model error may be ignored. In many cases, it represents a material component of the overall prediction error. Some further discussion on this point may be found below in section [Sources of Uncertainty](#Sources of Uncertainty).
+Finally we have restricted our attention to the consideration to independent error which is amenable to quantitative measurement. Model error, or systemic risk which requires a more qualitative, judgemental approach, is out of scope of the paper. However, this scope limitation is not intended to imply that model error may be ignored. In many cases, it represents a material component of the overall prediction error. Some further discussion on this point may be found below in section [*Sources of Uncertainty*](#Sources of Uncertainty).
 
 ### Guide to the paper
 
 The paper opens with some introductory comments on different views of risk, in particular the ultimate view and a one year view of risk, before electing to consider the ultimate view. We then describe the reserving framework in which the central estimate of risk and the measurement of uncertainty occur, including the sources of uncertainty that need to be considered in any quantification of risk.
 
-Sections [Models](#Models), [Model Validation](#Model Validation) and [Estimating the Reserve Distribution](#Estimating the Reserve Distribution) contain the methodological part of the paper - introducing the reader to the three models under consideration, discussing model fitting, validation and uncertainty quantification using analytical formulae, bootstrapping and Monte Carlo simulation.
+Sections [*Models*](#Models), [*Model Validation*](#Model Validation) and [*Estimating the Reserve Distribution*](#Estimating the Reserve Distribution) contain the methodological part of the paper - introducing the reader to the three models under consideration, discussing model fitting, validation and uncertainty quantification using analytical formulae, bootstrapping and Monte Carlo simulation.
 
-We illustrate the use of the various models for two example data sets in section [Numerical Examples](#Numerical Examples) while the last [section](#Conclusion) gives some concluding remarks.
+We illustrate the use of the various models for two example data sets in section [*Numerical Examples)](#Numerical Examples) while the last [section](#Conclusion) gives some concluding remarks.
 
 As a number of acronyms are used in this paper, we have included a [glossary](#Glossary) for ease of reference.
 
@@ -513,7 +513,7 @@ Where d denotes the degrees of freedom and is calculated as the number of observ
 
 Alternatively, the ODP model may be fitted using GLM software (see, e.g., Taylor and McGuire `r citep(bib['TM15'])`. Furthermore, the GLM framework allows other distributions to be considered which may be more appropriate for the claims data (Renshaw and Verrall `r citep(bib['RV98'])`).
 
-It is worth noting that the ODP distribution is a special case of a Tweedie distribution, which was introduced by Tweedie `r citep(bib['Tw84'])`. A characteristic of a Tweedie distribution is that the variance is proportional to $\mu^p$ where $\mu$ is the mean and  $p \leq 0$ or $p\geq1$ . Members of the Tweedie family include the Poisson distribution ($p=1$), the Normal distribution ($p=0$) and the Gamma distribution ($p=2$). Models using all these distributions may be fitted using GLM software (quasi-likelihood is used for the ODP and for non-integer $p$). Tweedie models are of particular interest when validating the distribution assumptions in reserving problems: for example, Jorgensen and Paes de Souza `r citep(bib['JP94'])` showed that Tweedie models with $1 \leq p \leq2$ can be identified as compound Poisson distributions with Gamma severity distributions. In practical terms, higher values of $p$ correspond to heavier tailed distributions. Therefore, if ODP model validation (discussed later in section [Model Validation](#Model Validation)) suggests that the data is heavier-tailed than the ODP distribution, then a Tweedie distribution with $p \geq 1$ could be considered as an alternative. For further discussion on this, including estimation of a suitable value for $p$, refer to `r citep(bib['PSW09'])` and `r citep(bib['CGMWZ15'])`.
+It is worth noting that the ODP distribution is a special case of a Tweedie distribution, which was introduced by Tweedie `r citep(bib['Tw84'])`. A characteristic of a Tweedie distribution is that the variance is proportional to $\mu^p$ where $\mu$ is the mean and  $p \leq 0$ or $p\geq1$ . Members of the Tweedie family include the Poisson[^5] distribution ($p=1$), the Normal distribution ($p=0$) and the Gamma distribution ($p=2$). Models using all these distributions may be fitted using GLM software (quasi-likelihood is used for the ODP and for non-integer $p$). Tweedie models are of particular interest when validating the distribution assumptions in reserving problems: for example, Jorgensen and Paes de Souza `r citep(bib['JP94'])` showed that Tweedie models with $1 \leq p \leq2$ can be identified as compound Poisson distributions with Gamma severity distributions. In practical terms, higher values of $p$ correspond to heavier tailed distributions. Therefore, if ODP model validation (discussed later in section [Model Validation](#Model Validation)) suggests that the data is heavier-tailed than the ODP distribution, then a Tweedie distribution with $p \geq 1$ could be considered as an alternative. For further discussion on this, including estimation of a suitable value for $p$, refer to `r citep(bib['PSW09'])` and `r citep(bib['CGMWZ15'])`.
 
 ### Analytic Calculation of MSEP<a name="ODB Analytic Calculation of MSEP"></a>
 
@@ -757,7 +757,7 @@ When using the Mack model, each of these assumptions should be tested to ensure 
 
 #### Development Factors Test<a name="Development Factors Test"></a>
 
-[Ma97] shows that (1) implies that the sequential development factors $C_{ij}/C_{i.j-1}$ and  $C_{i,j+1}/C_{ij}$ are not correlated. He uses this fact to develop a test for whether the model should be applied, taking the following points into consideration:
+`r citep(bib['MA97'])` shows that (1) implies that the sequential development factors $C_{ij}/C_{i.j-1}$ and  $C_{i,j+1}/C_{ij}$ are not correlated. He uses this fact to develop a test for whether the model should be applied, taking the following points into consideration:
 
 - Development factors in adjacent development periods will generally not be identically distributed - they will usually have different means and different levels of variability. Therefore a non-parametric statistic such as the Spearman rank correlation should be used.
 - On pragmatic grounds, isolated cases of correlations between successive development factors may not negate the use of the Mack model. However, widespread correlations in the data set are problematic. Thus, he develops a test over the entire data set. Note this is also desirable from statistical grounds - it is undesirable to compare every set of adjacent development factors since, even with no correlations present, some are likely to return significant values due to chance.
@@ -862,7 +862,7 @@ In section [Model Validation](#Model Validation), we referred to analytical form
 
 ## Parameter Error - Bootstrapping<a name="Parameter Error - Bootstrapping"></a>
 
-As we have seen in section [Sources of Uncertainty](#Sources of Uncertainty), the parameter error is the error due to the fact that the parameters of the fitted model are estimated and are thus uncertain. Ideally, in order to estimate this uncertainty, we need other samples from the same population, which are often (always, in the reserving case) not available. In order to overcome this issue, a common approach used in statistics is the bootstrapping technique (Efron `r citep(bib['Ef79'])`), which creates pseudo samples (or data sets) from the original data using re-sampling. The re-fitted model for each of these data sets effectively results in many different parameter estimates, thereby allowing the estimation of parameter uncertainty.
+As we have seen in section [Sources of Uncertainty](#Sources of Uncertainty), the parameter error is the error due to the fact that the parameters of the fitted model are estimated and are thus uncertain. Ideally, in order to estimate this uncertainty, we need other samples from the same population, which are often (always, in the reserving case) not available. In order to overcome this issue, a common approach used in statistics is the bootstrapping technique `r citep(bib['Ef79'])`, which creates pseudo samples (or data sets) from the original data using re-sampling. The re-fitted model for each of these data sets effectively results in many different parameter estimates, thereby allowing the estimation of parameter uncertainty.
 
 We describe two bootstrapping techniques here::
 
@@ -944,12 +944,12 @@ We now discuss the specifics of the estimation of the ultimate view of reserve r
 
 ### Mack<a name="Mack"></a>
 
-As discussed in England and Verrall `r citep(bib['EV02'])`, the assumptions (and results) of the Mack model are very similar to the normal approximation of the negative binomial model. The assumptions are as follows:
+As discussed in England and Verrall `r citep(bib['EV02'])`[^7], the assumptions (and results) of the Mack model are very similar to the normal approximation of the negative binomial model. The assumptions are as follows:
 
 - The over-dispersed negative binomial model assumes that the incremental payments $P_{ij}$ have the following distribution: $P_{ij} \sim \mbox{ODNB}\left(\mu=\left(\lambda_{j-1}\right) C_{i,j-1},\sigma^2=\phi \lambda_j \left(\lambda_j - 1 \right) C_{i,j-1}\right)$, where $\lambda_j$ is equivalent to the standard volume all Chain Ladder factor $f_j$ from development year $j-1$ to $j$. Additionally, there is an unknown dispersion parameter $\phi$ forming part of the variance, which makes the distribution "over-dispersed";
 - Noting that $C_{ij}=C_{i,j-1} + P_{i,j}$, and assuming that in this (recursive) approach $C_{i,j-1}$ is known, we can rewrite the above as: $C_{ij} \sim \mbox{ODNB}\left(\mu= f_j \, C_{i, j-1}, \sigma^2=\phi \, \lambda_j \, f_j \left(f_{j-1} - 1 \right) C_{i,j-1}\right)$.
 
-However, the ODNB assumption is not generally used in practice. As proven by Mack and Verrall `r citep(bib['MV00b'])`, since the negative binomial model is derived from the Poisson model, the predictive distributions are essentially the same and give identical predicted values. Furthermore, if $f_j < 1$ the variance of the model above is negative and the ODNB model breaks down. To overcome this, we require a distribution whose support is not restricted to the positive real domain. The Normal distribution is a suitable candidate. Therefore, we can replace the ODNB assumption with a Normal approximation, retaining the same mean and variance, as much as is possible for the variance, i.e. we would expect the variance to be proportional to $C_{i, j-1}$ with a constant of proportionality depending on $j$.
+However, the ODNB assumption is not generally used in practice. As proven by Mack and Verrall `r citep(bib['MV00b'])`, since the negative binomial model is derived from the Poisson model, the predictive distributions are essentially the same and give identical predicted values. Furthermore, if $f_j < 1$[^8] the variance of the model above is negative and the ODNB model breaks down. To overcome this, we require a distribution whose support is not restricted to the positive real domain. The Normal distribution is a suitable candidate. Therefore, we can replace the ODNB assumption with a Normal approximation, retaining the same mean and variance, as much as is possible for the variance, i.e. we would expect the variance to be proportional to $C_{i, j-1}$ with a constant of proportionality depending on $j$.
 
 Thus the Normal approximation is given below:
 $$
@@ -990,12 +990,12 @@ where - as we have previously seen $\log(m_{ij}) =\eta_{ij} = \alpha_i + \beta_j
 
 For the ODP model, a simulation cycle is as follows:
 
-1. Fit a GLM  as specified in the section [Over-dispersed Poisson Model](#Over-dispersed Poisson Model) on the $P_{ij}$ 	to derive the estimate $(\alpha_1, \dots,\alpha_n, \beta_1, \dots, \beta_n, \phi)$ of the GLM parameters;
+1. Fit a GLM[^9]  as specified in the section [Over-dispersed Poisson Model](#Over-dispersed Poisson Model) on the $P_{ij}$ 	to derive the estimate $(\alpha_1, \dots,\alpha_n, \beta_1, \dots, \beta_n, \phi)$ of the GLM parameters;
 2. Parameter error:
     + If using a semi-parametric bootstrap then generate a set of pseudo incremental payments $P_{ij}^{k,B}$ and Fit another GLM on the pseudo payments $P_{ij}^{k,B}$, to derive a bootstrapped estimate $(\alpha_1^B,\dots,\alpha_n^B,\beta_1^B,\dots,\beta_n^B,\phi^B)$ of the GLM parameters;
     + If using a parametric bootstrap, sample the GLM parameters directly to obtain the bootstrapped estimate of the parameters.
 3. Using the bootstrapped parameters above, derive the future triangle payments introducing the process error by either:
-    + generating a random number from the ODP distribution : $P_{ij}^{u,B} \sim \mbox{ODP}\left(\mu=m_{ij}^B, \sigma^2= \phi^B \, m_{i,j}^B \right)$; or
+    + generating a random number from the ODP distribution[^10] : $P_{ij}^{u,B} \sim \mbox{ODP}\left(\mu=m_{ij}^B, \sigma^2= \phi^B \, m_{i,j}^B \right)$; or
     + Re-sample the residuals and apply to the forecast payments
 4. Once the future unknown payments have been simulated, derive both the reserve $R_i^s$ for each origin year $i$  and the total reserve $R_{TOT}^s$ for the simulation cycle $s$.
 
@@ -1012,13 +1012,13 @@ In addition, we need the following two items (as seen in section [A Stochastic B
 1. The *a priori* estimates of the ultimate claims  $U_i$ for each accident year $i$; and
 2. The *a priori* estimates of the standard deviations of the prior estimates of the ultimate claims for each accident year $i$.
 
-The estimates of the ultimate claims are usually readily available (as they would have been used in the deterministic BF calculations and so would be available from the pricing or reserving departments). However estimating their standard deviation is considerably more difficult. One possible simplifying assumption is to fix a single CoV  for all origin years and to calculate the standard deviations accordingly (by multiplying the CoV by the a priori estimate of ultimate claims). It would be natural to estimate this CoV using expert knowledge or looking at the uncertainty of the historical ULR per accident year. 
+The estimates of the ultimate claims are usually readily available (as they would have been used in the deterministic BF calculations and so would be available from the pricing or reserving departments). However estimating their standard deviation is considerably more difficult. One possible simplifying assumption is to fix a single CoV[^11]  for all origin years and to calculate the standard deviations accordingly (by multiplying the CoV by the a priori estimate of ultimate claims). It would be natural to estimate this CoV using expert knowledge or looking at the uncertainty of the historical ULR per accident year. 
 
 A simulation cycle for Alai, Merz and Wüthrich's stochastic BF model might proceed as follows:
 
 1. Simulate parameter error exactly as for the ODP, described above in steps 1 and 2 of section [Over-dispersed Poisson](#Over-dispersed Poisson). From the simulated parameters calculate the pseudo incremental development pattern.
-2. For every origin year $i$, simulate  a random a priori ultimate, with mean $U_i$ and standard deviation given by $CoV \cdot U_i$.
-3. Simulate the future incremental paid amounts in exactly the same way as for the ODP model, except that the mean and variance will be calculated using the pseudo incremental development pattern and the simulated prior estimate of the ultimate claims, and so will be  given by the formulae $E[P_{ij}]= y_i \, \nu_i$ and $\mbox{Var}[P_{ij}] = \phi \, y_i \, \nu_i$ where $y_i$ is the pseudo incremental  development proportion  simulated in step 1 above, and $\nu_i$ is the a priori ultimate simulated in step 2 above.
+2. For every origin year $i$, simulate[^12]  a random a priori ultimate, with mean $U_i$ and standard deviation given by $CoV \cdot U_i$.
+3. Simulate the future incremental paid amounts in exactly the same way as for the ODP model, except that the mean and variance will be calculated using the pseudo incremental development pattern and the simulated prior estimate of the ultimate claims, and so will be  given by the formulae $E[P_{ij}]= y_i \, \nu_i$ and $\mbox{Var}[P_{ij}] = \phi \, y_i \, \nu_i$ where $y_i$ is the pseudo incremental  development proportion[^13]  simulated in step 1 above, and $\nu_i$ is the a priori ultimate simulated in step 2 above.
 4. The simulated reserve for each origin period is then just the sum of the future incremental claims payments, and the BF ultimate claims and the simulated reserve plus the latest simulated cumulative claims amount. The total reserve is then the sum of the reserves for each origin year $i$.
 
 As for the previous models, the mean and variance of the resulting distribution of simulated reserves give the best estimate reserve and the uncertainty of the best estimate.
@@ -1241,7 +1241,7 @@ The calendar year plot causes some concern as it appears that there may be a mis
 
 </div>
 
-Consequently, doubts are cast over the applicability of both the Mack and ODP models (using their standard regression structure ending up with the same estimates as the Chain Ladder model - note that the regression structure can be changed within the same models. This is supported by the estimates of CoV. As may be seen from Table 7 -11, these are high for all accident years and particularly so for the most recent accident year. Given the nature of the data there are high levels of uncertainty associated with the reserve estimates from these models so the results are merely reflecting this. From a practical point of view, however, such levels of uncertainty render results unusable so we must look to other possible models.
+Consequently, doubts are cast over the applicability of both the Mack and ODP models (using their standard regression structure ending up with the same estimates as the Chain Ladder model - note that the regression structure can be changed within the same models[^14]. This is supported by the estimates of CoV. As may be seen from Table 7 -11, these are high for all accident years and particularly so for the most recent accident year. Given the nature of the data there are high levels of uncertainty associated with the reserve estimates from these models so the results are merely reflecting this. From a practical point of view, however, such levels of uncertainty render results unusable so we must look to other possible models.
 
 #### Mack and ODP coefficients of variation for data set 2
 
@@ -1345,7 +1345,8 @@ For convenience, a list of common acronyms or abbreviations used in the paper is
 
 [^9]: Note that according to the Verrall result, instead of fitting a GLM it is possible to fit directly a **Volume All DFM** to speed up the estimation process during a semi-parametric bootstrap. There, we would recommend avoiding other development factor selection rules other than Volume All, if possible.
 
-[^10]: Note that, as simulating an ODP is not a straightforward task, a Gamma function is often used instead, formulated to have similar properties, as  . This is slightly forced, as a Gamma function should have  .
+[^10]: Note that, as simulating an ODP is not a straightforward task, a Gamma function is often used instead, formulated to have similar properties, as as $P_{i,j}^{u,B} \sim \mbox{Gamma}(\mu=m_{i,j}^B,\sigma^2=\phi^B m_{i,j}^B)$. This is slightly forced, as a Gamma function should have $\sigma^2=\phi m^2$ instead of $\sigma^2= \phi m$.
+
 
 [^11]: Coefficient of Variation
 
