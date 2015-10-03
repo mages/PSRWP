@@ -619,7 +619,7 @@ Model validation is the process of examining whether the model provides a good f
 
 This section opens by firstly considering residual diagnostics since these may be applied to all models. Following that, we outline model specific tests for the models discussed in section [*Models*](#Models).
 
-For the most part, the residuals are assumed to be standardised residuals. These may be calculated via GLM software. Definitions of residuals for GLMs may be found in McCullough and Nelder `r citep(bib['MN89'])`. Additionally, the open source R [ChainLadder](http://cran.r-project.org/web/packages/ChainLadder/index.html)[^6] library and its vignette `r citep(bib['CGMWZ15'])` implement most of the topics discussed in this section.
+For the most part, the residuals are assumed to be standardised residuals. These may be calculated via GLM software. Definitions of residuals for GLMs may be found in McCullough and Nelder `r citep(bib['MN89'])`. Additionally, the open source R [ChainLadder](https://cran.r-project.org/package=ChainLadder)[^6] library and its vignette `r citep(bib['CGMWZ15'])` implement most of the topics discussed in this section.
 
 Much of the discussion below is drawn from that in Taylor and McGuire `r citep(bib['TM15'])`, wherein further details and examples may be found.
 
