@@ -1298,7 +1298,7 @@ For convenience, a list of common acronyms or abbreviations used in the paper is
 
 [^5]: Or ODP distribution, if the dispersion parameter isn't assumed as 1.
 
-[^6]: [http://cran.r-project.org/web/packages/ChainLadder/index.html](http://cran.r-project.org/web/packages/ChainLadder/index.html)
+[^6]: [https://cran.r-project.org/package=ChainLadder](https://cran.r-project.org/package=ChainLadder)
 
 [^7]: Section 2.6 - Mack's model
 
