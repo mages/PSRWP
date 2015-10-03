@@ -1040,7 +1040,7 @@ Notes:
 
 ###	Analysis of Data Set 1<a name="AnalysisDataSet1"></a>
 
-Given the nature of the data, the Mack or ODP models are a reasonable starting point. The central estimates for both models may be calculated by applying the chain ladder algorithm. The resulting forecast incremental payments, ultimate amounts per year and reserves are shown in Table 7 2 and Table 7 3.
+Given the nature of the data, the Mack or ODP models are a reasonable starting point. The central estimates for both models may be calculated by applying the chain ladder algorithm. The resulting forecast incremental payments, ultimate amounts per year and reserves are shown in Figure [*Chain-ladder payment projections for example data set 1*](#fig:Chain-ladderpaymentprojectionsforexampledataset1) and Figure [*Chain-ladder reserve estimates for example data set 1*](#fig:Chain-ladderreserveestimatesforexampledataset1).
 
 <div id="fig:Chain-ladderpaymentprojectionsforexampledataset1">
 ![Chain-ladder payment projections for example data set 1](figures/Chain-ladderpaymentprojectionsforexampledataset1.png)
