@@ -5,7 +5,6 @@ options("citation_format" = "pandoc")
 bib <- read.bibtex("PSRWP.bib")
 ```
 
-
 **Disclaimer**
 
 *The views expressed in this publication are those of invited contributors and not necessarily those of their employers or of the Institute and Faculty of Actuaries. The Institute and Faculty of Actuaries do not endorse any of the views stated, nor any claims or representations made in this publication and accept no responsibility or liability to any person for loss or damage suffered as a consequence of their placing reliance upon any view, claim or representation made in this publication. The information and expressions of opinion contained in this publication are not intended to be a comprehensive study, nor to provide actuarial advice or advice of any nature and should not be treated as a substitute for specific advice concerning individual situations. On no account may any part of this publication be reproduced without the written permission of the Institute and Faculty of Actuaries*
@@ -221,7 +220,7 @@ As noted in the previous section, the common market practice is that stochastic 
 
 As the ABE and the stochastic reserving model frequently follow two different processes, it is likely that the former will differ from the Stochastic Reserving Best Estimate (SBE) (where the best estimate is defined as the central estimate, or the mean, of the stochastic distribution). This is usually due to the fact that it is easier to embed external business knowledge in the ABE than in the stochastic models, as the latter have stronger assumptions and are often less flexible. However, it is reasonable to expect the ABE and SBE to be in a reasonable range (to within approximately 10%), as the SBE should represent the uncertainty around the ABE process and thus be reasonably aligned to the ABE. In practice, this may be difficult to achieve, as the standard parametrisations of the most commonly-used stochastic methods (Over-dispersed Poisson model and Mack, refer to section [*Models*](#Models) for more details) have SBEs equal to the deterministic Chain Ladder (or Volume All DFM) estimate. In other words, the further the ABE is from a Chain Ladder estimate, the more it will usually differ from the SBE given current market practice. If the difference is material (e.g. >10%), it is recommended to consider either other stochastic methods that replicate better the methodology used for setting the ABE (e.g. the Stochastic Bornhuetter-Ferguson is often a useful alternative) or to change the GLM regression structure and assumptions underlying the stochastic models.
 
-On the contrary, if the difference falls in a reasonable range, it is widely accepted practice to align the SBE to the ABE. This is usually achieved by shifting the reserve distribution using either an additive or multiplicative scaling. In a nutshell, additive scaling keeps the same standard deviation after scaling as before, whilst the multiplicative keeps the same CoV, as shown in the figures below.
+On the contrary, if the difference falls in a reasonable range, it is widely accepted practice to align the SBE to the ABE. This is usually achieved by shifting the reserve distribution using either an additive or multiplicative scaling. In a nutshell, additive scaling keeps the same standard deviation after scaling as before, whilst the multiplicative keeps the same CoV, as shown in Figures [*Additive Scaling*](#fig:AdditiveScaling) and [*Multiplicative Scaling*](#fig:MultiplicativeScaling).
 
 <div id="fig:AdditiveScaling">
 ![Additive Scaling](figures/AdditiveScaling.png)
@@ -278,39 +277,34 @@ This represents the uncertainty in the parameter estimates assuming the model is
 
 **Model error:** $\left[u(i,j;\theta) -  \nu(i,j;\varphi) \right]$. This measures the difference between the parametric form assumed for the model and the true but unknown parametric form, i.e. the error introduced by the choice of model.
 
-A simplified graphical representation of each of the three sources of error is 
-given in Figures below.
+A simplified graphical representation of each of the three sources of error is given in Figures [*Parameter Error*](#fig:ParameterError), [*Process Error*](#fig:ProcessError) an [*Model Error*](#fig:ModelError).
 
-#### Parameter Error<a name="Parameter Error"></a>
 <div id="fig:ParameterError">
 ![Parameter Error](figures/ParameterError.png)
 
 </div>
 
-From the above figure we see that parameter error (or risk) represents the difference in mean values between the estimated distribution and the assumed distribution with true underlying parameters.
-
-#### Process Error<a name="Process Error"></a>
+From the Figure [*Parameter Error*](#fig:ParameterError) we see that parameter error (or risk) represents the difference in mean values between the estimated distribution and the assumed distribution with true underlying parameters.
 
 <div id="fig:ProcessError">
 ![Process Error](figures/ProcessError.png)
 
 </div>
 
-Process error is depicted above. This represents the error caused by the actual future value differing from the mean of the assumed underlying distribution with the true parameters.
+Process error is depicted in Figure [*Process Error*](#fig:ProcessError) This represents the error caused by the actual future value differing from the mean of the assumed underlying distribution with the true parameters.
 
-#### Model Error<a name="Model Error"></a>
 <div id="fig:ModelError">
 ![Model Error](figures/ModelError.png)
 
 </div>
 
-Model error is shown above, i.e. the error that the model is mis-specified. In this simple example, the true model is a log normal distribution but the assumed distributional form is normal.
+Model error is shown in Figure [*Model Error*](#fig:ModelError), i.e. the error that the model is mis-specified. In this simple example, the true model is a log normal distribution but the assumed distributional form is normal.
 
 Parameter and process error are the two components of **independent risk** - i.e. those risks that arise from the inherent randomness in the insurance process.
 
 Model error corresponds to **systemic risk** , i.e. risks that impact a lot of claims, or a number of valuation groups or even all claims. Examples of systemic risk include legislative or other environmental changes or claims process changes that impact the number and settlement size of claims. The emergence of latent claims, binary events and ENIDS (Events Not in Data) are all components of systemic risk.
 
-Since model error involves the true _unknown_ underlying distribution, its quantification is difficult. There is no known procedure for its estimation by reference just to the data relied on by the modelling. However, there have been some attempts to quantify model error from data and opinions external to the data set. O'Dowd et al `r citep(bib['OSH05'])` and subsequently the Risk Margins Taskforce (Actuaries' institute, Australia) `r citep(bib['RMT08'])` set out a process to tackle this issue by:
+Since model error involves the true **unknown** underlying distribution, its quantification is difficult. There is no known procedure for its estimation by reference just to the data relied on by the modelling. However, there have been some attempts to quantify model error from data and opinions external to the data set. O'Dowd et al `r citep(bib['OSH05'])` and subsequently the Risk Margins Taskforce (Actuaries' institute, Australia) `r citep(bib['RMT08'])` set out a process to tackle this issue by:
 
  - Identifying the major potential causes of model error
  - Scoring each subjectively for its likely impact
@@ -324,7 +318,7 @@ The Solvency II standards say the following regarding model error:
 
 SCR.1.23 Undertakings are not required to quantify the degree of model error in quantitative terms, or to re-calculate the value of the capital requirement using a more accurate method in order to demonstrate that the difference between the result of the chosen method and the result of a more accurate method is immaterial. Instead, it is sufficient if there is reasonable assurance that the model error included in simplification is immaterial.
 
-So there is an onus on the actuary to satisfy themselves that their selected form of variability estimation adequately captures the main sources of error. Section [Model Validation](#Model Validation) contains information to help the actuaries in this sense, giving an overview of the techniques that can be used to validate model assumptions.
+So there is an onus on the actuary to satisfy themselves that their selected form of variability estimation adequately captures the main sources of error. Section [*Model Validation*](#Model Validation) contains information to help the actuaries in this sense, giving an overview of the techniques that can be used to validate model assumptions.
 
 
 ## Measures of Reserve Uncertainty<a name="Measures of Reserve Uncertainty"></a>
@@ -377,7 +371,7 @@ Using these three assumptions Mack derives formulae for the mean squared error o
 
 ### Analytic Calculation of MSEP<a name="Analytic Calculation of MSEP"></a>
 
-Mack derives analytic formulae for the MSEP for the reserve estimates of individual origin periods, and for the total reserve across all origin periods. The MSEP consists of the parameter error and the process error (section [Measures of Reserve Uncertainty](#Measures of Reserve Uncertainty)). Recall from section [Sources of Uncertainty](#Sources of Uncertainty) that parameter error is the error due to the fact that the parameters are estimated from a limited set of data, and therefore unlikely to be equal to the "true" underlying parameters, while process error is the error somehow inherent in the underlying process producing the claims data. The parameter error arises from fitting the model to the given claims triangle, the process error arises from projecting from the given claims data to estimate the ultimate claims amounts. In assumption (2) Mack assumes that the origin periods are independent. It follows from this that the process errors for different origin periods are independent. However the parameter errors for two different origin periods are both based on the same estimated parameters, and so are correlated. Therefore the reserve estimates for different origin periods are correlated, and this needs to be taken account of when calculating the MSEP of the total reserve estimate across all the origin periods.
+Mack derives analytic formulae for the MSEP for the reserve estimates of individual origin periods, and for the total reserve across all origin periods. The MSEP consists of the parameter error and the process error (section [*Measures of Reserve Uncertainty*](#Measures of Reserve Uncertainty)). Recall from section [*Sources of Uncertainty*](#Sources of Uncertainty) that parameter error is the error due to the fact that the parameters are estimated from a limited set of data, and therefore unlikely to be equal to the "true" underlying parameters, while process error is the error somehow inherent in the underlying process producing the claims data. The parameter error arises from fitting the model to the given claims triangle, the process error arises from projecting from the given claims data to estimate the ultimate claims amounts. In assumption (2) Mack assumes that the origin periods are independent. It follows from this that the process errors for different origin periods are independent. However the parameter errors for two different origin periods are both based on the same estimated parameters, and so are correlated. Therefore the reserve estimates for different origin periods are correlated, and this needs to be taken account of when calculating the MSEP of the total reserve estimate across all the origin periods.
 
 We now describe the formula for the process error component of the MSEP for an individual origin period. The process error is governed by the parameters $\sigma_j^2$ introduced in assumption (3). The first step is therefore to estimate these parameters. Mack does this using the following formula:
 
@@ -434,7 +428,7 @@ $$
 
 ### Introduction<a name="ODP Introduction"></a>
 
-In section [Mack's Model](#Macks Model) above, we discussed the development of stochastic models of the Chain Ladder. We noted that it was recognised quite early by Hachemeister and Stanard `r citep(bib['HS75'])` that a Poisson distribution assumption for incremental claim numbers leads to the same reserve estimates as the Chain Ladder method, and that this insight may be seen as a precursor of the over-dispersed Poisson (ODP) model.
+In section [*Mack's Model*](#Macks Model) above, we discussed the development of stochastic models of the Chain Ladder. We noted that it was recognised quite early by Hachemeister and Stanard `r citep(bib['HS75'])` that a Poisson distribution assumption for incremental claim numbers leads to the same reserve estimates as the Chain Ladder method, and that this insight may be seen as a precursor of the over-dispersed Poisson (ODP) model.
 
 Hachemeister and Stanard's Poisson model is described in detail by Wüthrich and Merz `r citep(bib['WM08'])`, section 2.3. It is a model of incremental claims numbers by origin period and development period, and assumes that these are independent and have a Poisson distribution. It assumes that the mean number of incremental claims for each origin period and development period is the product of an origin period parameter and a development period parameter. The parameters are estimated using maximum likelihood estimation. The estimated parameters can then be used to estimate the incremental claims numbers for future development periods for each origin period. The estimates thus obtained are identical to the estimates obtained by applying the basic Chain Ladder method.
 
@@ -513,7 +507,7 @@ Where d denotes the degrees of freedom and is calculated as the number of observ
 
 Alternatively, the ODP model may be fitted using GLM software (see, e.g., Taylor and McGuire `r citep(bib['TM15'])`. Furthermore, the GLM framework allows other distributions to be considered which may be more appropriate for the claims data (Renshaw and Verrall `r citep(bib['RV98'])`).
 
-It is worth noting that the ODP distribution is a special case of a Tweedie distribution, which was introduced by Tweedie `r citep(bib['Tw84'])`. A characteristic of a Tweedie distribution is that the variance is proportional to $\mu^p$ where $\mu$ is the mean and  $p \leq 0$ or $p\geq1$ . Members of the Tweedie family include the Poisson[^5] distribution ($p=1$), the Normal distribution ($p=0$) and the Gamma distribution ($p=2$). Models using all these distributions may be fitted using GLM software (quasi-likelihood is used for the ODP and for non-integer $p$). Tweedie models are of particular interest when validating the distribution assumptions in reserving problems: for example, Jorgensen and Paes de Souza `r citep(bib['JP94'])` showed that Tweedie models with $1 \leq p \leq2$ can be identified as compound Poisson distributions with Gamma severity distributions. In practical terms, higher values of $p$ correspond to heavier tailed distributions. Therefore, if ODP model validation (discussed later in section [Model Validation](#Model Validation)) suggests that the data is heavier-tailed than the ODP distribution, then a Tweedie distribution with $p \geq 1$ could be considered as an alternative. For further discussion on this, including estimation of a suitable value for $p$, refer to `r citep(bib['PSW09'])` and `r citep(bib['CGMWZ15'])`.
+It is worth noting that the ODP distribution is a special case of a Tweedie distribution, which was introduced by Tweedie `r citep(bib['Tw84'])`. A characteristic of a Tweedie distribution is that the variance is proportional to $\mu^p$ where $\mu$ is the mean and  $p \leq 0$ or $p\geq1$ . Members of the Tweedie family include the Poisson[^5] distribution ($p=1$), the Normal distribution ($p=0$) and the Gamma distribution ($p=2$). Models using all these distributions may be fitted using GLM software (quasi-likelihood is used for the ODP and for non-integer $p$). Tweedie models are of particular interest when validating the distribution assumptions in reserving problems: for example, Jorgensen and Paes de Souza `r citep(bib['JP94'])` showed that Tweedie models with $1 \leq p \leq2$ can be identified as compound Poisson distributions with Gamma severity distributions. In practical terms, higher values of $p$ correspond to heavier tailed distributions. Therefore, if ODP model validation (discussed later in section [*Model Validation*](#Model Validation)) suggests that the data is heavier-tailed than the ODP distribution, then a Tweedie distribution with $p \geq 1$ could be considered as an alternative. For further discussion on this, including estimation of a suitable value for $p$, refer to `r citep(bib['PSW09'])` and `r citep(bib['CGMWZ15'])`.
 
 ### Analytic Calculation of MSEP<a name="ODB Analytic Calculation of MSEP"></a>
 
@@ -523,7 +517,7 @@ The process error is calculated as the square root of the (fitted) scale paramet
 
 The calculation of the parameter error is more complicated. However we can make a few comments about how it is likely to behave. The parameter error increases approximately linearly with the reserve and with the scale parameter. As with the process error we would therefore expect the parameter error to decline as the origin periods get older. However the effect will be complicated as the relationship is only approximately linear.
 
-Note, however, that rather than using analytical formulae, it is usually easier to use bootstrapping and Monte Carlo simulation to yield a reserve distribution. Details of this approach are discussed in section [Estimating the Reserve Distribution](#Estimating the Reserve Distribution).
+Note, however, that rather than using analytical formulae, it is usually easier to use bootstrapping and Monte Carlo simulation to yield a reserve distribution. Details of this approach are discussed in section [*Estimating the Reserve Distribution*](#Estimating the Reserve Distribution).
 
 ## A Stochastic Bornhuetter-Ferguson Model<a name="A Stochastic Bornhuetter-Ferguson Model"></a>
 
@@ -533,7 +527,7 @@ The Bornhuetter-Ferguson (BF) method was proposed by Bornhuetter and Ferguson in
 
 It is comparatively recently that attempts were made to specify a stochastic model consistent with the method described by Bornhuetter and Ferguson, and which could justifiably be called a Stochastic BF model. In 2000, Mack `r citep(bib['Ma00'])` studied Benktander's method which is an intuitive credibility mixture of the BF method and the Chain Ladder. In this paper he described a very simple stochastic model and derived formulae for the prediction error for all three methods within this model. In 2004, Verrall `r citep(bib['Ve04'])` studied how the BF method could be written in terms of Bayesian models within the framework of generalised linear models. The models are implemented using a Markov Chain Monte Carlo approach (i.e. using simulations) and so no analytic formulae for prediction errors are given. Mack `r citep(bib['Ma08'])` described a stochastic model consistent with the BF method. He derived formulae for the fitted parameters, and the prediction error of the reserve. However in this model the proportion applied to the prior estimate of ultimate to calculate the reserve is different from that implied by the Chain Ladder factors, and the model is therefore not consistent with how the BF model is used in practice. In 2009 Alai, Merz and Wüthrich `r citep(bib['AMW09'])` used the over-dispersed Poisson model to derive a stochastic model consistent with the BF method and where the reserve is equal to the proportion of the prior estimate of the ultimate claims implied by the Chain Ladder development factors. Within this model they derived formulae for the mean squared error of prediction (MSEP) for the reserves. The following year in `r citep(bib['AMW10'])` they derived significantly simplified formulae. It is this latter model that we describe in this section.
 
-The stochastic BF model that we describe is based on the ODP model. In this section we assume that the reader understands the ODP model as described in the section [Over-Dispersed Poisson Model](#Over-Dispersed Poisson Model) above. We start by reviewing the classical deterministic BF method. We then describe the assumptions for the stochastic BF model and attempt to give an intuitive explanation of the calculation of the MSEP for the reserves.
+The stochastic BF model that we describe is based on the ODP model. In this section we assume that the reader understands the ODP model as described in the section [*Over-Dispersed Poisson Model*](#Over-Dispersed Poisson Model) above. We start by reviewing the classical deterministic BF method. We then describe the assumptions for the stochastic BF model and attempt to give an intuitive explanation of the calculation of the MSEP for the reserves.
 
 The basic idea of the BF method is to calculate the reserve for each origin period as a proportion of a prior estimate of the ultimate claims. The prior estimate is an input to the model and could incorporate information from underwriters, premium calculations or strategic business plans. The key thing is that it is independent of the claims data for the origin period. The proportion applied to the prior estimate of the ultimate claims is, in practice, usually derived from the basic Chain Ladder factors. It is perfectly possible to use other factors, but Alai, Merz, and Wüthrich's model assumes that the Chain Ladder factors are used.
 
@@ -569,7 +563,7 @@ C_{i, n-i} = \frac{C^{CL}_{i, n}}{\prod_{k=n-i}^{n-1} f_k } = C^{CL}_{i, n} \cdo
 $$
 Generally $\beta_{n-i}$ is larger for older origin periods, and smaller for more recent origin periods. Therefore, for the older origin periods more weight is given to the basic Chain Ladder estimate, and for more recent periods more weight is given to the prior estimate of ultimate claims. Below, when we look at the prediction error in the BF estimate of the reserves, we see a similar pattern. For the older periods the contribution to the prediction error of the prior estimate of the ultimate claims is relatively small, whereas for the more recent periods the contribution to the prediction error of the prior estimate of the ultimate claims is relatively larger.
 
-The BF method is particularly useful when modelling long-tailed lines of business. For these lines the Chain Ladder method can often give unreasonable results for the more recent origin periods. The BF method mitigates this problem by giving more weight to the prior estimate of the ultimate claims, and less weight to the Chain Ladder estimate of the ultimate claims. When we look at the prediction error in the estimate of the reserves we see a similar pattern. In long-tail lines of business, in cases where the Chain Ladder estimate of the ultimate claims is unreasonable, the stochastic Chain Ladder models can often give very large estimates of the prediction error. It is important to note that in such cases, that whilst the best estimate is unreasonable, it is actually quite reasonable to have a large prediction error. When we apply the BF method to such cases we find that we get a much more reasonable estimate of the ultimate claims admittedly based on our prior view, and a smaller value for the prediction error. We see this in the application of the different models to data set 2 in section [Example 2](#Example 2).
+The BF method is particularly useful when modelling long-tailed lines of business. For these lines the Chain Ladder method can often give unreasonable results for the more recent origin periods. The BF method mitigates this problem by giving more weight to the prior estimate of the ultimate claims, and less weight to the Chain Ladder estimate of the ultimate claims. When we look at the prediction error in the estimate of the reserves we see a similar pattern. In long-tail lines of business, in cases where the Chain Ladder estimate of the ultimate claims is unreasonable, the stochastic Chain Ladder models can often give very large estimates of the prediction error. It is important to note that in such cases, that whilst the best estimate is unreasonable, it is actually quite reasonable to have a large prediction error. When we apply the BF method to such cases we find that we get a much more reasonable estimate of the ultimate claims admittedly based on our prior view, and a smaller value for the prediction error. We see this in the application of the different models to data set 2 in section [*Example 2*](#Example 2).
 
 ### Assumptions<a name="BF Assumptions"></a>
 
@@ -605,7 +599,7 @@ It is important that an appropriate model be used for the data under considerati
 - checking the specific model assumptions to see if these are satisfied by the data
 - reviewing residual diagnostics for evidence of poor fit.
 
-Both of these are discussed further in section [Model Validation](#Model Validation).
+Both of these are discussed further in section [*Model Validation*](#Model Validation).
 
 This raises the question: what should be done if the above models are not suitable for the data set? A first step might be to consider models other than the Chain Ladder (and related models) which may better suit the data in question.
 
@@ -621,14 +615,14 @@ Once a coefficient of variation has been estimated, it may be combined with the 
 
 # Model Validation<a name="Model Validation"></a>
 
-Before applying the results of any model, or using that model for further inference (e.g. simulation, bootstrapping as discussed in section [Estimating the Reserve Distribution](#Estimating the Reserve Distribution)), it is essential to check that the model provides a reasonable description of the data. Failure to do so leaves the modeller at risk of using an ill-fitting model. In the specific example of stochastic reserving, consequences could include materially incorrect estimates of the reserves (if the model is used to set the central reserve estimate) and materially incorrect estimates of the reserve uncertainty.
+Before applying the results of any model, or using that model for further inference (e.g. simulation, bootstrapping as discussed in section [*Estimating the Reserve Distribution*](#Estimating the Reserve Distribution)), it is essential to check that the model provides a reasonable description of the data. Failure to do so leaves the modeller at risk of using an ill-fitting model. In the specific example of stochastic reserving, consequences could include materially incorrect estimates of the reserves (if the model is used to set the central reserve estimate) and materially incorrect estimates of the reserve uncertainty.
 
 Model validation is the process of examining whether the model provides a good fit to the data. For stochastic reserving models, validation may be viewed as a two steps process:
 
 - Checking that model specific assumptions are valid for the data
 - General statistical model validation including a review of the residuals to check that they are independent and identically distributed.
 
-This section opens by firstly considering residual diagnostics since these may be applied to all models. Following that, we outline model specific tests for the models discussed in section [Models](#Models).
+This section opens by firstly considering residual diagnostics since these may be applied to all models. Following that, we outline model specific tests for the models discussed in section [*Models*](#Models).
 
 For the most part, the residuals are assumed to be standardised residuals. These may be calculated via GLM software. Definitions of residuals for GLMs may be found in McCullough and Nelder `r citep(bib['MN89'])`. Additionally, the open source R [ChainLadder](http://cran.r-project.org/web/packages/ChainLadder/index.html)[^6] library
 
@@ -664,14 +658,13 @@ Within the statistics literature, it is generally recommended that residuals be 
 
 In these plots by accident, development or calendar period, it is also helpful to include the mean and standard deviation of the residuals for each period - standardised residuals from a well-fitting model should have a mean of zero and a standard deviation of 1 (or at least a constant standard deviation, depending on how the standardisation of the residuals has been implemented). If the mean varies significantly from 0 then this suggests that part of the model fits poorly, i.e. the model is biased for that subset of the data. If the mean is approximately zero, but the standard deviation of the residuals varies (e.g. is smaller for small fitted values and larger for large fitted values) then this suggests a problem with the distributional assumptions.
 
-
-The figure below gives examples of these scatter plots for the first simulated data set, which has been simulated from an ODP model.
+The Figure [*Residual scatter plot simulation 1*](#fig:ResidualScatterSim1) gives examples of these scatter plots for the first simulated data set, which has been simulated from an ODP model.
 
 <div id="fig:ResidualScatterSim1">
 ![Residual scatter plot simulation 1](figures/ResidualScatterSim1.png)
 
 </div>
-The same plots are now shown in the figure below for the second simulated data set. This data set has a calendar or payment year trend but has been modelled using an ODP so the payment year trend is not captured in this model.
+The same plots are now shown in the Figure [*Residual scatter plot simulation 2*](#fig:ResidualScatterSim2)  for the second simulated data set. This data set has a calendar or payment year trend but has been modelled using an ODP so the payment year trend is not captured in this model.
 
 <div id="fig:ResidualScatterSim2">
 ![Residual scatter plot simulation 2](figures/ResidualScatterSim2.png)
@@ -693,10 +686,7 @@ Figure [*Residual scatter plot simulation 1*](#fig:ResidualScatterSim1) plots, f
 
 The comparison of actual and fitted values fluctuates around 100% for data set 1, which has been correctly modelled. However, data set 2 shows systematic differences between actual and fitted values providing evidence of a missing payment year trend.
 
-The pattern of the actual/fitted series in Figure [Residual scatterplots for simulated data set 2](#fig:ResidualScatterSim2) mirrors that of the mean series in Figure [Residual scatterplots for simulated data set 1](#fig:ResidualScatterSim1) for the payment year scatterplot (bottom left hand graph) so some modellers may choose to rely on residual plots alone. Using actual vs fitted plots in addition to residual plots is a matter of personal preference. However, an advantage of the actual vs fitted plots is that they include the magnitude of the payments involved so the modeller can pay particular attention to the fit of the model where payment levels are high.
-
-
-#### Actual vs fitted graps by payment year<a name="Actual vs fitted graps by payment year"></a>
+The pattern of the actual/fitted series in Figure [*Residual scatterplots for simulated data set 2*](#fig:ResidualScatterSim2) mirrors that of the mean series in Figure [*Residual scatterplots for simulated data set 1*](#fig:ResidualScatterSim1) for the payment year scatterplot (bottom left hand graph) so some modellers may choose to rely on residual plots alone. Using actual vs fitted plots in addition to residual plots is a matter of personal preference. However, an advantage of the actual vs fitted plots is that they include the magnitude of the payments involved so the modeller can pay particular attention to the fit of the model where payment levels are high.
 
 <div id="fig:CorrectModelFitted">
 ![Correct model fitted](figures/CorrectModelFitted.png)
@@ -707,6 +697,7 @@ The pattern of the actual/fitted series in Figure [Residual scatterplots for sim
 ![Unmodelled payment year trend](figures/UnmodelledPaymentTrend.png)
 
 </div>
+
 Note: The accident and development year graphs are not shown since all ratios are 100%. This is a direct consequence of fitting a model with parameters for all accident and development periods with an ODP distribution since the estimation process ensures that the marginal totals are equal. This is true for simulated data set 2, even though the model is inadequate.
 
 ### Heat Maps<a name="Heat Maps"></a>
@@ -725,7 +716,7 @@ The figures below show heat maps for actual/fitted values by accident and develo
 
 </div>
 
-The figures below present the same heat maps for data set 2 where there is an unmodelled payment year trend. There are systematic patterns visible in both triangles - early and late payment years tend to have higher actual values greater than fitted values, while mid-term payment years tend to have higher fitted values.
+The Figures [*Accident/development year triangle for data 2*](#fig:AccidentDevelopment2), [*Accident/payment year triangle for data set 2*](#fig:AccidentPayment2) present the same heat maps for data set 2 where there is an unmodelled payment year trend. There are systematic patterns visible in both triangles - early and late payment years tend to have higher actual values greater than fitted values, while mid-term payment years tend to have higher fitted values.
 
 For data set 2, we already know from the residual and one-way summary plots of actual vs fitted that there are unmodelled payment year trends so in this case the heat map may not add new information. However, heat maps are particularly useful at identifying interactions. For example, a payment pattern change impacting some accident years but not others would generate a systematic pattern in a heat map. Taylor and McGuire `r citep(bib['TM15'])` contains an example of using a heat map to identify and suitably model an interaction in an ODP model.
 
@@ -738,11 +729,12 @@ For data set 2, we already know from the residual and one-way summary plots of a
 ![Accident/payment year triangle for data set 2](figures/AccidentPayment2.png)
 
 </div>
+
 ## Model Specific Tests<a name="Model Specific Tests"></a>
 
 ### Mack Model Assumptions<a name="Mack model assumptions"></a>
 
-Recall the three assumptions of the Mack model from section [Mack's Model](#Macks Model):
+Recall the three assumptions of the Mack model from section [*Mack's Model*](#Macks Model):
 
 1. For each $j = 1, \dots , n-1$ there are development factors $f_j$ such that 
 $E[C_{i, j+1} | C_{i1}, \dots , C_{ij}] = C_{ij} f_j;$
@@ -755,7 +747,7 @@ $Var[C_{i,j+1}|C_{i,1}, \dots , C_{ij}] = C_{ij} \sigma^2_j$.
 
 When using the Mack model, each of these assumptions should be tested to ensure that they are appropriate for the data set in question.
 
-#### Development Factors Test<a name="Development Factors Test"></a>
+### Development Factors Test<a name="Development Factors Test"></a>
 
 `r citep(bib['MA97'])` shows that (1) implies that the sequential development factors $C_{ij}/C_{i.j-1}$ and  $C_{i,j+1}/C_{ij}$ are not correlated. He uses this fact to develop a test for whether the model should be applied, taking the following points into consideration:
 
@@ -775,11 +767,11 @@ A brief overview of this test is given below; full details may be sourced from A
 - It may be shown that $E[T]=0$ and $\mbox{Var}(T)= \frac{1}{(I-2)(I-3)/2}$ 
 - Mack then proposes using a normal distribution at the 50% confidence level as a suitable test for the appropriateness of using the Mack model.
 
-#### Independence of Accident Years<a name="Independence of Accident Years"></a>
+### Independence of Accident Years<a name="Independence of Accident Years"></a>
 
 The main cause of correlations between accident years are calendar year effects which arise in data for many reasons (e.g. a court case setting a precedent for awarded damages, changes to the claims handling department affecting all claims from a particular point in time onwards etc.).
 
-The graphical model diagnostics described above in section [Residual Diagonstics](#Residual Diagonstics) are likely to indicate if a calendar period trend is present and are straightforward to implement. Additionally for the Mack model, [Ma97] develops a test for the independence of accident years, as described in Appendix H to that paper.
+The graphical model diagnostics described above in section [*Residual Diagonstics*](#Residual Diagonstics) are likely to indicate if a calendar period trend is present and are straightforward to implement. Additionally for the Mack model, [Ma97] develops a test for the independence of accident years, as described in Appendix H to that paper.
 
 The idea underpinning this test is that, in the presence of a non-constant calendar year trend, diagonals of development factors will tend to have either larger or smaller than usual development factors. Thus, Mack proposes carrying out the following procedure:
 
@@ -789,7 +781,7 @@ The idea underpinning this test is that, in the presence of a non-constant calen
 
 Refer to Appendix H of `r citep(bib['MA97'])` for full details.
 
-#### Mack Sigma<a name="Mack Sigma"></a>
+### Mack Sigma<a name="Mack Sigma"></a>
 
 The sigma (or alpha) squared variance parameters are derived from the data and are proportional to the prediction error for each origin period. The behaviour of these parameters can be investigated as a way of checking that the data satisfies the Chain Ladder assumptions. These parameters reduce to zero with increasing origin age - this makes intuitive sense as older origin periods are expected to have a more certain outcome, and the development factors themselves run off to one as we have no tail factor in the basic Chain Ladder model. Graphing the progression of these variance parameters against the development period should produce a shape akin to an exponential decay to zero:
 
@@ -810,7 +802,7 @@ In a GLM application, one distribution will correspond to the selected error dis
 
 If the model fits well, the P-P plot should be an approximately straight line of the form $y=x$. Significant deviations from the straight line indicate problems with the distributional assumptions.
 
-The next two figures show Poisson P-P plots for a correctly specified distribution (Figure [Plot with correctly specified distribution](#fig:Plot_with_correctly_specified_distribution) and an incorrectly specified one ([Plot with incorrectly specified distribution](#ig:Plot_with_incorrectly_specified_distribution). The distribution in the second figure is heavier tailed than a Poisson distribution (in this situation, a Tweedie distribution might be useful). More details on P-P plots may be found in the statistical literature.
+The next two figures show Poisson P-P plots for a correctly specified distribution (Figure [*Plot with correctly specified distribution*](#fig:Plot_with_correctly_specified_distribution) and an incorrectly specified one (Figure [*Plot with incorrectly specified distribution*](#fig:Plot_with_incorrectly_specified_distribution). The distribution in the second figure is heavier tailed than a Poisson distribution (in this situation, a Tweedie distribution might be useful). More details on P-P plots may be found in the statistical literature.
 
 <div id="fig:Plot_with_correctly_specified_distribution">
 ![Plot with correctly specified distribution](figures/Plot_with_correctly_specified_distribution.png)
@@ -824,7 +816,7 @@ The next two figures show Poisson P-P plots for a correctly specified distributi
 
 #### ODP Dispersion Parameter<a name="ODP Dispersion Parameter"></a>
 
-In the definition of the ODP model given previously, the same value of the scale parameter is used throughout the triangle. However, it is possible and sometimes desirable to use a separate scale parameter for each development period. This is worth considering if residuals appear to be much more spread out at some development periods than others, which indicates a breakdown in the assumption that the scale parameter is constant throughout the triangle (such residuals are said to be heteroscedastic as discussed in section [Residual Scatterplot](#Residual Scatterplot)). Scale parameters that have been allowed to vary in this way are often lower for the first few development periods while expected incremental claims are large, reach a peak as incremental claims level off but there is still some volatility, and then decrease again at old ages where the volatility drops off.
+In the definition of the ODP model given previously, the same value of the scale parameter is used throughout the triangle. However, it is possible and sometimes desirable to use a separate scale parameter for each development period. This is worth considering if residuals appear to be much more spread out at some development periods than others, which indicates a breakdown in the assumption that the scale parameter is constant throughout the triangle (such residuals are said to be heteroscedastic as discussed in section [*Residual Scatterplot*](#Residual Scatterplot)). Scale parameters that have been allowed to vary in this way are often lower for the first few development periods while expected incremental claims are large, reach a peak as incremental claims level off but there is still some volatility, and then decrease again at old ages where the volatility drops off.
 
 [Residual scatter plots](#Residual Scatterplot) are helpful to test for the constancy of the scale parameter. Scatter plots by development period and also by the fitted value (or log of the fitted value) should be carefully examined. Any systematic pattern in the variability, but not the mean) of these residuals may indicate that a constant scale parameter is not acceptable (or that the selected weights for varying the scale parameter are inadequate). For example, if the variance by development period increases at a faster rate than the mean, then the residuals will exhibit a funnel pattern, with a larger spread for higher development periods.
 
@@ -838,7 +830,7 @@ If a model fails any of the above tests, then the modeller should consider revis
 
 **Outliers in residual plots**
 
-Firstly, have the residual plots identified any outliers. If there are outliers, should they be removed? Or if outliers have been removed, should they be put back in? Are there any other oddities in the data that should be investigated further? Refer back to section [Treatment of Outliers](#Treatment of Outliers) for some further discussion.
+Firstly, have the residual plots identified any outliers. If there are outliers, should they be removed? Or if outliers have been removed, should they be put back in? Are there any other oddities in the data that should be investigated further? Refer back to section [*Treatment of Outliers*](#Treatment of Outliers) for some further discussion.
 
 **Distributional assumptions**
 
@@ -852,17 +844,17 @@ If a deficiency is detected in the goodness of fit diagnostics (e.g. in the heat
 
 However, if the change is expected to be permanent, then it should be explicitly modelled. For example, if, in the most recent years, court awards for some injuries have increased, then, if fitting a Mack Chain Ladder model, it may be necessary to only use the most recent experience when estimating development factors for use in projection.
 
-If adjustments are necessary to ensure a well-fitting model then it is important to exercise due care in the application of any bootstrapping procedure. As discussed in section [Estimating Reserve Distribution](#Estimating Reserve Distribution), proper use of the bootstrap requires i.i.d residuals. Consider a 10 year triangle with changed experience in the most recent 3 years so that future development factors are estimated using only the most recent 3 years of data. A simple application of the bootstrap where development factors are estimated on all data would fail the Chain Ladder tests above and would lead to poorly fitting residuals and therefore, an unreliable estimate of variability. So too would applying the estimated development factors to data more than three years old. In this case, two sets of development factors are required: one set for years 1 to 7 and the second set for years 8 to 10. The modeller would then need to check that variability levels are similar between the older data and the newer data before running a bootstrapping procedure.
+If adjustments are necessary to ensure a well-fitting model then it is important to exercise due care in the application of any bootstrapping procedure. As discussed in section [*Estimating Reserve Distribution*](#Estimating Reserve Distribution), proper use of the bootstrap requires i.i.d residuals. Consider a 10 year triangle with changed experience in the most recent 3 years so that future development factors are estimated using only the most recent 3 years of data. A simple application of the bootstrap where development factors are estimated on all data would fail the Chain Ladder tests above and would lead to poorly fitting residuals and therefore, an unreliable estimate of variability. So too would applying the estimated development factors to data more than three years old. In this case, two sets of development factors are required: one set for years 1 to 7 and the second set for years 8 to 10. The modeller would then need to check that variability levels are similar between the older data and the newer data before running a bootstrapping procedure.
 
-Finally, if the adjustments above do not lead to an acceptable model, it may be necessary to consider alternative models and approaches such as those discussed in section [Other Models](#Other Models).
+Finally, if the adjustments above do not lead to an acceptable model, it may be necessary to consider alternative models and approaches such as those discussed in section [*Other Models*](#Other Models).
 
 # Estimating the Reserve Distribution<a name="Estimating the Reserve Distribution"></a>
 
-In section [Model Validation](#Model Validation), we referred to analytical formulae for calculating MSEP for the Mack and stochastic BF models. In this section we discuss the estimation of parameter and process error using bootstrapping and Monte Carlo simulation. We open by discussing each of these in general terms which may, in principle, be applied to any reserving model. We conclude the section by discussing the implementation of these procedures for the three models under consideration in this paper.
+In section [*Model Validation*](#Model Validation), we referred to analytical formulae for calculating MSEP for the Mack and stochastic BF models. In this section we discuss the estimation of parameter and process error using bootstrapping and Monte Carlo simulation. We open by discussing each of these in general terms which may, in principle, be applied to any reserving model. We conclude the section by discussing the implementation of these procedures for the three models under consideration in this paper.
 
 ## Parameter Error - Bootstrapping<a name="Parameter Error - Bootstrapping"></a>
 
-As we have seen in section [Sources of Uncertainty](#Sources of Uncertainty), the parameter error is the error due to the fact that the parameters of the fitted model are estimated and are thus uncertain. Ideally, in order to estimate this uncertainty, we need other samples from the same population, which are often (always, in the reserving case) not available. In order to overcome this issue, a common approach used in statistics is the bootstrapping technique `r citep(bib['Ef79'])`, which creates pseudo samples (or data sets) from the original data using re-sampling. The re-fitted model for each of these data sets effectively results in many different parameter estimates, thereby allowing the estimation of parameter uncertainty.
+As we have seen in section [*Sources of Uncertainty*](#Sources of Uncertainty), the parameter error is the error due to the fact that the parameters of the fitted model are estimated and are thus uncertain. Ideally, in order to estimate this uncertainty, we need other samples from the same population, which are often (always, in the reserving case) not available. In order to overcome this issue, a common approach used in statistics is the bootstrapping technique `r citep(bib['Ef79'])`, which creates pseudo samples (or data sets) from the original data using re-sampling. The re-fitted model for each of these data sets effectively results in many different parameter estimates, thereby allowing the estimation of parameter uncertainty.
 
 We describe two bootstrapping techniques here::
 
@@ -895,7 +887,7 @@ This version of the bootstrap is described in many places in the literature, e.g
 
 ### Monte Carlo Simulation<a name="Monte Carlo Simulation"></a>
 
-An alternative to using residual re-sampling to estimate process error is to sample directly from the distribution of the forecast value (refer back to Figure [Process Error](#Process Error)). This requires the following assumptions:
+An alternative to using residual re-sampling to estimate process error is to sample directly from the distribution of the forecast value (refer back to Figure [Process Error](#fig:ProcessError)). This requires the following assumptions:
 
 - The distributional form of the forecast value
 - The parameters of this distribution - usually, specification of the mean and variance is sufficient to determine these.
@@ -921,7 +913,7 @@ The resulting volatility from all the simulated reserves from this simulation cy
 
 ## Simulation Cycle - Parameter and Process Error<a name="Simulation Cycle - Parameter and Process Error"></a>
 
-The processes described in section [Estimating the Reserve Uncertainty](#Estimating the Reserve Uncertainty) may be combined to produce a simulation cycle for stochastic reserving yielding estimates of reserves that include both parameter and process error. In order to do this, the bootstrap cycle is embedded into the simulation cycle, giving a general stochastic reserving **simulation cycle** , as follows:
+The processes described in section [*Estimating the Reserve Uncertainty*](#Estimating the Reserve Uncertainty) may be combined to produce a simulation cycle for stochastic reserving yielding estimates of reserves that include both parameter and process error. In order to do this, the bootstrap cycle is embedded into the simulation cycle, giving a general stochastic reserving **simulation cycle** , as follows:
 
 1. If using a semi-parametric bootstrap, generate a pseudo dataset by re-sampling residuals and combining with fitted values to form a pseudo data set.
 2. Inclusion of parameter error:
@@ -946,8 +938,15 @@ We now discuss the specifics of the estimation of the ultimate view of reserve r
 
 As discussed in England and Verrall `r citep(bib['EV02'])`[^7], the assumptions (and results) of the Mack model are very similar to the normal approximation of the negative binomial model. The assumptions are as follows:
 
-- The over-dispersed negative binomial model assumes that the incremental payments $P_{ij}$ have the following distribution: $P_{ij} \sim \mbox{ODNB}\left(\mu=\left(\lambda_{j-1}\right) C_{i,j-1},\sigma^2=\phi \lambda_j \left(\lambda_j - 1 \right) C_{i,j-1}\right)$, where $\lambda_j$ is equivalent to the standard volume all Chain Ladder factor $f_j$ from development year $j-1$ to $j$. Additionally, there is an unknown dispersion parameter $\phi$ forming part of the variance, which makes the distribution "over-dispersed";
-- Noting that $C_{ij}=C_{i,j-1} + P_{i,j}$, and assuming that in this (recursive) approach $C_{i,j-1}$ is known, we can rewrite the above as: $C_{ij} \sim \mbox{ODNB}\left(\mu= f_j \, C_{i, j-1}, \sigma^2=\phi \, \lambda_j \, f_j \left(f_{j-1} - 1 \right) C_{i,j-1}\right)$.
+- The over-dispersed negative binomial model assumes that the incremental payments $P_{ij}$ have the following distribution: 
+$$
+P_{ij} \sim \mbox{ODNB}\left(\mu=\left(\lambda_{j-1}\right) C_{i,j-1},\sigma^2=\phi \lambda_j \left(\lambda_j - 1 \right) C_{i,j-1}\right)
+$$, 
+where $\lambda_j$ is equivalent to the standard volume all Chain Ladder factor $f_j$ from development year $j-1$ to $j$. Additionally, there is an unknown dispersion parameter $\phi$ forming part of the variance, which makes the distribution "over-dispersed";
+- Noting that $C_{ij}=C_{i,j-1} + P_{i,j}$, and assuming that in this (recursive) approach $C_{i,j-1}$ is known, we can rewrite the above as: 
+$$
+C_{ij} \sim \mbox{ODNB}\left(\mu= f_j \, C_{i, j-1}, \sigma^2=\phi \, \lambda_j \, f_j \left(f_{j-1} - 1 \right) C_{i,j-1}\right)
+$$.
 
 However, the ODNB assumption is not generally used in practice. As proven by Mack and Verrall `r citep(bib['MV00b'])`, since the negative binomial model is derived from the Poisson model, the predictive distributions are essentially the same and give identical predicted values. Furthermore, if $f_j < 1$[^8] the variance of the model above is negative and the ODNB model breaks down. To overcome this, we require a distribution whose support is not restricted to the positive real domain. The Normal distribution is a suitable candidate. Therefore, we can replace the ODNB assumption with a Normal approximation, retaining the same mean and variance, as much as is possible for the variance, i.e. we would expect the variance to be proportional to $C_{i, j-1}$ with a constant of proportionality depending on $j$.
 
@@ -1033,21 +1032,20 @@ We now apply the methods discussed in this paper to some real-life data sets to 
 
 ##	Example 1<a name="Example 1"></a>
 
-The first dataset is taken from `r citep(bib['AMW09'])` and `r citep(bib['AMW10'])`. This is a reasonably well-behaved claims triangle, with a relatively short tail, and no unusual features immediately apparent. The data is presented below in Table 7 1 as a triangle of incremental claim amounts.
-
-### Example Data Set 1<a name="Example Data Set 1"></a>
+The first dataset is taken from `r citep(bib['AMW09'])` and `r citep(bib['AMW10'])`. This is a reasonably well-behaved claims triangle, with a relatively short tail, and no unusual features immediately apparent. The data is presented below in Figure [*Example data set 1*](#fig:ExampleDataSet1) as a triangle of incremental claim amounts.
 
 <div id="fig:ExampleDataSet1">
 ![Example data set 1](figures/ExampleDataSet1.png)
 
 </div>
+
 Notes:
 
 1. Accident (or origin) years were labelled as 0,1,2,… in the original paper. 
 2. All values in this and subsequent tables are in ‘000s
 
 
-###	Analysis<a name="Analysis 1"></a>
+###	Analysis of Data Set 1<a name="Analysis 1"></a>
 
 Given the nature of the data, the Mack or ODP models are a reasonable starting point. The central estimates for both models may be calculated by applying the chain ladder algorithm. The resulting forecast incremental payments, ultimate amounts per year and reserves are shown in Table 7 2 and Table 7 3.
 
@@ -1075,7 +1073,7 @@ On the basis of these tests, there may be some question marks over the applicabi
 
 </div>
 
-While the ODP model has the same central estimates as the Mack, its distributional estimates are different. The residual scatter plots, actual/expected plots (calendar year only) and heat maps are shown in Figure [ODP diagnostic plots](#fig:ODPdiagnosticplots) and Figure [Actual/fitted heat maps for data set 1](#fig:Actualfittedheatmapsfordataset1). The residuals (standardised Pearson residuals) are calculated by fitting the ODP model as a GLM - this may be done in statistical packages such as R or SAS.
+While the ODP model has the same central estimates as the Mack, its distributional estimates are different. The residual scatter plots, actual/expected plots (calendar year only) and heat maps are shown in Figure [*ODP diagnostic plots*](#fig:ODPdiagnosticplots) and Figure [*Actual/fitted heat maps for data set 1*](#fig:Actualfittedheatmapsfordataset1). The residuals (standardised Pearson residuals) are calculated by fitting the ODP model as a GLM - this may be done in statistical packages such as R or SAS.
 
 Although not perfect, the residual scatter plots do not reveal any serious problems with the model. There may be a suggestion of a trend in early calendar years, but data is limited here so the apparent trend is not of huge concern. The actual/fitted heat maps also appear acceptable.
 
@@ -1089,13 +1087,11 @@ Although not perfect, the residual scatter plots do not reveal any serious probl
 
 </div
 
-Finally, the P-P (probability-probability) plot for the ODP distribution is shown in Figure [P-P plot for the ODP model](#fig:P-PplotfortheODPmodel). This graph is more coarse those that shown in Figure [Correct model fitted (data set 1)](#Correct model fitted (data set 1)) and Figure [Plot with incorrectly specified distribution](#Plot with incorrectly specified distribution) due to smaller amounts of data. It does suggest that the actual data distribution is not quite as heavy-tailed as an ODP distribution. However, given the small amounts of data, and the market practice view to generally stay on the side of conservatism, the ODP distribution may be accepted on pragmatic grounds.
+Finally, the P-P (probability-probability) plot for the ODP distribution is shown in Figure [*P-P plot for the ODP model*](#fig:P-PplotfortheODPmodel). This graph is more coarse those that shown in Figure [*Correct model fitted (data set 1)*](#Correct model fitted (data set 1)) and Figure [*Plot with incorrectly specified distribution*](#Plot with incorrectly specified distribution) due to smaller amounts of data. It does suggest that the actual data distribution is not quite as heavy-tailed as an ODP distribution. However, given the small amounts of data, and the market practice view to generally stay on the side of conservatism, the ODP distribution may be accepted on pragmatic grounds.
 
 On the basis of the above model diagnostics, the ODP model seems preferable to Mack. As this is a short-tailed data set with reasonably stable behaviour at early development years, use of the BF method does not seem warranted, at least not initially.
 
 The next stage is to bootstrap the ODP model to estimate parameter and process error. This may be implemented using custom-built actuarial software or in statistical packages. As discussed in section [*Estimating the Reserve Distribution*](#Estimating the Reserve Distribution), there are a number of ways of doing this - parametric, semi-parametric or non-parametric bootstrapping may all be used. Here we have used a semi-parametric bootstrap, overlaid with Monte Carlo simulation of process error, run using the chain ladder package in R. The results are shown in the table below while figure underneath presents some of the information graphically.
-
-#### Bootstrapping results for the ODP model (in thousands)<a name="Bootstrapping results for the ODP model (in thousands)"></a>
 
 <div id="fig:BootstrappingresultsfortheODPmodel">
 ![Bootstrapping results for the ODP model (in thousands)](figures/BootstrappingresultsfortheODPmodel.png)
@@ -1105,9 +1101,6 @@ Notes:
 
 1. Ultimate CoV is defined as MSEP½ /Ultimate. Reserve CoV is defined as $\sqrt{\mbox{MSEP}}/\mbox{Reserve}$
 2. The table shows the breakdown of MSEP into parameter and process error
-
-
-#### Sources of error for the ODP bootsrapping results<a name="Sources of error for the ODP bootsrapping results"></a>
 
 <div id="fig:SourcesoferrorfortheODPbootsrappingresults">
 ![Sources of error for the ODP bootsrapping results](figures/SourcesoferrorfortheODPbootsrappingresults.png)
@@ -1122,9 +1115,8 @@ In the above table and graphs the following can be seen:
 - The progression of the CoVs (both ultimate and reserve) is relatively smooth, with reasonable looking values for the most recent accident year. This supports the belief that a method like the BF is not required for this data set. Contrast this to the behaviour of the CoVs for example data set 2 below.
 - Overall, the ODP bootstrap suggests a reserve CoV of 7.1%.
 
-Of course, the bootstrap returns more than just the MSEP and CoV - it returns a full distribution including parameter and process error - see Figure 7 6 for an example of such output.
+Of course, the bootstrap returns more than just the MSEP and CoV - it returns a full distribution including parameter and process error - see Figure [*Distribution of the outstanding claims reserves*](#fig:Distributionoftheoutstandindclaimsreserves) for an example of such output.
 
-#### Distribution of the OutstandingClaims Reserves<a name="Distribution of the Outstanding Claims Reserves"></a>
 
 <div id="fig:Distributionoftheoutstandindclaimsreserves">
 ![Distribution of the outstanding claims reserves](figures/Distributionoftheoutstandindclaimsreserves.png)
@@ -1135,43 +1127,35 @@ Of course, the bootstrap returns more than just the MSEP and CoV - it returns a 
 
 The model validation section raised some question marks over the use of the Mack model for this data set. However, for illustrative purposes, it may be interesting to compare the ODP and Mack model analytic results. While both models give the same central estimate, they are different models, built on a different set of assumptions. Therefore we would expect the Mack results to reflect this, returning different variability estimates.
 
-#### Analytic results for Mack's model<a name="Analytic results for Mack's model"></a>
-
 <div id="fig:AnalyticresultsforMacksmodel">
 ![Analytic results for Mack's model](figures/AnalyticresultsforMacksmodel.png)
 
 </div>
-#### Comparison of reserve CoV<a name="Comparison of reserve CoV"></a>
 
 <div id="fig:ComparisonofreserveCoV">
 ![Comparison of reserve CoV](figures/ComparisonofreserveCoV.png)
 
 </div>
-Table [Analytic results for Mack's model](#Analytic results for Mack's model) presents the analytic results for Mack's model while Figure [Comparison of reserve CoV](#Comparison of reserve CoV) compares the reserve CoVs by accident (origin) year. For older accident years, the MSEP is much larger for the ODP model than it is for Mack, however this fact is immaterial, as the underlying reserve is very small; this is clearly illustrated in Figure [Comparison of reserve CoV](#Comparison of reserve CoV). In more recent years, the MSEPs are similar or even higher (the most recent year). The relative contributions of parameter and process error are quite different similar between the two models, with process error being the dominant source of error. Overall Mack model suggests slightly higher uncertainty results, ending up with a 7.7% total CoV vs ODP's 7.1% and the models look fairly aligned as soon as reserves start to be material.
+
+Figure [*Analytic results for Mack's model*](#Analytic results for Mack's model) presents the analytic results for Mack's model while Figure [*Comparison of reserve CoV*](#Comparison of reserve CoV) compares the reserve CoVs by accident (origin) year. For older accident years, the MSEP is much larger for the ODP model than it is for Mack, however this fact is immaterial, as the underlying reserve is very small; this is clearly illustrated in Figure [*Comparison of reserve CoV*](#Comparison of reserve CoV). In more recent years, the MSEPs are similar or even higher (the most recent year). The relative contributions of parameter and process error are quite different similar between the two models, with process error being the dominant source of error. Overall Mack model suggests slightly higher uncertainty results, ending up with a 7.7% total CoV vs ODP's 7.1% and the models look fairly aligned as soon as reserves start to be material.
 
 ### An Alternative View - the BF Model<a name="An Alternative View - the BF Model"></a>
 
 `r citep(bib['AMW09'])` also includes prior estimates of the ultimate claims cost per year as well as assumed CoVs (5% for all years). It may be helpful to consider the estimates that result from the BF model as an alternative view of the outstanding claims liability.
 
 
-#### BF reserve estimates for data set 1<a name="BF reserve estimates for data set 1"></a>
-
 <div id="fig:BFreserveestimatesfordataset1">
 ![BF reserve estimates for data set 1](figures/BFreserveestimatesfordataset1.png)
 
 </div>
 
-The reserve estimates are shown in Figure [Distribution of the Outstandind Claims Reserves](#Distribution of the Outstandind Claims Reserves). The results for all accident years are higher than the chain ladder estimates and overall, the reserve estimate is 22% higher. 
-Table [BF reserve estimates for data set 1](#BF reserve estimates for data set 1) shows the results of applying the analytic formulae from `r citep(bib['AWM10'])` for the stochastic BF while Figure [Comparison of BF and ODP RMSEP](#Comparison of BF and ODP RMSEP) compares the RMSEP from both methods.
-
-#### Analytic results for the BF model
-<a name="Analytic results for the BF model"></a>
+The reserve estimates are shown in Figure [*Distribution of the Outstandind Claims Reserves*](#Distribution of the Outstandind Claims Reserves). The results for all accident years are higher than the chain ladder estimates and overall, the reserve estimate is 22% higher. 
+Figure [*BF reserve estimates for data set 1*](#BF reserve estimates for data set 1) shows the results of applying the analytic formulae from `r citep(bib['AMW10'])` for the stochastic BF while Figure [*Comparison of BF and ODP RMSEP*](#Comparison of BF and ODP RMSEP) compares the RMSEP from both methods.
 
 <div id="fig:AnalyticresultsfortheBFmodel">
 ![Analytic results for the BF model](figures/AnalyticresultsfortheBFmodel.png)
 
 </div>
-#### Comparison of BF and ODP RMSEP<a name="Comparison of BF and ODP RMSEP"></a>
 
 <div id="fig:ComparisonofBFandODPRMSEP">
 ![Comparison of BF and ODP RMSEP](figures/ComparisonofBFandODPRMSEP.png)
@@ -1186,7 +1170,7 @@ Once the process and parameter error have been determined, the actuary then need
 
 ## Example 2<a name="Example 2"></a>
 
-The second illustrative data set is taken from Table 6 of `r citep(bib['LV08'])` and is an aggregate data set from Lloyd's syndicates. In `r citep(bib['LV08'])` Table 6 presents the paid data, and Table 7 the corresponding incurred data. This claims triangle is much more volatile than the first, and clearly has a long-tail. Consequently, it makes an interesting contrast to the first data set and is the type of business for which one might consider the Bornhuetter-Ferguson method.  The data are shown in Table 7 8 as incremental claim amounts.
+The second illustrative data set is taken from Table 6 of `r citep(bib['LV08'])` and is an aggregate data set from Lloyd's syndicates. In `r citep(bib['LV08'])` Table 6 presents the paid data, and Table 7 the corresponding incurred data. This claims triangle is much more volatile than the first, and clearly has a long-tail. Consequently, it makes an interesting contrast to the first data set and is the type of business for which one might consider the Bornhuetter-Ferguson method.  The data are shown in Figure [*Example data set 2*](#fig:Exampledataset2) as incremental claim amounts.
 
 ### Example data set 2<a name="Example data set 2"></a>
 
@@ -1197,24 +1181,20 @@ The second illustrative data set is taken from Table 6 of `r citep(bib['LV08'])`
 
 Note: accident (or origin) years have been re-labelled as 2005, 2006,....
 
-### Analysis<a name="Analysis 2"></a>
+### Analysis of Data Set 2<a name="Analysis 2"></a>
 
-We first consider the use of the Mack and ODP models for this data, though we might expect that the long-tailed nature of this class might mean that these models are unsuitable for use. The forecast incremental payments for both these models, ultimate amounts per year and reserves are shown in Table 7 -9 and Table 7 -10.
-
-#### Chain-ladder payment projections for example data set 2
+We first consider the use of the Mack and ODP models for this data, though we might expect that the long-tailed nature of this class might mean that these models are unsuitable for use. The forecast incremental payments for both these models, ultimate amounts per year and reserves are shown in Figure [*Chain-ladder payment projections for example data set 2*](#fig:Chain-ladderpaymentprojectionsforexampledataset2) and [*Chain-ladder reserve estimates for example data set 2*](#fig:Chain-ladderreserveestimatesforexampledataset2).
 
 <div id="fig:Chain-ladderpaymentprojectionsforexampledataset2">
 ![Chain-ladder payment projections for example data set 2](figures/Chain-ladderpaymentprojectionsforexampledataset2.png)
 
 </div>
-#### Chain-ladder reserve estimates for example data set 2
 
 <div id="fig:Chain-ladderreserveestimatesforexampledataset2">
 ![Chain-ladder reserve estimates for example data set 2](figures/Chain-ladderreserveestimatesforexampledataset2.png)
 
 </div>
 
-#### Log(Mack $\sigma^2$) parameters
 
 <div id="fig:LogMacksigma2parameters2">
 ![Log(Mack $\sigma^2$) parameters](figures/LogMacksigma2parameters2.png)
@@ -1225,25 +1205,19 @@ The Mack model passes both the development factors correlation test and the inde
 
 Residual scatter plots and actual vs expected by calendar year for the ODP model are shown in the figure below.
 
-#### ODP diagnostic plots
-
 <div id="fig:ODPdiagnosticplots2">
 ![ODP diagnostic plots](figures/ODPdiagnosticplots2.png)
 
 </div>
 
-The calendar year plot causes some concern as it appears that there may be a missing calendar year trend. A heat map of actual/fitted by accident and development year (Figure 7 -25) suggests there may be a missing interaction - development year 0 has been consistently low for 2010 to 2013.
-
-### Actual fitted heat maps for data set 2
+The calendar year plot causes some concern as it appears that there may be a missing calendar year trend. A heat map of actual/fitted by accident and development year (Figure [*Actual fitted heat maps for data set 2*](#fig:Actualfittedheatmapsfordataset2)) suggests there may be a missing interaction - development year 0 has been consistently low for 2010 to 2013.
 
 <div id="fig:Actualfittedheatmapsfordataset2">
 ![Actual fitted heat maps for data set 2](figures/Actualfittedheatmapsfordataset2.png)
 
 </div>
 
-Consequently, doubts are cast over the applicability of both the Mack and ODP models (using their standard regression structure ending up with the same estimates as the Chain Ladder model - note that the regression structure can be changed within the same models[^14]. This is supported by the estimates of CoV. As may be seen from Table 7 -11, these are high for all accident years and particularly so for the most recent accident year. Given the nature of the data there are high levels of uncertainty associated with the reserve estimates from these models so the results are merely reflecting this. From a practical point of view, however, such levels of uncertainty render results unusable so we must look to other possible models.
-
-#### Mack and ODP coefficients of variation for data set 2
+Consequently, doubts are cast over the applicability of both the Mack and ODP models (using their standard regression structure ending up with the same estimates as the Chain Ladder model - note that the regression structure can be changed within the same models[^14]. This is supported by the estimates of CoV. As may be seen from Figure [*Mack and ODP coefficients of variation for data set 2*](#fig:MackandODPcoefficientsofvariationfordataset2), these are high for all accident years and particularly so for the most recent accident year. Given the nature of the data there are high levels of uncertainty associated with the reserve estimates from these models so the results are merely reflecting this. From a practical point of view, however, such levels of uncertainty render results unusable so we must look to other possible models.
 
 <div id="fig:MackandODPcoefficientsofvariationfordataset2">
 ![Mack and ODP coefficients of variation for data set 2](figures/MackandODPcoefficientsofvariationfordataset2.png)
@@ -1252,19 +1226,15 @@ Consequently, doubts are cast over the applicability of both the Mack and ODP mo
 
 A natural model to turn to in situations like this is the Bornhuetter-Ferguson model (section [*A Stochastic Bornhuetter-Ferguson Model*](#A Stochastic Bornhuetter-Ferguson Model)) which takes into account prior information (e.g. pricing loss ratios) on the expected ultimate cost of an accident year. As [LV08] do not provide any information on prior estimates of accident year costs, or the variability of such estimates, we have made some broad-brush assumptions for these, assuming a prior cost of 20,000 for each year, with the CoV of 15%.
 
-The BF reserve estimates that result are shown in Table 7 12, with the chain ladder reserve estimate (i.e. that which results from both the Mack and ODP models) shown for comparison. We see that the BF results by accident year appear more reasonable and progress in a smoother fashion.
+The BF reserve estimates that result are shown in Figure [*BF reserve estimates for data set 2*](#fig:BFreserveestimatesfordataset2), with the chain ladder reserve estimate (i.e. that which results from both the Mack and ODP models) shown for comparison. We see that the BF results by accident year appear more reasonable and progress in a smoother fashion.
 
-
-#### BF reserve estimates for data set 2
 
 <div id="fig:BFreserveestimatesfordataset2">
 ![BF reserve estimates for data set 2](figures/BFreserveestimatesfordataset2.png)
 
 </div>
 
-We use the analytic formulae from `r citep(bib['AWM10'])` to calculate the parameter error, process error, prior estimate error, and the total MSEP. The results are shown in Table 7 -13 while the sources of error are shown graphically in Figure 7 -26. Figure 7 -26 also includes the Mack ultimate CoVs for comparison purposes.
-
-#### Analytic results for the BF model
+We use the analytic formulae from `r citep(bib['AMW10'])` to calculate the parameter error, process error, prior estimate error, and the total MSEP. The results are shown in Figure [*Analytic results for the BF model*](#fig:AnalyticresultsfortheBFmodel2) while the sources of error are shown graphically in Figure [*Source of error for the BF analytic results*](#fig:SourceoferrorfortheBFanalyticresults). Figure [*Source of error for the BF analytic results*](#fig:SourceoferrorfortheBFanalyticresults) also includes the Mack ultimate CoVs for comparison purposes.
 
 <div id="fig:AnalyticresultsfortheBFmodel2">
 ![Analytic results for the BF model](figures/AnalyticresultsfortheBFmodel2.png)
@@ -1275,14 +1245,12 @@ The CoVs by accident year appear much more reasonable than those resulting from 
 
 The breakdown of RMSEP by parameter, process and prior error behaves as might be expected. Process error makes a significant contribution over all accident years. However parameter and prior errors make different contributions depending on the age of the accident year; for older accident years, the parameter error makes a larger contribution since a greater weight is attached to the chain ladder estimates. For more recent years, the prior error dominates.
 
-#### Source of error for the BF analytic results
-
 <div id="fig:SourceoferrorfortheBFanalyticresults">
 ![Source of error for the BF analytic results](figures/SourceoferrorfortheBFanalyticresults.png)
 
 </div>
 
-Armed with these results, the actuary should then consider whether an additional loading for model error is required. This is particularly important for long-tailed classes where there is often a greater change of environmental changes impacting future claims cost. The same comments as made at the end of 7.1.1 apply - if the actuary considers that no further allowance is required for model error, then the model outputs may be used. If a further allowance is made, then standard practice would be to adjust the reserve CoV accordingly and combine this with a parametric distribution such as the log normal to produce the distribution of outstanding claims.
+Armed with these results, the actuary should then consider whether an additional loading for model error is required. This is particularly important for long-tailed classes where there is often a greater change of environmental changes impacting future claims cost. The same comments as made at the end of section [*Analysis of Data Set 1*](#Analysis 1) apply - if the actuary considers that no further allowance is required for model error, then the model outputs may be used. If a further allowance is made, then standard practice would be to adjust the reserve CoV accordingly and combine this with a parametric distribution such as the log normal to produce the distribution of outstanding claims.
 
 # Conclusion<a name="Conclusion"></a>
 
