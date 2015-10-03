@@ -88,7 +88,7 @@ Overall, if we consider all the above definitions together, we could summarise t
 
 **Effect horizon:** *the period over which the shock that is applied to a risk will impact the insurer.*
 
-*In essence, at the end of the shock period, capital has to be sufficient so that assets cover the technical provision (...) re-determined at the end of the shock period. The re-determination of the technical provisions would allow for the impact of the shock on the technical provisions over the full time horizon of the policy obligations"*
+*In essence, at the end of the shock period, capital has to be sufficient so that assets cover the technical provision (...) re-determined at the end of the shock period. The re-determination of the technical provisions would allow for the impact of the shock on the technical provisions over the full time horizon of the policy obligations*
 
 This definition led to the following two views for the Reserve Risk:
 
@@ -170,9 +170,8 @@ All adjustments to data should relate to specific and well-documented reasons to
 
 ### Data History<a name="Data History"></a>
 
-As mentioned above, the longer the development duration for the business, the more data will be needed. Suppose $d$ is the reserve duration. As a "rule of thumb"[^2]
+As mentioned above, the longer the development duration for the business, the more data will be needed. Suppose $d$ is the reserve duration. As a "rule of thumb"[^2] the working party would recommend:
 
- - the working party would recommend:
  - Minimum number of historical years =  $d\times 5$
  - Maximum number of historical years = $1.5\times d\times 5$
 
