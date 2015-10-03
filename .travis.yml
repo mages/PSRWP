@@ -15,7 +15,7 @@ install:
 script: ./travis-tool.sh run_tests
 
 after_success:
-  - ./.push_gh_pages.sh
+  - ./push_gh_pages.sh
   
 after_script:
 - ./travis-tool.sh dump_logs
