@@ -12,7 +12,8 @@ LazyData: TRUE
 Suggests:
     knitr, 
     rmarkdown,
-    knitcitations
+    knitcitations,
+    captioner
 License: GPL (>= 2)
 URL: https://github.com/mages/PSRWP
 BugReports: https://github.com/mages/PSRWP/issues
