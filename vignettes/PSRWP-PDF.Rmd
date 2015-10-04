@@ -13,6 +13,10 @@ output:
     pandoc_args: [
       "--chapters"
     ]
+header-includes:  
+  \usepackage{chngcntr}
+  \counterwithout{figure}{chapter}
+  \counterwithout{table}{chapter}
 bibliography: PSRWP.bib
 vignette: >
   %\VignetteIndexEntry{A Practitioner's Introduction to Stochastic Reserving (PDF)}
