@@ -387,7 +387,7 @@ To allow a calculation of the mean squared error of prediction (MSEP), Mack made
 3. For each $j = 1, \dots, n-1$ there are parameters $\sigma^2_j$  such that 
 $Var[C_{i,j+1}|C_{i,1}, \dots , C_{ij}] = C_{ij} \sigma^2_j$.
 
-Using these three assumptions Mack derives formulae for the mean squared error of the reserve for each individual origin period and for the total reserve across all origin periods. Refer to [MA93a] for the details.
+Using these three assumptions Mack derives formulae for the mean squared error of the reserve for each individual origin period and for the total reserve across all origin periods. Refer to (`r citep(bib['Ma93a'])` for the details.
 
 ### Analytic Calculation of MSEP<a name="Analytic Calculation of MSEP"></a>
 
