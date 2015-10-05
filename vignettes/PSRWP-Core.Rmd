@@ -338,7 +338,7 @@ The agreed scope for this paper was to consider parameter and process error only
 
 The Solvency II standards say the following regarding model error:
 
-SCR.1.23 Undertakings are not required to quantify the degree of model error in quantitative terms, or to re-calculate the value of the capital requirement using a more accurate method in order to demonstrate that the difference between the result of the chosen method and the result of a more accurate method is immaterial. Instead, it is sufficient if there is reasonable assurance that the model error included in simplification is immaterial.
+*SCR.1.23 Undertakings are not required to quantify the degree of model error in quantitative terms, or to re-calculate the value of the capital requirement using a more accurate method in order to demonstrate that the difference between the result of the chosen method and the result of a more accurate method is immaterial. Instead, it is sufficient if there is reasonable assurance that the model error included in simplification is immaterial.*
 
 So there is an onus on the actuary to satisfy themselves that their selected form of variability estimation adequately captures the main sources of error. Section [*Model Validation*](#Model Validation) contains information to help the actuaries in this sense, giving an overview of the techniques that can be used to validate model assumptions.
 
