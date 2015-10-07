@@ -703,7 +703,7 @@ The plot of residuals against fitted value (or, depending on the scale, the log 
 
 Residual scatterplots are powerful tools, testing both model fit and the distributional assumptions globally and locally. However, while building a model, it may be helpful to consider the model fit in isolation through the comparison of summaries of actual and fitted values. This removes the distraction of the dispersion of residuals.
 
-[`r fig_nums("fig:ResidualScatterSim1", display = "cite")`](#fig:ResidualScatterSim1) plots, for each payment year:
+[`r fig_nums("fig:CorrectModelFitted", display = "cite")`](#fig:CorrectModelFitted) plots, for each payment year:
 
 - The sum of actual payments in that year
 - The sum of expected payments in that year based on the fitted model
@@ -798,12 +798,12 @@ When using the Mack model, each of these assumptions should be tested to ensure 
 
 ### Development Factors Test<a name="Development Factors Test"></a>
 
-`r citep(bib['MA97'])` shows that (1) implies that the sequential development factors $C_{ij}/C_{i.j-1}$ and  $C_{i,j+1}/C_{ij}$ are not correlated. He uses this fact to develop a test for whether the model should be applied, taking the following points into consideration:
+`r citep(bib['Ma97'])` shows that (1) implies that the sequential development factors $C_{ij}/C_{i.j-1}$ and  $C_{i,j+1}/C_{ij}$ are not correlated. He uses this fact to develop a test for whether the model should be applied, taking the following points into consideration:
 
 - Development factors in adjacent development periods will generally not be identically distributed - they will usually have different means and different levels of variability. Therefore a non-parametric statistic such as the Spearman rank correlation should be used.
 - On pragmatic grounds, isolated cases of correlations between successive development factors may not negate the use of the Mack model. However, widespread correlations in the data set are problematic. Thus, he develops a test over the entire data set. Note this is also desirable from statistical grounds - it is undesirable to compare every set of adjacent development factors since, even with no correlations present, some are likely to return significant values due to chance.
 
-A brief overview of this test is given below; full details may be sourced from Appendix G in `r citep(bib['MA97'])`.
+A brief overview of this test is given below; full details may be sourced from Appendix G in `r citep(bib['Ma97'])`.
 
 - First take the development factors in development period $j$ and $j-1$ and remove any in $j$ that do not have a matching factor for that accident period in development period $j-1$ (and vice versa - remove any in $j-1$ that do not have a match in $j$).
 - Rank the factors separately for $j$ and $j-1$.
@@ -828,7 +828,7 @@ The idea underpinning this test is that, in the presence of a non-constant calen
 - For each diagonal, count the number of large and small factors.
 - Under the null hypothesis of independent accident periods, development factors should be equally spread between small and large factors (subject to sampling variability). Therefore a binomial distribution with probability $p$ and $n=$ number of entries in the diagonal may be used to assess the significance of the number of large and small factors.
 
-Refer to Appendix H of `r citep(bib['MA97'])` for full details.
+Refer to Appendix H of `r citep(bib['Ma97'])` for full details.
 
 ### Mack Sigma<a name="Mack Sigma"></a>
 
