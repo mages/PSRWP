@@ -18,13 +18,11 @@ addons:
   apt:
     packages:
     - haskell-platform
-    - equivs
-
-env:
-  global:
-    - PATH=$PATH:$HOME/.cabal/bin
-  matrix:
-    - TARGET=pandoc
+install:
+- cabal update
+- cabal install pandoc
+before_script:
+- export PATH=$PATH:/home/travis/.cabal/bin
 
 script: ./travis-tool.sh run_tests
 
