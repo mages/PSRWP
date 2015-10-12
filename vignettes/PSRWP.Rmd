@@ -16,3 +16,4 @@ The document is available in the following formats:
 
  - [HTML](./PSRWP-HTML.html)
  - [PDF](./PSRWP-PDF.pdf)
+ - [EPUB](/PSRWP-EPUB.epub)
