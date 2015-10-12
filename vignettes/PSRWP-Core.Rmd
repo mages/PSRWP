@@ -1158,7 +1158,7 @@ fig_nums(name = "fig:Actualfittedheatmapsfordataset1", display=FALSE)
 ```
 ![Actual/fitted heat maps for data set 1](figures/Actualfittedheatmapsfordataset1.png)
 
-<div>
+</div>
 
 <div id="fig:P-PplotfortheODPmodel">
 ```{r echo=FALSE}
