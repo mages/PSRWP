@@ -14,16 +14,6 @@ before_install:
 install:
 - ./travis-tool.sh install_deps
 
-addons:
-  apt:
-    packages:
-    - haskell-platform
-install:
-- cabal update
-- cabal install pandoc
-before_script:
-- export PATH=$PATH:/home/travis/.cabal/bin
-
 script: ./travis-tool.sh run_tests
 
 after_success:
