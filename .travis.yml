@@ -10,7 +10,8 @@ before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 - chmod 755 ./.push_gh_pages.sh
-
+- sudo apt-get install pandoc
+  
 install:
 - ./travis-tool.sh install_deps
 
