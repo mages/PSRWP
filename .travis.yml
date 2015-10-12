@@ -3,6 +3,7 @@ warnings_are_errors: true
 sudo: required
 
 before_install:
+- sudo add-apt-repository -y ppa:edd/misc
 - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
 - chmod 755 ./travis-tool.sh
 - ./travis-tool.sh bootstrap
@@ -13,13 +14,17 @@ before_install:
 install:
 - ./travis-tool.sh install_deps
 
-before_script:
-  - uname -a 
-  - cat /etc/lsb-release
-  - sudo apt-get install cabal-install
-  - cabal update
-  - cabal install pandoc
-  - export PATH=~/.cabal/bin:$PATH
+addons:
+  apt:
+    packages:
+    - haskell-platform
+    - equivs
+
+env:
+  global:
+    - PATH=$PATH:$HOME/.cabal/bin
+  matrix:
+    - TARGET=pandoc
 
 script: ./travis-tool.sh run_tests
 
