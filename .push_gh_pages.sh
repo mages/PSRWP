@@ -12,8 +12,7 @@ tar xfz $files
 done
 
 cd ./PSRWP/inst/doc
-R -e 'library(knitr);knit("PSRWP-HTML.Rmd", "PSRWP-EPUB.md" )'
-pandoc  PSRWP-EPUB.md --to epub3 --from markdown --output PSRWP-EPUB.epub --bibliography PSRWP.bib --number-sections --highlight-style tango --chapters --filter pandoc-citeproc --table-of-contents --toc-depth 2
+R -e 'library(rmarkdown);render("PSRWP-Word.Rmd" )'
 cd ../../../
 
 cd out
