@@ -11,9 +11,9 @@ for files in '*.tar.gz'; do
 tar xfz $files
 done
 
-cd ./PSRWP/inst/doc
-R -e 'library(rmarkdown);render("PSRWP-Word.Rmd" )'
-cd ../../../
+#cd ./PSRWP/inst/doc
+#R -e 'library(rmarkdown);render("PSRWP-Word.Rmd" )'
+#cd ../../../
 
 cd out
 git init
