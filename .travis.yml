@@ -12,6 +12,15 @@ before_install:
 
 install:
 - ./travis-tool.sh install_deps
+
+before_script:
+  - uname -a 
+  - cat /etc/lsb-release
+  - sudo apt-get install cabal-install
+  - cabal update
+  - cabal install pandoc
+  - export PATH=~/.cabal/bin:$PATH
+
 script: ./travis-tool.sh run_tests
 
 after_success:
