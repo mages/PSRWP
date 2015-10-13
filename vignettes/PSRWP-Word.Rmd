@@ -3,12 +3,11 @@ title: "A Practitioner's Introduction to Stochastic Reserving"
 author: "Alessandro Carrato MSc FIA IOA, Gráinne McGuire PhD FIAA, Robert Scarth PhD"
 date: '`r Sys.Date()`'
 output:
-  word_document:
+  word_document: 
     fig_caption: true
 bibliography: PSRWP.bib
-vignette: >
-  %\VignetteIndexEntry{A Practitioner's Introduction to Stochastic Reserving (Word)}          
-  %\VignetteEngine{knitr::rmarkdown}  
+vignette: |
+  %\VignetteIndexEntry{A Practitioner's Introduction to Stochastic Reserving (Word)}   %\VignetteEngine{knitr::rmarkdown}  
   %\VignetteEncoding{UTF-8} 
 ---
 
