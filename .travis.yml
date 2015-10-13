@@ -1,33 +1,24 @@
 language: r
 warnings_are_errors: true
 sudo: required
-r_packages:
- - knitr
- - rmarkdown
- - knitcitations
- - captioner
 
 before_install:
-- sudo add-apt-repository -y ppa:edd/misc
-#- curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
-#- chmod 755 ./travis-tool.sh
-#- ./travis-tool.sh bootstrap
-#- export DISPLAY=:99.0
-#- sh -e /etc/init.d/xvfb start
+- curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
+- chmod 755 ./travis-tool.sh
+- ./travis-tool.sh bootstrap
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 - chmod 755 ./.push_gh_pages.sh
-- sudo apt-get install pandoc
-  
-#install:
-#- ./travis-tool.sh install_deps
 
-#script: 
-#./travis-tool.sh run_tests
+install:
+- ./travis-tool.sh install_deps
+script: ./travis-tool.sh run_tests
 
 after_success:
   - ./.push_gh_pages.sh
   
 after_script:
-#- ./travis-tool.sh dump_logs
+- ./travis-tool.sh dump_logs
 
 notifications:
   email:
@@ -36,7 +27,7 @@ notifications:
     
 env:
   global:
-  #- CRAN: http://cran.rstudio.com
+  - CRAN: http://cran.rstudio.com
   - R_BUILD_ARGS="--no-manual --keep-empty-dirs --no-resave-data --compact-vignettes=both"
   - R_CHECK_ARGS="--no-vignettes --timings --no-manual"
   - BOOTSTRAP_LATEX="1"
