@@ -122,7 +122,7 @@ fig_nums(name = "fig:OneYearView", display=FALSE)
 
 Where:
 
- -  $R_0$ is the opening reserve, and is known (i.e. $\mbox{Var}(R_0)=0$, ;
+ -  $R_0$ is the opening reserve, and is known (i.e. $\mbox{VAR}(R_0)=0$);
  -  $P(t)$ are the payments during calendar year $t$, solely for claims already happened at the moment of evaluation $t=0$ (i.e., it is assumed that there is no new business);
  -  $R_t$ is the closing reserve after having observed  $P(1)$.
 
