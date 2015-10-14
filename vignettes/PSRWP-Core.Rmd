@@ -124,7 +124,7 @@ Where:
 
  -  $R_0$ is the opening reserve, and is known (i.e. $\mbox{VAR}(R_0)=0$);
  -  $P(t)$ are the payments during calendar year $t$, solely for claims already happened at the moment of evaluation $t=0$ (i.e., it is assumed that there is no new business);
- -  $R_t$ is the closing reserve after having observed  $P(1)$.
+ -  $R_1$ is the closing reserve after having observed  $P(1)$.
 
 $\mbox{CDR}_t$ is the Claim Development Result after $t$ years from the instant of evaluation, i.e. the difference between actual and expected over the specified $t^{th}$ period. Ideally, if actuaries truly reserve at best estimate taking into account all the possible knowledge, the expected value of the CDR for any future $t$ at the instant of evaluation should be zero ("prospective CDR"). This is opposed to the "retrospective CDR", which is the observed CDR after $t$ years and thus not centred on zero. We recommend Wüthrich and Merz `r citep(bib['MW08'])` for further reading on this topic, as this paper is only concerned with the prospective view.
 
