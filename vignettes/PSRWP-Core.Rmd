@@ -324,7 +324,7 @@ Model error is shown in [`r fig_nums("fig:ModelError", display = "cite")`](#fig:
 
 Parameter and process error are the two components of **independent risk** - i.e. those risks that arise from the inherent randomness in the insurance process.
 
-Model error corresponds to **systemic risk** , i.e. risks that impact a lot of claims, or a number of valuation groups or even all claims. Examples of systemic risk include legislative or other environmental changes or claims process changes that impact the number and settlement size of claims. The emergence of latent claims, binary events and ENIDS (Events Not in Data) are all components of systemic risk.
+Model error, i.e. the risk that a model is mis-specified includes both the risk of selecting an incorrect model (e.g. an incorrect distribution or modelling incremental amounts where cumulative amounts are more appropriate) and **systemic risk**. A model may be appropriate for past data but future events may mean that forecasts based on this model are incorrect. Examples of systemic risk include legislative or other environmental changes or claims process changes that impact the number and settlement size of claims. The emergence of latent claims, binary events and ENIDS (Events Not in Data) are all components of systemic risk.
 
 Since model error involves the true **unknown** underlying distribution, its quantification is difficult. There is no known procedure for its estimation by reference just to the data relied on by the modelling. However, there have been some attempts to quantify model error from data and opinions external to the data set. O'Dowd et al `r citep(bib['OSH05'])` and subsequently the Risk Margins Taskforce (Actuaries' institute, Australia) `r citep(bib['RMT08'])` set out a process to tackle this issue by:
 
@@ -380,7 +380,7 @@ $E[C_{i, j+1} | C_{i1}, \dots , C_{ij}] = C_{ij} f_j;$
 2. Origin periods are independent i.e. for each $s \neq t$ ,  
 $\left\{C_{s1}, \dots, C_{sn}\right\}, \left\{C_{t1}, \dots, C_{tn}\right\},$ are independent.
 
-Mack shows that, with the above assumptions, the basic Chain Ladder estimators for ultimate claims and the reserve are both unbiased estimators (`r citep(bib['Ma93a'])`, section 2). Note that the model assumes that the origin periods are independent. A triangle with accident origin periods is most likely to fulfil this assumption.
+Mack shows that, with the above assumptions, the basic Chain Ladder estimators for ultimate claims and the reserve are both unbiased estimators (`r citep(bib['Ma93a'])`, section 2). Note that the model assumes that the origin periods are independent. In some cases this assumption might not be true. For example, if underwriting origin periods are used then there might be a dependence between adjacent origin periods, due to the overlap in the corresponding exposure periods. If accident origin periods are used then there might be a dependence between origin periods as a result of a legal change or ruling which applies to all open claims, regardless of origin period.
 
 To allow a calculation of the mean squared error of prediction (MSEP), Mack made the following additional assumption:
 
