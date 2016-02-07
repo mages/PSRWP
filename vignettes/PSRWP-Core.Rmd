@@ -1095,7 +1095,7 @@ The first dataset is taken from `r citep(bib['AMW09'])` and `r citep(bib['AMW10'
 ```{r echo=FALSE}
 fig_nums(name = "fig:ExampleDataSet1", display=FALSE)
 ```
-![Example data set 1](figures/ExampleDataSet1.png)
+![Example data set 1](figures/ExampleDataSet1_2.png)
 
 </div>
 
@@ -1288,7 +1288,7 @@ The second illustrative data set is taken from Table 6 of `r citep(bib['LV08'])`
 ```{r echo=FALSE}
 fig_nums(name = "fig:Exampledataset2", display=FALSE)
 ```
-![Example data set 2](figures/Exampledataset2.png)
+![Example data set 2](figures/Exampledataset2_2.png)
 
 </div>
 
