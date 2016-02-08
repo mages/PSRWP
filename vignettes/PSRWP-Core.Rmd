@@ -21,7 +21,7 @@ We would like to thank all the members of the Pragmatic Stochastic Reserving Wor
  - Michael Ramyar, for reviewing the Monte Carlo simulation method section;
  - Nyasha Chipanga, for his contribution on the Mack's model section;
  - Nyasha Chiwereza, for her contribution to the Stochastic Reserving Process; and
- - Markus Gesmann for converting the original Word file into RMarkdown.
+ - Markus Gesmann, for converting the original Word file into RMarkdown.
 
 
 # Introduction and Scope
