@@ -2,7 +2,6 @@
 title: "A Practitioner's Introduction to Stochastic Reserving"
 author: "Alessandro Carrato MSc FIA IOA, Gráinne McGuire PhD FIAA, Robert Scarth PhD"
 date: "`r Sys.Date()`"
-abstract: "The aim of this paper is to present an overview of stochastic reserving suitable for both those working at the coalface of reserving as well as more senior actuaries tasked with oversight of the process. An overview of the stochastic reserving process is presented, together with a discussion of ultimate and one-year views of risk, with the paper restricting its scope to the former. Three commonly used stochastic reserving models are described: Mack’s model, the Over-Dispersed Poisson model and a stochastic Bornhuetter-Ferguson model. The estimation of variability directly from the models and via sampling methodologies such as the bootstrap and Monte Carlo is discussed. Some numeric examples are provided to illustrate the concepts discussed in the paper from model fitting, to validation to variability estimation."
 documentclass: book
 classoption: a4paper
 fontsize: 12pt
