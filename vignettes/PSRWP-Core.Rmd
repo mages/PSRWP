@@ -1287,7 +1287,7 @@ The second illustrative data set is taken from Table 6 of `r citep(bib['LV08'])`
 ```{r echo=FALSE}
 fig_nums(name = "fig:Exampledataset2", display=FALSE)
 ```
-![Example data set 2](figures/Exampledataset2_2.png)
+![Example data set 2](figures/ExampleDataSet2_2.png)
 
 </div>
 
