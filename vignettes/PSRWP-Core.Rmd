@@ -1314,7 +1314,6 @@ fig_nums(name = "fig:Chain-ladderreserveestimatesforexampledataset2", display=FA
 
 </div>
 
-
 <div id="fig:LogMacksigma2parameters2">
 ```{r echo=FALSE}
 fig_nums(name = "fig:LogMacksigma2parameters2", display=FALSE)
