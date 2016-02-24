@@ -12,7 +12,14 @@ before_install:
 
 install:
 - ./travis-tool.sh install_deps
-script: ./travis-tool.sh run_tests
+
+script: 
+    - ./travis-tool.sh run_tests
+    - wget http://tug.ctan.org/macros/latex/contrib/chngcntr/chngcntr.sty
+    - ls
+    - mkdir -p _build/latex/
+    - mv chngcntr.sty ./_build/latex/
+    - make $BUILD_CMD
 
 after_success:
   - ./.push_gh_pages.sh
