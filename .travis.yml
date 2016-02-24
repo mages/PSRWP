@@ -1,9 +1,11 @@
 language: r
-warnings_are_errors: true
+warnings_are_errors: false
 sudo: required
+language: r
+cache: packages
 
+warnings_are_errors: TRUE
 before_install:
-- curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
 - chmod 755 ./travis-tool.sh
 - ./travis-tool.sh bootstrap
 - export DISPLAY=:99.0
@@ -32,4 +34,3 @@ env:
   - R_CHECK_ARGS="--no-vignettes --timings --no-manual"
   - BOOTSTRAP_LATEX="1"
   - secure: "MdFsFdZBiF0yYuB7xeFZGl5wZEYeKp2cOynFoWdCaPxCTxjXfaeBdiF2B0Z3QjOZbA3sz6jaaqO0sRibEO8pnzrsYhcP2PPlUvr+T7KXEP0qk1/2gLXWwL+w/OrmYxRO3C1Vz7fx2Jufl54KHStkDZZOqypAlMkxszw7nKpJ+IbwK0w9WAASFW57CJxmf8JLZTFD2nscRcsWcqh0VU9wrjB5MlOlCdqBVrNHHp6gK+orA5A4+tMbR0VGfBDMQXXtIgpYGQIAslgWJJG5AtZHKXuVRTMJExv4Nc+grnV+96rR1lWBh8WU1Su4PeRQvIVoJMofNfUvfsv03zXksNwnWwqV6YPnG2ojb2oOIDYDAIbOxWDtPvvyEoCG7Mx/ya0SF3h8RMz8mlKossoIHWVq3ymHUHopCcD6plkXF3O+uZ7Zghacjy8F9q4LQzaLZwEMegraSoESTSCVnysMQgPzTbgg1f7XYWc05jwlnDErrSBUWPiLOkh/3ATJlLKfjkjKAojo6x9MNI5OKURZRFpdzPp82pkHRv04g1Emqa7kkwE3nuDXM+dmKMU304Sxpx7AYShMmmbXRcT71gpIkNs7nfrXx07vD51QYJtVOw5jByn1ZzFVfn2hQmpxpqBd56Qf3FjxjCoPChUe4+PeVsrwXlPKOzKEcbEt1b7BokWck4Y="
-  
