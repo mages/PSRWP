@@ -1,10 +1,8 @@
 language: r
 warnings_are_errors: false
 sudo: required
-language: r
 cache: packages
 
-warnings_are_errors: TRUE
 before_install:
 - chmod 755 ./travis-tool.sh
 - ./travis-tool.sh bootstrap
