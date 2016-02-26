@@ -1113,7 +1113,7 @@ Given the nature of the data, the Mack or ODP models are a reasonable starting p
 ```{r echo=FALSE}
 fig_nums(name = "fig:Chain-ladderpaymentprojectionsforexampledataset1", display=FALSE)
 ```
-![Chain-ladder payment projections for example data set 1](figures/Chain-ladderpaymentprojectionsforexampledataset1_v2.png)
+![Chain-ladder payment projections for example data set 1](figures/Chain-ladderpaymentprojectionsforexampledataset1.png)
 
 </div>
 
@@ -1287,7 +1287,7 @@ The second illustrative data set is taken from Table 6 of `r citep(bib['LV08'])`
 ```{r echo=FALSE}
 fig_nums(name = "fig:Exampledataset2", display=FALSE)
 ```
-![Example data set 2](figures/ExampleDataSet2_2.png)
+![Example data set 2](figures/Exampledataset2_2.png)
 
 </div>
 
@@ -1302,7 +1302,7 @@ We first consider the use of the Mack and ODP models for this data, though we mi
 ```{r echo=FALSE}
 fig_nums(name = "fig:ResidualScatterSim2", display=FALSE)
 ```
-![Chain-ladder payment projections for example data set 2](figures/Chain-ladderpaymentprojectionsforexampledataset2_v2.png)
+![Chain-ladder payment projections for example data set 2](figures/Chain-ladderpaymentprojectionsforexampledataset2.png)
 
 </div>
 
@@ -1313,6 +1313,7 @@ fig_nums(name = "fig:Chain-ladderreserveestimatesforexampledataset2", display=FA
 ![Chain-ladder reserve estimates for example data set 2](figures/Chain-ladderreserveestimatesforexampledataset2.png)
 
 </div>
+
 
 <div id="fig:LogMacksigma2parameters2">
 ```{r echo=FALSE}
