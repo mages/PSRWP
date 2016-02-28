@@ -13,8 +13,11 @@ before_install:
 install:
 - ./travis-tool.sh install_deps
 
+apt_packages:
+  - texlive-full
+
 script: 
-    - ./travis-tool.sh run_tests
+  - ./travis-tool.sh run_tests
 
 
 after_success:
