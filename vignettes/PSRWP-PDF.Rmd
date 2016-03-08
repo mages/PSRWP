@@ -18,6 +18,7 @@ header-includes:
   \usepackage{chngcntr}
   \counterwithout{figure}{chapter}
   \counterwithout{table}{chapter}
+  \usepackage{eso-pic,graphicx,transparent}
 bibliography: PSRWP.bib
 vignette: >
   %\VignetteIndexEntry{A Practitioner's Introduction to Stochastic Reserving (PDF)}

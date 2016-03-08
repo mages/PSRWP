@@ -1,23 +1,21 @@
 Package: PSRWP
 Type: Package
 Title: A Practitioner's Introduction to Stochastic Reserving
-Version: 1.0.0
-Date: 2016-02-26
+Version: 1.0.1
+Date: 2016-03-08
 Author: Alessandro Carrato, Grainne McGuire, Robert Scarth
 Maintainer: Markus Gesmann <markus.gesmann@gmail.com>
-Description: Source files to build the practitioner's introduction to 
-             stochastic reserving paper.
-License: GPL-3
-LazyData: TRUE
+Description: Source files to build the practitioner's introduction to
+    stochastic reserving paper.
+License: GPL (>= 2)
+LazyData: yes
 Suggests:
-    knitr, 
+    knitr,
     rmarkdown,
     knitcitations,
     captioner
-License: GPL (>= 2)
 URL: https://github.com/mages/PSRWP
 BugReports: https://github.com/mages/PSRWP/issues
 LazyLoad: yes
-LazyData: yes
 VignetteBuilder: knitr
-Type: Package
+RoxygenNote: 5.0.1

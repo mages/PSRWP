@@ -23,6 +23,13 @@ We would like to thank all the members of the Pragmatic Stochastic Reserving Wor
  - Nyasha Chiwereza, for her contribution to the Stochastic Reserving Process; and
  - Markus Gesmann, for converting the original Word file into RMarkdown.
 
+\AddToShipoutPictureFG{
+  \AtPageCenter{% or \AtTextCenter
+    \makebox[0pt]{\rotatebox[origin=c]{45}{%
+      \scalebox{5}{\texttransparent{0.3}{DRAFT}}%
+    }}
+  }
+}
 
 # Introduction and Scope
 
