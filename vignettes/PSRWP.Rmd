@@ -12,10 +12,10 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-
-The cuurent draft document is available in the following formats:
+<p>
+The draft/working paper is available in the following formats:
 
  - [HTML](./PSRWP-HTML.html)
  - [PDF](./PSRWP-PDF.pdf)
-
+</p>
 
