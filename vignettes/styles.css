@@ -3,7 +3,7 @@ html:after {
   /* common custom values */
   content: "DRAFT"; /* your site name */
   font-size: 720%;         /* font size */
-  color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.1); 
   /* alpha, could be even rgba(0,0,0,.05) */
 
   /* rest of the logic */
