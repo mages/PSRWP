@@ -1096,7 +1096,7 @@ We now apply the methods discussed in this paper to some real-life data sets to 
 
 ##	Example 1<a name="Example 1"></a>
 
-The first dataset is taken from `r citep(bib['AMW09'])` and `r citep(bib['AMW10'])`. This is a reasonably well-behaved claims triangle, with a relatively short tail, and no unusual features immediately apparent. The data is presented below in [`r fig_nums("fig:ExampleDataSet1", display = "cite")`](#fig:ExampleDataSet1) as a triangle of incremental claim amounts.
+The first dataset is taken from `r citep(bib['AMW09'])` and `r citep(bib['AMW10'])`. This is a reasonably well-behaved claims triangle, with a relatively short tail, and no unusual features immediately apparent. The data is presented below in [`r fig_nums("fig:ExampleDataSet1", display = "cite")`](#fig:ExampleDataSet1) as a triangle of cumulative claim amounts.
 
 <div id="fig:ExampleDataSet1">
 ```{r echo=FALSE}
@@ -1245,7 +1245,7 @@ fig_nums(name = "fig:ComparisonofreserveCoV", display=FALSE)
 </div>
 
 [`r fig_nums("fig:AnalyticresultsforMacksmodel", display = "cite")`](#fig:AnalyticresultsforMacksmodel) presents the analytic results for Mack's model while 
-[`r fig_nums("fig:ComparisonofreserveCoV", display = "cite")`](#fig:ComparisonofreserveCoV) compares the reserve CoVs by accident (origin) year. For older accident years, the MSEP is much larger for the ODP model than it is for Mack, however this fact is immaterial, as the underlying reserve is very small; this is clearly illustrated in [`r fig_nums("fig:ComparisonofreserveCoV", display = "cite")`](#fig:ComparisonofreserveCoV). In more recent years, the MSEPs are similar or even higher (the most recent year). The relative contributions of parameter and process error are quite different similar between the two models, with process error being the dominant source of error. Overall Mack model suggests slightly higher uncertainty results, ending up with a 7.7% total CoV vs ODP's 7.1% and the models look fairly aligned as soon as reserves start to be material.
+[`r fig_nums("fig:ComparisonofreserveCoV", display = "cite")`](#fig:ComparisonofreserveCoV) compares the reserve CoVs by accident (origin) year. For older accident years, the MSEP is much larger for the ODP model than it is for Mack, however this fact is immaterial, as the underlying reserve is very small; this is clearly illustrated in [`r fig_nums("fig:ComparisonofreserveCoV", display = "cite")`](#fig:ComparisonofreserveCoV). In more recent years, the MSEPs are similar or even higher (the most recent year). The relative contributions of parameter and process error are quite different between the two models, with process error being the dominant source of error in the Mack model, and with a more even split between parameter and process error for the ODP model. Overall Mack model suggests slightly higher uncertainty results, ending up with a 7.7% total CoV vs ODP's 7.1% and the models look fairly aligned as soon as reserves start to be material.
 
 ### An Alternative View - the BF Model<a name="An Alternative View - the BF Model"></a>
 
@@ -1287,7 +1287,7 @@ Once the process and parameter error have been determined, the actuary then need
 
 ## Example 2<a name="Example 2"></a>
 
-The second illustrative data set is taken from Table 6 of `r citep(bib['LV08'])` and is an aggregate data set from Lloyd's syndicates. In `r citep(bib['LV08'])` Table 6 presents the paid data, and Table 7 the corresponding incurred data. This claims triangle is much more volatile than the first, and clearly has a long-tail. Consequently, it makes an interesting contrast to the first data set and is the type of business for which one might consider the Bornhuetter-Ferguson method.  The data are shown in  [`r fig_nums("fig:Exampledataset2", display = "cite")`](#fig:Exampledataset2) as incremental claim amounts. A cumulative CSV file is available [on-line](https://github.com/mages/PSRWP/blob/master/inst/CSV/PSRWP2.csv).
+The second illustrative data set is taken from Table 6 of `r citep(bib['LV08'])` and is an aggregate data set from Lloyd's syndicates. In `r citep(bib['LV08'])` Table 6 presents the paid data, and Table 7 the corresponding incurred data. This claims triangle is much more volatile than the first, and clearly has a long-tail. Consequently, it makes an interesting contrast to the first data set and is the type of business for which one might consider the Bornhuetter-Ferguson method.  The data are shown in  [`r fig_nums("fig:Exampledataset2", display = "cite")`](#fig:Exampledataset2) as cumulative claim amounts. A cumulative CSV file is also available [on-line](https://github.com/mages/PSRWP/blob/master/inst/CSV/PSRWP2.csv).
 
 ### Example data set 2<a name="Example data set 2"></a>
 
