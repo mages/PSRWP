@@ -2,7 +2,7 @@ Package: PSRWP
 Type: Package
 Title: A Practitioner's Introduction to Stochastic Reserving
 Version: 1.0.1
-Date: 2016-03-09
+Date: 2016-04-16
 Author: Alessandro Carrato, Grainne McGuire, Robert Scarth
 Maintainer: Markus Gesmann <markus.gesmann@gmail.com>
 Description: Source files to build the practitioner's introduction to

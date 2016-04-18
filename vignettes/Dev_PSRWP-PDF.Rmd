@@ -19,7 +19,13 @@ header-includes:
   \counterwithout{figure}{chapter}
   \counterwithout{table}{chapter}
   \usepackage{eso-pic,graphicx,transparent}
-bibliography: PSRWP.bib
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhead[LE,RO]{}
+  \fancyhead[RE,LO]{}
+  \fancyhead[CO,CE]{Working paper and subject to change}
+  \fancyfoot[CE,CO]{\thepage}
+bibliography: Bibilography/PSRWP.bib
 vignette: >
   %\VignetteIndexEntry{A Practitioner's Introduction to Stochastic Reserving (PDF)}
   %\VignetteEngine{knitr::rmarkdown} 
@@ -29,5 +35,5 @@ vignette: >
   %\newcommand{\sectionbreak}{\clearpage}
 ---
 
-```{r child = 'PSRWP-Core.Rmd'}
+```{r child = 'Development/Dev_PSRWP-Core.Rmd'}
 ```

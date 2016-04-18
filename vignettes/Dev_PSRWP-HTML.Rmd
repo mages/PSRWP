@@ -7,12 +7,12 @@ output:
   knitr:::html_vignette:
     theme: united
     highlight: tango
-    css: styles.css
+    css: Development/Dev_styles.css
     toc: true
     toc_float:
       collapsed: false
       number_sections: true
-bibliography: PSRWP.bib
+bibliography: Bibilography/PSRWP.bib
 vignette: >
   %\VignetteIndexEntry{A Practitioner's Introduction to Stochastic Reserving (HMTL)}
   %\VignetteEngine{knitr::rmarkdown}
@@ -47,5 +47,5 @@ restyle({
   }
 });
 </script>
-```{r child = 'PSRWP-Core.Rmd'}
+```{r child = 'Development/Dev_PSRWP-Core.Rmd'}
 ```
