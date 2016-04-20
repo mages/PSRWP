@@ -7,13 +7,17 @@ library(captioner)
 table_nums <- captioner(prefix = "Table")
 fig_nums <- captioner()
 ```
-
+\\pagebreak
+\n
 
 **Version:** 1.0
 
 **Disclaimer:** This document has been prepared by and/or on behalf of the Institute and Faculty of Actuaries (IFoA). The IFoA does not accept any responsibility and/or liability whatsoever for the content or use of this document. This document does not constitute advice and should not be relied upon as such. The IFoA does not guarantee any outcome or result from the application of this document and no warranty as to the accuracy or correctness of this document is provided.
  
 **Copyright:** All material in this document is the copyright material of the IFoA, unless otherwise stated. Use may be made of these pages for non-commercial and study/research purposes without permission from the IFoA. Commercial use of this material may only be made with the express, prior written permission of the IFoA.
+
+**Online version:** Please note that this paper is intended to be "live" and opensource, thus any reader can forward his thoughts/comments to the authors via the Github platform at the following address: https://github.com/mages/PSRWP/ . An HTML version of this paper is also available at this address: http://mages.github.io/PSRWP/ 
+
  
 © Institute and Faculty of Actuaries (RC 000243)
 
