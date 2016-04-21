@@ -20,6 +20,8 @@ fig_nums <- captioner()
  
 © Institute and Faculty of Actuaries (RC 000243)
 
+\newpage
+
 **Acknowledgements**
 
 We would like to thank all the members of the Pragmatic Stochastic Reserving Working Party who gave lots of interesting market insights and valuable contributions. In particular, we would like to explicitly thank:
