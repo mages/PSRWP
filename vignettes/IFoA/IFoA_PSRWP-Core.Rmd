@@ -7,8 +7,7 @@ library(captioner)
 table_nums <- captioner(prefix = "Table")
 fig_nums <- captioner()
 ```
-\\pagebreak
-\n
+\newpage
 
 **Version:** 1.0
 
