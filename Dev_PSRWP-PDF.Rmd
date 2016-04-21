@@ -1,0 +1,39 @@
+---
+title: "Draft/Working Paper: A Practitioner's Introduction to Stochastic Reserving"
+author: "Alessandro Carrato MSc FIA IOA, Gráinne McGuire PhD FIAA, Robert Scarth PhD"
+date: "`r Sys.Date()`"
+abstract: "The aim of this paper is to present an overview of stochastic reserving suitable for both those working at the coalface of reserving as well as more senior actuaries tasked with oversight of the process. An overview of the stochastic reserving process is presented, together with a discussion of ultimate and one-year views of risk, with the paper restricting its scope to the former. Three commonly used stochastic reserving models are described: Mack’s model, the Over-Dispersed Poisson model and a stochastic Bornhuetter-Ferguson model. The estimation of variability directly from the models and via sampling methodologies such as the bootstrap and Monte Carlo is discussed. Some numeric examples are provided to illustrate the concepts discussed in the paper from model fitting, to validation to variability estimation."
+documentclass: report
+classoption: a4paper
+fontsize: 12pt
+output: 
+  pdf_document:
+    toc: yes
+    number_sections: true
+    fig_caption: true
+    pandoc_args: [
+      "--chapters"
+    ]
+header-includes:  
+  \usepackage{chngcntr}
+  \counterwithout{figure}{chapter}
+  \counterwithout{table}{chapter}
+  \usepackage{eso-pic,graphicx,transparent}
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhead[LE,RO]{}
+  \fancyhead[RE,LO]{}
+  \fancyhead[CO,CE]{Working paper and subject to change}
+  \fancyfoot[CE,CO]{\thepage}
+bibliography: Bibilography/PSRWP.bib
+vignette: >
+  %\VignetteIndexEntry{A Practitioner's Introduction to Stochastic Reserving (PDF)}
+  %\VignetteEngine{knitr::rmarkdown} 
+  %\VignetteEncoding{UTF-8}
+  %\usepackage[utf8x]{inputenc} 
+  %\usepackage{titlesec}
+  %\newcommand{\sectionbreak}{\clearpage}
+---
+
+```{r child = 'Development/Dev_PSRWP-Core.Rmd'}
+```
